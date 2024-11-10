@@ -11,3 +11,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Authenticator>
   </React.StrictMode>
 );
+
+// technical commit
