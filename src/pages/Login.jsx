@@ -32,7 +32,18 @@ const Login = () => {
                 {UI_TEXT.BUTTONS.BACK}
             </Button>
             <h1 className="text-3xl mb-8">{UI_TEXT.HEADINGS.LOGIN}</h1>
-            <Authenticator>
+            
+             {/* Add differentiation based on which button was pressed... likely separate pages, separate flows... */}
+             {/* Use the hideSignup for login, keep all for sugn up... */}
+
+             {/* https://ui.docs.amplify.aws/react/connected-components/authenticator/configuration */}
+             {/* Use email for login as the default option... */}
+             {/* No additional signup attributes - everything else will be handled inside the app... */}
+             {/* No social providers at this point... */}
+             {/* Variation is default, not modal... */}
+             {/* Variation is default, not modal... */}
+
+             <Authenticator initialState="signUp" loginMechanism="email">
                 {({ signOut }) => {
                     // Redirect to dashboard on successful authentication
                     navigate(ROUTES.DASHBOARD);
