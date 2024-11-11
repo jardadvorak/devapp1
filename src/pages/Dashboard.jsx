@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { generateClient } from 'aws-amplify/data';
-import { ROUTES, UI_TEXT } from '../config/constants';
+import { ROUTES } from '../config/constants';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitch from '../components/LanguageSwitch';
+
 import Button from '../components/Button';
 
 const Dashboard = () => {
@@ -14,11 +17,23 @@ const Dashboard = () => {
     // Hooks for authentication and navigation
     const { signOut, user } = useAuthenticator((context) => [context.user]);
     const navigate = useNavigate();
+    const location = useLocation();
 
+    // Get language context and functions
+    const { setCurrentLanguage, getText } = useLanguage();
+    
     // Initialize Amplify client for data operations
     const client = generateClient({
         authMode: 'userPool',
     });
+
+    // Effect to set language based on navigation state
+    useEffect(() => {
+        const language = location.state?.language;
+        if (language) {
+            setCurrentLanguage(language);
+        }
+    }, [location, setCurrentLanguage]);
 
     // Effect to fetch user profile data on component mount
     useEffect(() => {
@@ -43,7 +58,13 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-3xl mb-8">{UI_TEXT.HEADINGS.DASHBOARD}</h1>
+            {/* Language switch in top-right corner */}
+            <div className="absolute top-4 right-4">
+                <LanguageSwitch />
+            </div>
+
+            <h1 className="text-3xl mb-8">{getText('HEADINGS', 'DASHBOARD')}</h1>
+            
             <div className="grid gap-4 mb-8">
                 {userProfiles.map((profile) => (
                     <div 
@@ -54,7 +75,11 @@ const Dashboard = () => {
                     </div>
                 ))}
             </div>
-            <Button onClick={handleSignOut}>{UI_TEXT.BUTTONS.SIGNOUT}</Button>
+
+            {/* Sign Out Button */}
+            <Button onClick={handleSignOut}>
+                {getText('BUTTONS', 'SIGNOUT')}
+            </Button>
         </div>
     );
 };

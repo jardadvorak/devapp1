@@ -11,6 +11,7 @@ import {
   Divider,
 } from "@aws-amplify/ui-react";
 
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { useAuthenticator } from "@aws-amplify/ui-react";
@@ -19,6 +20,8 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from "aws-amplify";
 
 import { ROUTES } from './config/constants';
+import { LanguageProvider } from './contexts/LanguageContext';
+
 import Index from './pages/Index';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -47,7 +50,8 @@ const PrivateRoute = ({ children }) => {
 const App = () => {
   return (
       <BrowserRouter>
-          <Authenticator.Provider>
+         <LanguageProvider>
+            <Authenticator.Provider>
               <Routes>
                   {/* Public routes */}
                   <Route path={ROUTES.INDEX} element={<Index />} />
@@ -64,7 +68,8 @@ const App = () => {
                   />
               </Routes>
           </Authenticator.Provider>
-      </BrowserRouter>
+       </LanguageProvider>
+    </BrowserRouter>
   );
 };
 
