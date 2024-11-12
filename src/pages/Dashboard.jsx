@@ -1,7 +1,7 @@
 // src/pages/Dashboard.jsx
 // Internal dashboard page for authenticated users
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { generateClient } from 'aws-amplify/data';
 import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
@@ -41,11 +41,11 @@ const Dashboard = () => {
     }, [location, setCurrentLanguage]);
 
     // Redirect to login if not authenticated
-    useEffect(() => {
-        if (authStatus === 'unauthenticated') {
-            navigate(ROUTES.LOGIN);
-        }
-    }, [authStatus, navigate]);
+    // useEffect(() => {
+    //     if (authStatus === 'unauthenticated') {
+    //         navigate(ROUTES.LOGIN);
+    //     }
+    // }, [authStatus, navigate]);
 
     // Effect to fetch user profile data on component mount
     useEffect(() => {

@@ -4,6 +4,10 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 
+import { I18n } from 'aws-amplify/utils';
+import { translations } from '@aws-amplify/ui-react';
+I18n.putVocabularies(translations);
+
 import '@aws-amplify/ui-react/styles.css'; // Important: Add this import
 
 import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
@@ -30,17 +34,19 @@ const Login = () => {
     }, [location, setCurrentLanguage]);
 
     // Redirect to dashboard if already authenticated
-    useEffect(() => {
-        if (authStatus === 'authenticated') {
-            navigate(ROUTES.DASHBOARD, {
-                state: { language: currentLanguage }
-            });
-        }
-    }, [authStatus, navigate, currentLanguage]);
+    // useEffect(() => {
+    //     if (authStatus === 'authenticated') {
+    //         navigate(ROUTES.DASHBOARD, {
+    //             state: { language: currentLanguage }
+    //         });
+    //     }
+    // }, [authStatus, navigate, currentLanguage]);
 
     // Handler for back button - returns to landing page
     const handleBack = () => {
-        navigate(ROUTES.INDEX);
+        navigate(ROUTES.INDEX, {
+            state: { language: currentLanguage }
+        });
     };
 
     return (
