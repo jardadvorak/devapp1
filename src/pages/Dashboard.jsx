@@ -4,18 +4,23 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { generateClient } from 'aws-amplify/data';
-import { ROUTES } from '../config/constants';
+import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
-import LanguageSwitch from '../components/LanguageSwitch';
-
 import Button from '../components/Button';
+import LanguageSwitch from '../components/LanguageSwitch';
 
 const Dashboard = () => {
     // State for storing user profile data
     const [userProfiles, setUserProfiles] = useState([]);
-    
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     // Hooks for authentication and navigation
-    const { signOut, user } = useAuthenticator((context) => [context.user]);
+    const { signOut, user, authStatus } = useAuthenticator((context) => [
+        context.user,
+        context.authStatus
+    ]);
+    
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,6 +40,13 @@ const Dashboard = () => {
         }
     }, [location, setCurrentLanguage]);
 
+    // Redirect to login if not authenticated
+    useEffect(() => {
+        if (authStatus === 'unauthenticated') {
+            navigate(ROUTES.LOGIN);
+        }
+    }, [authStatus, navigate]);
+
     // Effect to fetch user profile data on component mount
     useEffect(() => {
         fetchUserProfile();
@@ -43,18 +55,35 @@ const Dashboard = () => {
     // Function to fetch user profile data from Amplify
     async function fetchUserProfile() {
         try {
+            setLoading(true);
             const { data: profiles } = await client.models.UserProfile.list();
             setUserProfiles(profiles);
+            setError(null);
         } catch (error) {
             console.error('Error fetching user profiles:', error);
+            setError(getText('ERRORS', 'FETCH_PROFILES'));
+        } finally {
+            setLoading(false);
         }
     }
 
     // Handler for sign out - signs out and redirects to landing page
     const handleSignOut = async () => {
-        await signOut();
-        navigate(ROUTES.INDEX);
+        try {
+            await signOut();
+            navigate(ROUTES.INDEX);
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
     };
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900" />
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
