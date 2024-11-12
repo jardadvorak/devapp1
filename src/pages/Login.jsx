@@ -25,13 +25,48 @@ const Login = () => {
     const { authStatus } = useAuthenticator(context => [context.authStatus]);
 
     // Effect to set language based on navigation state
-    // Get language from navigation state or use current language
-    useEffect(() => {
-        const language = location.state?.language;
-        if (language) {
-            setCurrentLanguage(language);
+// Effect to set language based on navigation state and update I18n vocabulary
+useEffect(() => {
+    // Get language from navigation state, or fall back to the current language context
+    const language = location.state?.language;
+    if (language && language !== currentLanguage) {
+        // Update the app's language context if the navigation state has a different language
+        setCurrentLanguage(language);
+    } else {
+        // Directly update I18n if the navigation state has no language, or is the same as currentLanguage
+        const vocab = UI_TEXT[currentLanguage];
+        if (vocab) {
+            I18n.putVocabularies(vocab);
+            I18n.setLanguage(currentLanguage);
         }
-    }, [location, setCurrentLanguage]);
+    }
+}, [location, currentLanguage, setCurrentLanguage]);
+
+    // // Get language from navigation state or use current language
+    // useEffect(() => {
+    //     const language = location.state?.language;
+    //     if (language) {
+    //         setCurrentLanguage(language);
+    //     }
+    // }, [location, setCurrentLanguage]);
+
+    // // Effect to update I18n vocabulary when language changes
+    // useEffect(() => {
+    //     const language = UI_TEXT[currentLanguage]; // Assuming UI_TEXT contains translations per language
+    //     if (language) {
+    //         I18n.putVocabularies(language);
+    //         I18n.setLanguage(currentLanguage);
+    //     }
+    // }, [location, currentLanguage]);
+
+    // Original version...
+    // seEffect(() => {     
+    //     const vocab = UI_TEXT[currentLanguage]; // Assuming UI_TEXT contains translations per language
+    //     if (vocab) {
+    //         I18n.putVocabularies(vocab);
+    //         I18n.setLanguage(currentLanguage);
+    //     }
+    // }, [currentLanguage]);
 
     // Redirect to dashboard if already authenticated
     // useEffect(() => {
@@ -52,9 +87,10 @@ const Login = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen relative">
             {/* Language switch in top-right corner */}
-            <div className="absolute top-4 right-4">
+            {/* Do not use it on the login page */}
+            {/* <div className="absolute top-4 right-4">
                 <LanguageSwitch />
-            </div>
+            </div> */}
             
             {/* Back button in top-left corner */}
             <div className="absolute top-4 left-4">
