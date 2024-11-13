@@ -5,7 +5,8 @@
 // Supported languages configuration
 export const LANGUAGES = {
     EN: 'en',
-    DE: 'de'
+    DE: 'de',
+    CZ: 'cz'
 };
 
 // Default language setting
@@ -35,7 +36,8 @@ export const UI_TEXT = {
             BACK: 'Back',
             SIGNOUT: 'Sign Out',
             LANGUAGE_EN: 'EN',
-            LANGUAGE_DE: 'DE'
+            LANGUAGE_DE: 'DE',
+            LANGUAGE_CZ: 'CZ'
         },
         HEADINGS: {
             WELCOME: 'Welcome to Our Application',
@@ -63,7 +65,8 @@ export const UI_TEXT = {
             BACK: 'Zurück',
             SIGNOUT: 'Abmelden',
             LANGUAGE_EN: 'EN',
-            LANGUAGE_DE: 'DE'
+            LANGUAGE_DE: 'DE',
+            LANGUAGE_CZ: 'CZ'
         },
         HEADINGS: {
             WELCOME: 'Willkommen in unserer Anwendung',
@@ -81,6 +84,35 @@ export const UI_TEXT = {
             'Create account': 'Konto erstellen',
             'Have an account?': 'Haben Sie ein Konto?',
             'Sign in': 'Anmelden'
+        }
+    },
+    // Czech translations
+    [LANGUAGES.CZ]: {
+        BUTTONS: {
+            LOGIN: 'Přihlásit se',
+            SIGNUP: 'Registrovat se',
+            BACK: 'Zpět',
+            SIGNOUT: 'Odhlásit',
+            LANGUAGE_EN: 'EN',
+            LANGUAGE_DE: 'DE',
+            LANGUAGE_CZ: 'CZ'
+        },
+        HEADINGS: {
+            WELCOME: 'Vítejte v naší aplikaci',
+            DASHBOARD: 'Můj přehled',
+            LOGIN: 'Ověření'
+        },
+        AUTH: {
+            'Sign In': 'Přihlásit se',
+            'Sign Up': 'Registrovat se',
+            'Email': 'E-Mail',
+            'Password': 'Heslo',
+            'Forgot your password?': 'Zapomenuté heslo?',
+            'Reset Password': 'Změnit heslo',
+            'No account?': 'Nemáte účet?',
+            'Create account': 'Vytvořit účet',
+            'Have an account?': 'Máte účet?',
+            'Sign in': 'Přihlásit se'
         }
     }
 };

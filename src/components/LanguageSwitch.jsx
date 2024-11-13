@@ -1,6 +1,6 @@
 // src/components/LanguageSwitch.jsx
 // Component for language switching buttons
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LANGUAGES } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from './Button';
@@ -13,16 +13,28 @@ const LanguageSwitch = () => {
     const [showDialog, setShowDialog] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(null);
 
+    // On component mount, check for a saved language in localStorage
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem('appLanguage');
+        if (savedLanguage) {
+            setCurrentLanguage(savedLanguage); // Initialize with saved language
+        }
+    }, [setCurrentLanguage]);
+
     // Handle language button click
     const handleLanguageClick = (language) => {
         setSelectedLanguage(language); // Set selected language
         setShowDialog(true); // Show confirmation dialog
+        // setCurrentLanguage(selectedLanguage); // Set the new language
+        // window.location.reload(); // Reload the page to apply the language change
     };
 
     // Confirm the language change
     const confirmLanguageChange = () => {
         if (selectedLanguage) {
             setCurrentLanguage(selectedLanguage); // Set the new language
+            localStorage.setItem('appLanguage', selectedLanguage); // Save to localStorage
+            window.location.reload(); // Reload the page to apply the language change
         }
         setShowDialog(false); // Close the dialog
     };
@@ -47,6 +59,12 @@ const LanguageSwitch = () => {
                 className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
             >
                 {getText('BUTTONS', 'LANGUAGE_DE')}
+            </Button>
+            <Button
+                onClick={() => handleLanguageClick(LANGUAGES.CZ)}
+                className={`w-12 ${currentLanguage === LANGUAGES.CZ ? 'bg-blue-700' : ''}`}
+            >
+                {getText('BUTTONS', 'LANGUAGE_CZ')}
             </Button>
 
             {/* Confirmation dialog */}
