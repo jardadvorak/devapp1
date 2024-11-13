@@ -6,7 +6,13 @@ import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 
 import { I18n } from 'aws-amplify/utils';
 import { translations } from '@aws-amplify/ui-react';
+import { czAuthDict } from '../config/languages/authentication/cz'
+
+// Add Amplify UI translations
 I18n.putVocabularies(translations);
+
+// Add Czech vocabulary
+I18n.putVocabulariesForLanguage('cz', czAuthDict);
 
 import '@aws-amplify/ui-react/styles.css'; // Important: Add this import
 
@@ -25,22 +31,22 @@ const Login = () => {
     const { authStatus } = useAuthenticator(context => [context.authStatus]);
 
     // Effect to set language based on navigation state
-// Effect to set language based on navigation state and update I18n vocabulary
-useEffect(() => {
-    // Get language from navigation state, or fall back to the current language context
-    const language = location.state?.language;
-    if (language && language !== currentLanguage) {
-        // Update the app's language context if the navigation state has a different language
-        setCurrentLanguage(language);
-    } else {
-        // Directly update I18n if the navigation state has no language, or is the same as currentLanguage
-        const vocab = UI_TEXT[currentLanguage];
-        if (vocab) {
-            I18n.putVocabularies(vocab);
-            I18n.setLanguage(currentLanguage);
+    // Effect to set language based on navigation state and update I18n vocabulary
+    useEffect(() => {
+        // Get language from navigation state, or fall back to the current language context
+        const language = location.state?.language;
+        if (language && language !== currentLanguage) {
+            // Update the app's language context if the navigation state has a different language
+            setCurrentLanguage(language);
+        } else {
+            // Directly update I18n if the navigation state has no language, or is the same as currentLanguage
+            const vocab = UI_TEXT[currentLanguage];
+            if (vocab) {
+                I18n.putVocabularies(vocab);
+                I18n.setLanguage(currentLanguage);
+            }
         }
-    }
-}, [location, currentLanguage, setCurrentLanguage]);
+    }, [location, currentLanguage, setCurrentLanguage]);
 
     // // Get language from navigation state or use current language
     // useEffect(() => {
