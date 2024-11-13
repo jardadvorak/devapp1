@@ -75,6 +75,32 @@ export const czAuthDict = {
   'Your code is on the way. To log in, enter the code we emailed to': 'Kód je na cestě. Pro přihlášení zadejte kód, který jsme poslali na váš e-mail:',
   'Your code is on the way. To log in, enter the code we sent you': 'Kód je na cestě. Pro přihlášení zadejte kód, který jsme vám poslali:',
   'Your code is on the way. To log in, enter the code we texted to': 'Kód je na cestě. Pro přihlášení zadejte kód, který jsme poslali na váš telefon:',
+
+  // Additional translations provided by customers
+  'An account with the given email already exists.': 'Účet s touto e-mailovou adresou již existuje.',
+  'Confirm a Code': 'Potvrdit kód',
+  'Confirm Sign In': 'Potvrdit přihlášení',
+  'Create account': 'Vytvořit účet',
+  'Sign Up with Facebook': 'Registrovat se přes Facebook',
+  'Sign Up with Google': 'Registrovat se přes Google',
+  'Forgot Password': 'Zapomenuté heslo',
+  'Have an account? ': 'Máte účet? ',
+  'Incorrect username or password': 'Nesprávné uživatelské jméno nebo heslo',
+  'Invalid password format': 'Neplatný formát hesla',
+  'Invalid phone number format': 'Neplatný formát telefonního čísla. Použijte číslo ve formátu: +12345678900',
+  'It may take a minute to arrive.': 'Může to chvíli trvat, než kód dorazí.',
+  'Lost your code? ': 'Ztratili jste kód? ',
+  'New Password': 'Nové heslo',
+  'No account? ': 'Nemáte účet? ',
+  'Password attempts exceeded': 'Byl dosažen maximální počet pokusů o přihlášení',
+  'Reset password': 'Obnovit heslo',
+  'Reset Password': 'Obnovení hesla',
+  'Sign Out': 'Odhlásit se',
+  'Sign Up': 'Registrovat se',
+  'User already exists': 'Tento uživatel již existuje',
+  'User does not exist': 'Tento uživatel neexistuje',
+  'Username cannot be empty': 'Uživatelské jméno nesmí být prázdné',
+  'Enter your email': 'Zadejte svůj email',
 };
 
 export default czAuthDict;
