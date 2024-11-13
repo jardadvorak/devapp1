@@ -35,6 +35,8 @@ export const UI_TEXT = {
             SIGNUP: 'Sign Up',
             BACK: 'Back',
             SIGNOUT: 'Sign Out',
+            OK: 'OK',
+            CANCEL: 'Cancel',
             LANGUAGE_EN: 'EN',
             LANGUAGE_DE: 'DE',
             LANGUAGE_CZ: 'CZ'
@@ -43,6 +45,9 @@ export const UI_TEXT = {
             WELCOME: 'Welcome to Our Application',
             DASHBOARD: 'My Dashboard',
             LOGIN: 'Authentication'
+        },
+        DIALOGS: {
+            LANGUAGE_CHANGE_CONFIRMATION: 'Are you sure you want to change the language?'
         },
         AUTH: {
             'Sign In': 'Sign In',
@@ -64,6 +69,8 @@ export const UI_TEXT = {
             SIGNUP: 'Registrieren',
             BACK: 'Zurück',
             SIGNOUT: 'Abmelden',
+            OK: 'OK',
+            CANCEL: 'Stornieren',
             LANGUAGE_EN: 'EN',
             LANGUAGE_DE: 'DE',
             LANGUAGE_CZ: 'CZ'
@@ -72,6 +79,9 @@ export const UI_TEXT = {
             WELCOME: 'Willkommen in unserer Anwendung',
             DASHBOARD: 'Mein Dashboard',
             LOGIN: 'Authentifizierung'
+        },
+        DIALOGS: {
+            LANGUAGE_CHANGE_CONFIRMATION: 'Möchten Sie die Sprache wirklich ändern?'
         },
         AUTH: {
             'Sign In': 'Anmelden',
@@ -93,6 +103,8 @@ export const UI_TEXT = {
             SIGNUP: 'Registrovat se',
             BACK: 'Zpět',
             SIGNOUT: 'Odhlásit',
+            OK: 'OK',
+            CANCEL: 'Zrušit',
             LANGUAGE_EN: 'EN',
             LANGUAGE_DE: 'DE',
             LANGUAGE_CZ: 'CZ'
@@ -101,6 +113,9 @@ export const UI_TEXT = {
             WELCOME: 'Vítejte v naší aplikaci',
             DASHBOARD: 'Můj přehled',
             LOGIN: 'Ověření'
+        },
+        DIALOGS: {
+            LANGUAGE_CHANGE_CONFIRMATION: 'Opravdu chcete změnit jazyk?'
         },
         AUTH: {
             'Sign In': 'Přihlásit se',

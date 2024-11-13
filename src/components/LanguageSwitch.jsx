@@ -71,9 +71,9 @@ const LanguageSwitch = () => {
             {showDialog && (
                 <div className="dialog-overlay">
                     <div className="dialog-box">
-                        <p>Are you sure you want to change the language?</p>
-                        <button onClick={confirmLanguageChange}>OK</button>
-                        <button onClick={cancelLanguageChange}>Cancel</button>
+                        <p>{getText('DIALOGS', 'LANGUAGE_CHANGE_CONFIRMATION')}</p>
+                        <button onClick={confirmLanguageChange}>{getText('BUTTONS', 'OK')}</button>
+                        <button onClick={cancelLanguageChange}>{getText('BUTTONS', 'CANCEL')}</button>
                     </div>
                 </div>
             )}
