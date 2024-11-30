@@ -22,6 +22,10 @@ import { Amplify } from "aws-amplify";
 import { ROUTES } from './config/constants';
 import { LanguageProvider } from './contexts/LanguageContext';
 
+// Import utilities
+import ErrorBoundary from "./utilities/ErrorBoundary";
+
+// Import pages
 import Index from './pages/Index';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -29,6 +33,7 @@ import Dashboard from './pages/Dashboard';
 import "@aws-amplify/ui-react/styles.css";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
+
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
  */
@@ -37,7 +42,7 @@ import outputs from "../amplify_outputs.json";
 Amplify.configure(outputs);
 const client = generateClient({
   authMode: "userPool",
-});
+})
 
 // PrivateRoute component to protect authenticated routes
 const PrivateRoute = ({ children }) => {
@@ -48,28 +53,42 @@ const PrivateRoute = ({ children }) => {
 };
 
 const App = () => {
+  
+  // Basic language utilities...
+  // Add functionality to read the language of the browser and take it over for the public page...
+  // In the private page, we would take the user's preferred language...
+  const [currentLang, setCurrentLang] = useState('cz');
+  const handleLanguageChange = (lang) => {
+    setCurrentLang(lang);
+  };
+
   return (
+    <div className="disable-text-selection">
       <BrowserRouter>
-         <LanguageProvider>
+        <ErrorBoundary>
+
+          <LanguageProvider>
             <Authenticator.Provider>
               <Routes>
-                  {/* Public routes */}
-                  <Route path={ROUTES.INDEX} element={<Index />} />
-                  <Route path={ROUTES.LOGIN} element={<Login />} />
+                {/* Public routes */}
+                <Route path={ROUTES.INDEX} element={<Index />} />
+                <Route path={ROUTES.LOGIN} element={<Login />} />
                   
-                  {/* Protected routes */}
-                  <Route 
-                      path={ROUTES.DASHBOARD} 
-                      element={
-                          <PrivateRoute>
-                              <Dashboard />
-                          </PrivateRoute>
-                      } 
-                  />
+                {/* Protected routes */}
+                <Route 
+                  path={ROUTES.DASHBOARD} 
+                  element={
+                    <PrivateRoute>
+                      <Dashboard />
+                    </PrivateRoute>
+                  } 
+                />
               </Routes>
-          </Authenticator.Provider>
-       </LanguageProvider>
-    </BrowserRouter>
+            </Authenticator.Provider>
+          </LanguageProvider>
+        </ErrorBoundary>
+      </BrowserRouter>
+    </div>
   );
 };
 
