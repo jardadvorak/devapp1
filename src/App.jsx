@@ -2,14 +2,7 @@
 // Main application component with routing configuration
 
 import { useState, useEffect } from "react";
-import {
-  Button,
-  Heading,
-  Flex,
-  View,
-  Grid,
-  Divider,
-} from "@aws-amplify/ui-react";
+import { Button, Heading, Flex, View, Grid, Divider} from "@aws-amplify/ui-react";
 
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -24,6 +17,17 @@ import { LanguageProvider } from './contexts/LanguageContext';
 
 // Import utilities
 import ErrorBoundary from "./utilities/ErrorBoundary";
+// import { useDebugClipboard } from "./utilities/NavigationTools";
+// import { useScrollToTop } from "./utilities/NavigationTools";
+import { RequireAuth } from "./utilities/RequireAuth";
+import { TopBarClipboardProvider } from "./utilities/TopBarClipboardcontext";
+import { useWindowSize } from "./utilities/UseWindowSize";
+
+// Import components
+import { TopNavigationBar } from "./components/TopNavigationBar";
+
+// Import routes
+import { routes } from "./routes/routesConfig";
 
 // Import pages
 import Index from './pages/Index';
@@ -52,6 +56,33 @@ const PrivateRoute = ({ children }) => {
   return user ? children : <Navigate to={ROUTES.LOGIN} />;
 };
 
+// Reads 'routes/routesConfig' and declares routes
+function ApplicationRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<TopNavigationBar />}>
+          {routes.map(({ path, component: Component, public: isPublic }) => (
+            <Route
+              key={path}
+              path={path}
+              element={
+                isPublic ? (
+                  <Component />
+                ) : (
+                  <RequireAuth>
+                    <Component />
+                  </RequireAuth>
+                )
+              }
+            />
+          ))}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 const App = () => {
   
   // Basic language utilities...
@@ -64,18 +95,20 @@ const App = () => {
 
   return (
     <div className="disable-text-selection">
-      <BrowserRouter>
-        <ErrorBoundary>
-
-          <LanguageProvider>
+            {/* <BrowserRouter> */}
+            <TopBarClipboardProvider>
             <Authenticator.Provider>
-              <Routes>
+            <ErrorBoundary>
+            <LanguageProvider>
+
+
+              {/* <Routes> */}
                 {/* Public routes */}
-                <Route path={ROUTES.INDEX} element={<Index />} />
-                <Route path={ROUTES.LOGIN} element={<Login />} />
+                {/* <Route path={ROUTES.INDEX} element={<Index />} />
+                <Route path={ROUTES.LOGIN} element={<Login />} /> */}
                   
                 {/* Protected routes */}
-                <Route 
+                {/* <Route 
                   path={ROUTES.DASHBOARD} 
                   element={
                     <PrivateRoute>
@@ -83,17 +116,54 @@ const App = () => {
                     </PrivateRoute>
                   } 
                 />
-              </Routes>
-            </Authenticator.Provider>
-          </LanguageProvider>
-        </ErrorBoundary>
-      </BrowserRouter>
-    </div>
+              </Routes> */}
+
+                <ApplicationRoutes />
+
+       </LanguageProvider>
+       </ErrorBoundary>
+       </Authenticator.Provider>
+       </TopBarClipboardProvider>
+       {/* </BrowserRouter> */}
+       </div>
   );
 };
 
 export default App;
 
+// ========================================================================================================
+// return (
+//   <div className="disable-text-selection">
+//     <BrowserRouter>
+//       <ErrorBoundary>
+
+//         <LanguageProvider>
+//           <Authenticator.Provider>
+//             <Routes>
+//               {/* Public routes */}
+//               <Route path={ROUTES.INDEX} element={<Index />} />
+//               <Route path={ROUTES.LOGIN} element={<Login />} />
+                
+//               {/* Protected routes */}
+//               <Route 
+//                 path={ROUTES.DASHBOARD} 
+//                 element={
+//                   <PrivateRoute>
+//                     <Dashboard />
+//                   </PrivateRoute>
+//                 } 
+//               />
+//             </Routes>
+//           </Authenticator.Provider>
+//         </LanguageProvider>
+//       </ErrorBoundary>
+//     </BrowserRouter>
+//   </div>
+// );
+// };
+
+
+// ========================================================================================================
 // export default function App() {
 //   const [userprofiles, setUserProfiles] = useState([]);
 //   const { signOut } = useAuthenticator((context) => [context.user]);

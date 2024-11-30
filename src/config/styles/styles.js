@@ -1,5 +1,5 @@
 // Colors, styles etc.
-import { colors } from 'components/styles/colors';
+import { colors } from './colors';
 
 // const ComponentStyles = (isSmallScreen, isHovered, isDisabled) => {
 const ComponentStyles = () => {
