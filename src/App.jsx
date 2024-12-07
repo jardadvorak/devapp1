@@ -24,7 +24,7 @@ import { TopBarClipboardProvider } from "./utilities/TopBarClipboardcontext";
 import { useWindowSize } from "./utilities/UseWindowSize";
 
 // Import components
-import { TopNavigationBar } from "./components/TopNavigationBar";
+import TopNavigationBar from "./components/TopNavigationBar";
 
 // Import routes
 import { routes } from "./routes/routesConfig";
@@ -60,8 +60,9 @@ const PrivateRoute = ({ children }) => {
 function ApplicationRoutes() {
   return (
     <BrowserRouter>
+      <TopNavigationBar>
       <Routes>
-        <Route path='/' element={<TopNavigationBar />}>
+        {/* <Route path='/' element={<TopNavigationBar />}> */}
           {routes.map(({ path, component: Component, public: isPublic }) => (
             <Route
               key={path}
@@ -77,8 +78,9 @@ function ApplicationRoutes() {
               }
             />
           ))}
-        </Route>
+        {/* </Route> */}
       </Routes>
+      </TopNavigationBar>
     </BrowserRouter>
   );
 }

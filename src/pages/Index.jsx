@@ -7,6 +7,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Button from '../components/Button';
 import LanguageSwitch from '../components/LanguageSwitch';
 
+import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
+
 const Index = () => {
     // Hook for programmatic navigation
     const navigate = useNavigate();
@@ -35,8 +37,11 @@ const Index = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
-            {/* Language switch in top-right corner */}
+        <div className="app">
+        <main>
+        <div style={{...virtualFullWidth, color: 'orange'}}>
+        <div style={{...availableWidth, color: 'green'}}>        {/* <div className="flex flex-col items-center justify-center min-h-screen"> */}
+        {/* Language switch in top-right corner */}
             <div className="absolute top-4 right-4">
                 <LanguageSwitch />
             </div>
@@ -45,6 +50,9 @@ const Index = () => {
                 <Button onClick={handleLogin}>{getText('BUTTONS', 'LOGIN')}</Button>
                 <Button onClick={handleSignup}>{getText('BUTTONS', 'SIGNUP')}</Button>
             </div>
+        </div>
+        </div>
+        </main>
         </div>
     );
 };

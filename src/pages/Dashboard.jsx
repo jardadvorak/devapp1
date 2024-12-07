@@ -86,13 +86,13 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center justify-center min-h-screen" color='green'>
             {/* Language switch in top-right corner */}
-            <div className="absolute top-4 right-4">
+            <div className="absolute top-4 right-4" color='red'>
                 <LanguageSwitch />
             </div>
 
-            <h1 className="text-3xl mb-8">{getText('HEADINGS', 'DASHBOARD')}</h1>
+            <h1 className="text-3xl mb-8" color='green' >{getText('HEADINGS', 'DASHBOARD')}</h1>
             
             <div className="grid gap-4 mb-8">
                 {userProfiles.map((profile) => (
