@@ -6,12 +6,15 @@ import React from 'react';
 function TopNavigationBar({ children }) {
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full h-12 bg-white border-b border-gray-200 shadow-sm z-50">
-        <div className="h-full px-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+      <nav style={{ color: 'green', backgroundColor: 'grey', alignContent: 'center', width: '100%', minWidth: '320px', padding: '16px'}}>
+        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'white', width: 'min(1440px, 100%)', margin: '0 auto'}}>
+          <div style={{color: 'green', backgroundColor: 'black', margin: '16px'}}>
             <div className="font-bold">Your Logo</div>
           </div>
-          <div className="flex items-center gap-4">
+          <div style={{color: 'green', backgroundColor: 'blue', margin: '16px', flex: 1}}>
+            <div className="font-bold">Filler</div>
+          </div>
+          <div style={{color: 'green', backgroundColor: 'yellow', margin: '16px'}}>
             <button
               onClick={() => {}} // You can pass your signOut handler as a prop
               className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900"
@@ -21,7 +24,8 @@ function TopNavigationBar({ children }) {
           </div>
         </div>
       </nav>
-      <div className="pt-12 min-h-screen">
+      {/* <div className="pt-12 min-h-screen"> */}
+      <div>
         {children}
       </div>
     </>

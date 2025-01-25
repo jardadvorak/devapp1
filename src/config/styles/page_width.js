@@ -6,8 +6,8 @@ export const virtualFullWidth = {
 };
 
 export const availableWidth = {
-    maxWidth: 'min(1280px, 90vw)',  // responsive width
+    maxWidth: '1440px',  // responsive width
     minWidth: '320px',
     marginInline: 'auto',  // modern CSS for horizontal centering
-    padding: '0 1rem'  // prevent content touching edges
+    padding: '16px'  // prevent content touching edges
 };

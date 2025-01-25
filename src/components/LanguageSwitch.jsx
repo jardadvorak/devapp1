@@ -5,6 +5,8 @@ import { LANGUAGES } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from './Button';
 
+import { flags } from '../img/flags';
+
 const LanguageSwitch = () => {
     // Get language context
     const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
@@ -49,10 +51,12 @@ const LanguageSwitch = () => {
         <div>
             {/* Language buttons */}
             <Button
+
                 onClick={() => handleLanguageClick(LANGUAGES.EN)}
                 className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
             >
-                {getText('BUTTONS', 'LANGUAGE_EN')}
+                   <img src={flags.flags_circ_EN} alt="English Flag" className="mx-auto" />
+                   {getText('BUTTONS', 'LANGUAGE_EN')}
             </Button>
             <Button
                 onClick={() => handleLanguageClick(LANGUAGES.DE)}
