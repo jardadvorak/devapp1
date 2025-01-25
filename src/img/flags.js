@@ -1,16 +1,22 @@
-const flags = {
+import rectCZFlag from '../img/flags/circle/110-united_kingdom.png';
+import rectUKFlag from '../img/flags/circle/110-united_kingdom.png';
+import rectDEFlag from '../img/flags/circle/110-united_kingdom.png';
+
+import circCZFlag from '../img/flags/circle/201-czech_republic.png';
+import circUKFlag from '../img/flags/circle/110-united_kingdom.png';
+import circDEFlag from '../img/flags/circle/208-germany.png';
+
+export const flagIcons = {
 
     // Flags rectangular
-    flags_rect_CZ: require('img/flags/rectangular/201-czech republic.png'),
-    flags_rect_EN: require('img/flags/rectangular/109-united kingdom.png'),
-    flags_rect_DE: require('img/flags/rectangular/207-germany.png'),
+    flags_rect_CZ: rectCZFlag,
+    flags_rect_EN: rectUKFlag,
+    flags_rect_DE: rectDEFlag,
 
-    // Flags rectangular
-    flags_circ_CZ: require('img/flags/rectangular/202-czech republic.png'),
-    flags_circ_EN: require('img/flags/rectangular/110-united kingdom.png'),
-    flags_circ_DE: require('img/flags/rectangular/208-germany.png'),
+    // Flags circular
+    flags_circ_CZ: circCZFlag,
+    flags_circ_EN: circUKFlag,
+    flags_circ_DE: circDEFlag,
 
 };
-
-export { flags };
 

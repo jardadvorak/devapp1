@@ -1,11 +1,14 @@
 // src/components/LanguageSwitch.jsx
 // Component for language switching buttons
+
 import React, { useState, useEffect } from 'react';
 import { LANGUAGES } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from './Button';
 
-import { flags } from '../img/flags';
+import unitedKingdomFlag from '../img/flags/circle/110-united_kingdom.png';
+
+import { flagIcons } from '../img/flags';
 
 const LanguageSwitch = () => {
     // Get language context
@@ -51,24 +54,28 @@ const LanguageSwitch = () => {
         <div>
             {/* Language buttons */}
             <Button
-
                 onClick={() => handleLanguageClick(LANGUAGES.EN)}
                 className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
             >
-                   <img src={flags.flags_circ_EN} alt="English Flag" className="mx-auto" />
+                   
+                   {/* <img src={flagIcons.flags_circ_EN}/> */}
+                   <img src={unitedKingdomFlag} height='24px' width='24px'/>
+                   <img src='../img/flags/circle/110-united_kingdom.png'/>
                    {getText('BUTTONS', 'LANGUAGE_EN')}
             </Button>
             <Button
                 onClick={() => handleLanguageClick(LANGUAGES.DE)}
                 className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
             >
-                {getText('BUTTONS', 'LANGUAGE_DE')}
+                   <img src='../img/flags/circle/208-germany.png'/>
+                   {getText('BUTTONS', 'LANGUAGE_DE')}
             </Button>
             <Button
                 onClick={() => handleLanguageClick(LANGUAGES.CZ)}
                 className={`w-12 ${currentLanguage === LANGUAGES.CZ ? 'bg-blue-700' : ''}`}
             >
-                {getText('BUTTONS', 'LANGUAGE_CZ')}
+                   <img src='../img/flags/circle/202-czech_republic.png'/>
+                   {getText('BUTTONS', 'LANGUAGE_CZ')}
             </Button>
 
             {/* Confirmation dialog */}
