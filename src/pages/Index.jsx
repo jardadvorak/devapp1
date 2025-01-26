@@ -1,5 +1,6 @@
 // src/pages/Index.jsx
 // External landing page accessible to all users
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
@@ -11,6 +12,7 @@ import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
 
 import { colors } from '../config/styles/colors';
 //import styles from '../config/styles/styles';
+import { logoImages } from '../img/logos'
 
 const Index = () => {
     // Hook for programmatic navigation
@@ -100,6 +102,48 @@ const Index = () => {
                     Test button
                   </button>
      
+            </div>
+
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.label_dark} />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.label_light} />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.label_white} />
+            </div>
+           
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.logo_label_dark_bw} height='25%' width='25%' />
+            </div>           
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.logo_label_dark_color} height='25%' width='25%' />
+            </div>           
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.logo_label_light_bw} height='25%' width='25%' />
+            </div>           
+            <div style={{ display:'flex', justifyContent:'center'}}>
+                <img src={logoImages.logo_label_light_color} height='25%' width='25%' />
+            </div>           
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_label_white} height='25%' width='25%' />
+            </div>
+
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_large_bw} height='25%' width='25%' />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_large_color} height='25%' width='25%' />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_small_bw} height='25%' width='25%' />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_small_color} height='25%' width='25%' />
+            </div>
+            <div style={{ display:'flex', justifyContent:'center'}}>
+              <img src={logoImages.logo_new} height='25%' width='25%' />
             </div>
 
         </div>

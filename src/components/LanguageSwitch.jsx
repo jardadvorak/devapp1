@@ -4,9 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { LANGUAGES } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
-import Button from './Button';
-
-import unitedKingdomFlag from '../img/flags/circle/110-united_kingdom.png';
+// import Button from './Button';
 
 import { flagIcons } from '../img/flags';
 
@@ -51,32 +49,44 @@ const LanguageSwitch = () => {
     };
 
     return (
-        <div>
+        <div style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', gap: '16px', display: 'flex', cursor: 'pointer'}}>
             {/* Language buttons */}
-            <Button
+            <div
                 onClick={() => handleLanguageClick(LANGUAGES.EN)}
                 className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
             >
                    
-                   {/* <img src={flagIcons.flags_circ_EN}/> */}
-                   <img src={unitedKingdomFlag} height='24px' width='24px'/>
-                   <img src='../img/flags/circle/110-united_kingdom.png'/>
-                   {getText('BUTTONS', 'LANGUAGE_EN')}
-            </Button>
-            <Button
+                <img 
+                    src={flagIcons.flags_circ_EN} 
+                    height='36px' 
+                    width='36px' 
+                    style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
+                />
+                   {/* {getText('BUTTONS', 'LANGUAGE_EN')} */}
+            </div>
+            <div
                 onClick={() => handleLanguageClick(LANGUAGES.DE)}
                 className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
             >
-                   <img src='../img/flags/circle/208-germany.png'/>
-                   {getText('BUTTONS', 'LANGUAGE_DE')}
-            </Button>
-            <Button
+                <img 
+                    src={flagIcons.flags_circ_DE} 
+                    height='36px' 
+                    width='36px'
+                    style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
+                />
+                   {/* {getText('BUTTONS', 'LANGUAGE_DE')} */}
+            </div>
+            <div
                 onClick={() => handleLanguageClick(LANGUAGES.CZ)}
                 className={`w-12 ${currentLanguage === LANGUAGES.CZ ? 'bg-blue-700' : ''}`}
             >
-                   <img src='../img/flags/circle/202-czech_republic.png'/>
-                   {getText('BUTTONS', 'LANGUAGE_CZ')}
-            </Button>
+                <img src={flagIcons.flags_circ_CZ} 
+                    height='36px' 
+                    width='36px'
+                    style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
+                />
+                   {/* {getText('BUTTONS', 'LANGUAGE_CZ')} */}
+            </div>
 
             {/* Confirmation dialog */}
             {showDialog && (

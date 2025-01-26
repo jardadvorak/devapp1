@@ -1,8 +1,8 @@
-import rectCZFlag from '../img/flags/circle/110-united_kingdom.png';
-import rectUKFlag from '../img/flags/circle/110-united_kingdom.png';
-import rectDEFlag from '../img/flags/circle/110-united_kingdom.png';
+import rectCZFlag from '../img/flags/rectangular/201-czech_republic.png';
+import rectUKFlag from '../img/flags/rectangular/109-united_kingdom.png';
+import rectDEFlag from '../img/flags/rectangular/207-germany.png';
 
-import circCZFlag from '../img/flags/circle/201-czech_republic.png';
+import circCZFlag from '../img/flags/circle/202-czech_republic.png';
 import circUKFlag from '../img/flags/circle/110-united_kingdom.png';
 import circDEFlag from '../img/flags/circle/208-germany.png';
 

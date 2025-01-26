@@ -1,10 +1,11 @@
-// Colors, styles etc.
-import { colors } from 'components/styles/colors';
+import iconLogout from '../img/icons/icon_box-arrow-in-right.png';
+import iconLogout2 from '../img/icons/icon_box-arrow-right.png';
 
-// const icons = {
+export const icons = {
 
-//     // Icon set basic navigation
-//     icon_go_back: require('img/icons/go_back_component.png'),
+     // Icon set basic navigation
+     icon_logout: iconLogout,
+     icon_logout_2: iconLogout2,
 
 //     icon_help: require('./icons/symbols/white/icon_w_question-circle.png'),
 //     icon_email: require('./icons/symbols/white/icon_w_envelope.png'),
@@ -28,7 +29,5 @@ import { colors } from 'components/styles/colors';
 //     // Icon set flags rectangular
 //     icon_flag_rectangular_Portugal: require('img/icons/country_flags/rectangular/097-portugal.png'),
 
-// };
-
-// export { icons };
+};
 

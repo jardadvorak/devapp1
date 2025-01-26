@@ -1,26 +1,73 @@
 import { colors } from '../config/styles/colors'
 import { styles } from '../config/styles/styles'
+import { logoImages } from '../img/logos'
+import { icons } from '../img/icons'
 
 import React from 'react';
 
+import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
+import { LANGUAGES } from '../config/constants';
+
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitch from '../components/LanguageSwitch';
+
 function TopNavigationBar({ children }) {
+      // Get language context
+      const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
   return (
     <>
-      <nav style={{ color: 'green', backgroundColor: 'grey', alignContent: 'center', width: '100%', minWidth: '320px', padding: '16px'}}>
-        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'white', width: 'min(1440px, 100%)', margin: '0 auto'}}>
-          <div style={{color: 'green', backgroundColor: 'black', margin: '16px'}}>
-            <div className="font-bold">Your Logo</div>
+      <nav style={{ color: 'green', backgroundColor: 'grey', alignContent: 'center', width: '100%', minWidth: '320px', padding: '0px'}}>
+        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'grey', alignItems: 'center', width: 'min(1440px, 100%)', margin: '0 auto'}}>
+          
+          {/* Buttons left */}
+          <div style={{display: 'flex', color: 'green', backgroundColor: 'transparent', alignItems: 'center', margin: '16px', padding: '0px'}}>
+            
+            {/* <div style={{color: 'green', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex'}}>
+              <img src={logoImages.logo_small_color} height='36px' width='36px' alignItems='center' margin='0px' padding='0px' />
+            </div> */}
+
+            {/* <div style={{color: 'green', backgroundColor: 'green', margin: '0px', padding: '0px', display: 'flex'}}>
+              <img src={logoImages.label_dark} height='30%' width='30%' alignItems='center' margin='0px' padding='0px' />
+            </div> */}
+
+            <div style={{color: 'green', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex'}}>
+              <img src={logoImages.logo_label_dark_color_small} alignItems='center' margin='0px' padding='0px' />
+            </div>
+
           </div>
-          <div style={{color: 'green', backgroundColor: 'blue', margin: '16px', flex: 1}}>
-            <div className="font-bold">Filler</div>
+
+          {/* Buttons center */}
+          <div style={{color: 'black', backgroundColor: 'white', margin: '16px', alignItems: 'center',  justifyContent: "center", flex: 1}}>
+            <div className="font-bold">
+              <div style={{alignItems: 'center',  justifyContent: "center", textAlign: "center", flex: 1}}>
+                {getText('HEADINGS', 'WELCOME')}
+              </div>
+            </div>
           </div>
-          <div style={{color: 'green', backgroundColor: 'yellow', margin: '16px'}}>
-            <button
+          
+          {/* Buttons right */}
+
+          <div style={{color: 'green', backgroundColor: 'yellow', margin: '16px', padding: '0px', display: 'flex', gap: '16px'}}>
+ 
+             <div style={{backgroundColor: 'black', width: '100%'}}>
+                <LanguageSwitch />
+            </div>
+            <div style={{color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex'}}
               onClick={() => {}} // You can pass your signOut handler as a prop
-              className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900"
+              // className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900"
             >
-              Sign Out
-            </button>
+              <img src={icons.icon_logout} height='36px' width='36px' alignItems='center' />
+              {/* Sign Out */}
+            </div>
+ 
+            <div style={{color: 'green', backgroundColor: 'green', margin: '0px', padding: '0px', display: 'flex'}}
+              onClick={() => {}} // You can pass your signOut handler as a prop
+              // className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900"
+            >
+              <img src={icons.icon_logout_2} height='36px' width='36px' alignItems='center' />
+              {/* Sign Out */}
+            </div>         
+ 
           </div>
         </div>
       </nav>
