@@ -56,7 +56,7 @@ export const colors = {
     logo_a08: "rgba(242,201,76,0.8)",
     background_a08: "rgba(65,74,125,0.8)",
 
-    // a0.6 colors palette - for dargeker version of pastel-color backgrounds
+    // a0.6 colors palette - for darker version of pastel-color backgrounds
     red_a06: "rgba(226,34,33,0.6)",
     purple1_a06: "rgba(197,3,126,0.6)",
     purple2_a06: "rgba(109,57,139,0.6)",

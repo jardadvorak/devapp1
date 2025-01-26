@@ -10,6 +10,7 @@ import { generateClient } from "aws-amplify/data";
 
 import { ROUTES } from './config/constants';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from "./utilities/ErrorBoundary";
 import { RequireAuth } from "./utilities/RequireAuth";
 import { TopBarClipboardProvider } from "./utilities/TopBarClipboardcontext";
@@ -74,7 +75,8 @@ const App = () => {
   return (
     <div className="disable-text-selection">
       <BrowserRouter>
-        <TopBarClipboardProvider>
+      <ThemeProvider>
+      <TopBarClipboardProvider>
           <Authenticator.Provider>
             <ErrorBoundary>
               <LanguageProvider>
@@ -84,7 +86,8 @@ const App = () => {
             </ErrorBoundary>
           </Authenticator.Provider>
         </TopBarClipboardProvider>
-      </BrowserRouter>
+        </ThemeProvider>
+        </BrowserRouter>
     </div>
   );
 };

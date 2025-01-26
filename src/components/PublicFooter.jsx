@@ -12,6 +12,9 @@ import { useWindowSize } from '../utilities/UseWindowSize'
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
 import { screenWidthSettings } from '../config/styles/page_width';
 
+import { ThemeProvider } from '../contexts/ThemeContext';
+import ThemeSwitch from './ThemeSwitch';
+
 //Update pictures to square ones with right size...
 // const icon_email = require('img/icons/icon_email.png');
 // const icon_help = require('img/icons/help_component.png');
@@ -72,6 +75,9 @@ function PublicFooter() {
                         <div>
                             <div>
                                 Help
+                            </div>
+                            <div>
+                                <ThemeSwitch />
                             </div>
                         </div>
                     </div>

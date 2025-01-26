@@ -1,11 +1,17 @@
 import iconLogout from '../img/icons/icon_box-arrow-in-right.png';
 import iconLogout2 from '../img/icons/icon_box-arrow-right.png';
 
+import iconLightMode from '../img/icons/icon_w_check-square-fill.png';
+import iconDarkMode from '../img/icons/icon_check-square-fill.png';
+
 export const icons = {
 
      // Icon set basic navigation
      icon_logout: iconLogout,
      icon_logout_2: iconLogout2,
+
+     icon_light_mode: iconLightMode,
+     icon_dark_mode: iconDarkMode,
 
 //     icon_help: require('./icons/symbols/white/icon_w_question-circle.png'),
 //     icon_email: require('./icons/symbols/white/icon_w_envelope.png'),

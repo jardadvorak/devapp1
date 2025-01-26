@@ -69,7 +69,7 @@ const LanguageSwitch = () => {
             {/* Language buttons */}
             <div
                 onClick={() => handleLanguageClick(LANGUAGES.EN)}
-                style={styles.iconDivSizeSyle}
+                style={styles.iconDivSizeStyle}
                 // className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
             >
                    
@@ -83,7 +83,7 @@ const LanguageSwitch = () => {
             </div>
             <div
                 onClick={() => handleLanguageClick(LANGUAGES.DE)}
-                style={styles.iconDivSizeSyle}
+                style={styles.iconDivSizeStyle}
                 // className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
             >
                 <img 
@@ -96,7 +96,7 @@ const LanguageSwitch = () => {
             </div>
             <div
                 onClick={() => handleLanguageClick(LANGUAGES.CZ)}
-                style={styles.iconDivSizeSyle}
+                style={styles.iconDivSizeStyle}
                 // className={`w-12 ${currentLanguage === LANGUAGES.CZ ? 'bg-blue-700' : ''}`}
             >
                 <img src={flagIcons.flags_circ_CZ} 

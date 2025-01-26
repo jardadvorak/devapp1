@@ -38,7 +38,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         },
 
         // Div for icon sizes to manage reponsivenes
-        iconDivSizeSyle:
+        iconDivSizeStyle:
         {            
             height: isMobileScreen ? 28 : isSmallScreen ? 32 : 36,            
             width: isMobileScreen ? 28 : isSmallScreen ? 32 : 36,            

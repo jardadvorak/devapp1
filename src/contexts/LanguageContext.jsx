@@ -1,5 +1,6 @@
 // src/contexts/LanguageContext.jsx
 // Create a context to manage language state across the application
+
 import React, { createContext, useState, useContext } from 'react';
 import { DEFAULT_LANGUAGE, UI_TEXT } from '../config/constants';
 
