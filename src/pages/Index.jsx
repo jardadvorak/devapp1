@@ -7,11 +7,13 @@ import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from '../components/Button';
 import LanguageSwitch from '../components/LanguageSwitch';
+import {useWindowSize} from '../utilities/UseWindowSize'
 
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
+import { screenWidthSettings } from '../config/styles/page_width';
 
 import { colors } from '../config/styles/colors';
-//import styles from '../config/styles/styles';
+import { componentStyles } from '../config/styles/styles';
 import { logoImages } from '../img/logos'
 
 const Index = () => {
@@ -20,6 +22,15 @@ const Index = () => {
 
     // Get language context
     const { currentLanguage, getText } = useLanguage();
+
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
+
+    //Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
 
     // Handler for login button - navigates to login page in sign-in mode
     const handleLogin = () => {
@@ -84,7 +95,8 @@ const Index = () => {
         <div style={{backgroundColor: 'red'}}>
         <main>
         <div style={{...virtualFullWidth, backgroundColor: 'white'}}>
-        <div style={{...availableWidth, backgroundColor: 'orange', color: 'red'}}>        {/* <div className="flex flex-col items-center justify-center min-h-screen"> */}
+        <div style={{...availableWidth, backgroundColor: 'orange', color: 'red'}}>        
+        {/* <div className="flex flex-col items-center justify-center min-h-screen"> */}
         {/* Language switch in top-right corner */}
             <div style={{backgroundColor: 'black', width: '100%'}}>
                 <LanguageSwitch />
@@ -98,10 +110,35 @@ const Index = () => {
             </div>
 
             <div>
-                  <button style={buttonStyleCore}>
-                    Test button
-                  </button>
-     
+               <p>Current screen width: {windowSize.width}px</p>
+               <p>mobileScreenMaxWidth: {screenWidthSettings.mobileScreenMaxWidth}px</p>
+               <p>smallScreenMaxWidth: {screenWidthSettings.smallScreenMaxWidth}px</p>
+            </div>
+            
+            <div 
+            style={{
+                display: 'flex', 
+                backgroundColor: 'white', 
+                justifyContent:'center',
+                gap: `${isMobileScreen ? 10 : isSmallScreen ? 30 : 50}px`
+                }}
+            >
+                  <button style={buttonStyleCore}>Test button</button>
+                  <button style={buttonStyleCore}>Test button</button>
+                  <button style={buttonStyleCore}>Test button</button>
+            </div>
+
+            <div 
+            style={{
+                display: 'flex', 
+                backgroundColor: 'white', 
+                justifyContent:'center',
+                gap: `${isMobileScreen ? 10 : isSmallScreen ? 30 : 50}px`
+                }}
+            >
+                  <button style={styles.testButtonStyles}>Test button</button>
+                  <button style={styles.testButtonStyles}>Test button</button>
+                  <button style={styles.testButtonStyles}>Test button</button>
             </div>
 
             <div style={{ display:'flex', justifyContent:'center'}}>

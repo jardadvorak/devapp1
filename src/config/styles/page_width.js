@@ -11,3 +11,8 @@ export const availableWidth = {
     marginInline: 'auto',  // modern CSS for horizontal centering
     padding: '16px'  // prevent content touching edges
 };
+
+export const screenWidthSettings = {
+    mobileScreenMaxWidth: 500,  // responsive width
+    smallScreenMaxWidth: 800,  // responsive width
+};

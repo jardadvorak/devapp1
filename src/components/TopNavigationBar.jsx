@@ -1,5 +1,5 @@
 import { colors } from '../config/styles/colors'
-import { styles } from '../config/styles/styles'
+import { componentStyles } from '../config/styles/styles'
 import { logoImages } from '../img/logos'
 import { icons } from '../img/icons'
 
@@ -39,9 +39,9 @@ function TopNavigationBar({ children }) {
           {/* Buttons center */}
           <div style={{color: 'black', backgroundColor: 'white', margin: '16px', alignItems: 'center',  justifyContent: "center", flex: 1}}>
             <div className="font-bold">
-              <div style={{alignItems: 'center',  justifyContent: "center", textAlign: "center", flex: 1}}>
+              {/* <div style={{alignItems: 'center',  justifyContent: "center", textAlign: "center", flex: 1}}>
                 {getText('HEADINGS', 'WELCOME')}
-              </div>
+              </div> */}
             </div>
           </div>
           
