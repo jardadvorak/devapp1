@@ -7,6 +7,9 @@ import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from '../components/Button';
 import LanguageSwitch from '../components/LanguageSwitch';
+import PublicBanner from '../components/PublicBanner';
+import PublicFooter from '../components/PublicFooter';
+
 import {useWindowSize} from '../utilities/UseWindowSize'
 
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
@@ -51,6 +54,7 @@ const Index = () => {
             }
         });
     };
+    
     // Set-up top bar
     //useNavigationConfig(
     //    route === 'authenticated' ? user.username : '', '', settings.leftButtons, settings.rightButtons);
@@ -93,6 +97,9 @@ const Index = () => {
 
     return (
         <div style={{backgroundColor: 'red'}}>
+        
+        <PublicBanner />
+
         <main>
         <div style={{...virtualFullWidth, backgroundColor: 'white'}}>
         <div style={{...availableWidth, backgroundColor: 'orange', color: 'red'}}>        
@@ -186,6 +193,9 @@ const Index = () => {
         </div>
         </div>
         </main>
+
+        <PublicFooter />
+
         </div>
     );
 };
