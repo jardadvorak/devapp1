@@ -1,9 +1,11 @@
 // Colors, styles etc.
-import { colors } from 'components/styles/colors';
-import { componentStyles } from 'components/styles/component_styles';
-import { fontStyles } from 'components/styles/fonts/fonts';
-import { icons } from 'img/icons';
-import idioms from 'locales/idioms_static';
+// import { colors } from 'components/styles/colors';
+// import { componentStyles } from 'components/styles/component_styles';
+// import { fontStyles } from 'components/styles/fonts/fonts';
+// import { icons } from 'img/icons';
+import { colors } from '../config/styles/colors';
+import { componentStyles } from '../config/styles/styles';
+import { logoImages } from '../img/logos'
 
 // Basic core functions
 import React from 'react';
@@ -14,11 +16,12 @@ import { useWindowSize } from '../utilities/UseWindowSize'
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
 import { screenWidthSettings } from '../config/styles/page_width';
 
-//Update pictures to square ones with right size...
-// const icon_email = require('img/icons/icon_email.png');
-// const icon_help = require('img/icons/help_component.png');
+import LanguageSwitch from './LanguageSwitch';
+import { useLanguage } from '../contexts/LanguageContext';
 
-function PublicFooter() {
+// const logo = require('img/icons/homepage_title_image_right_aligned.png');
+
+function PublicBanner() {
 
     // Hook for programmatic navigation
     const navigate = useNavigate();
@@ -31,54 +34,38 @@ function PublicFooter() {
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
-    // Responsiveness
-    // const windowSize = useWindowSize(); // Call the hook here to get updated window size
+    //Responsiveness
+    // const windowSize = useWindowSize();
     // const isSmallScreen = windowSize.width <= 768;
 
-    // Load styles
+    //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
-    // Styles
+    //Styles
     // const styles = componentStyles(isSmallScreen); // requires isSmallScreen loaded
 
     //Handle page width
+    //t.b.d.
     const virtualFullWidthLocal = {
         ...virtualFullWidth,
-        backgroundColor: colors.gray2,
-        position: 'relative',
-        top: isSmallScreen ? 10 : 0,  // in conjunction with App.css, .app, min-height
+        backgroundColor: colors.gray2
     }
-
-    //Handle redirections
-    // const navigate = useNavigate();
 
     return (
         <div style={virtualFullWidthLocal}>
             <div style={availableWidth}>
 
-                <div>         
+                <div>
                     <div>
                         <div>
-                            <div>
-                                Ready to learn?
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>
-                                info@discito.cz
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                Help
-                            </div>
+                            <p>Learning</p>
+                            <p>anytime, anywhere</p>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+        </div >
     );
 }
 
-export default PublicFooter;
+export default PublicBanner;
