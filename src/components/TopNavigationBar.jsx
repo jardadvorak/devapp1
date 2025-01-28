@@ -16,8 +16,8 @@ function TopNavigationBar({ children }) {
       const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
   return (
     <>
-      <nav style={{ color: 'green', backgroundColor: 'grey', alignContent: 'center', width: '100%', minWidth: '320px', padding: '0px'}}>
-        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'grey', alignItems: 'center', width: 'min(1440px, 100%)', margin: '0 auto'}}>
+      <nav style={{ color: 'green', backgroundColor: 'green', alignContent: 'center', width: '100%', minWidth: '320px', padding: '0px'}}>
+        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'green', alignItems: 'center', width: 'min(1440px, 100%)', margin: '0 auto'}}>
           
           {/* Buttons left */}
           <div style={{display: 'flex', color: 'green', backgroundColor: 'transparent', alignItems: 'center', margin: '16px', padding: '0px'}}>
