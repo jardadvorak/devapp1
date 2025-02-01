@@ -1,7 +1,8 @@
 // Colors, styles etc.
 import { colors } from '../config/styles/colors';
 import { componentStyles } from '../config/styles/styles';
-import { logoImages } from '../img/logos'
+import { logoImages } from '../img/logos';
+import { icons } from '../img/icons';
 
 // Basic core functions
 import React from 'react';
@@ -46,9 +47,7 @@ function PublicFooter() {
     //Handle page width
     const virtualFullWidthLocal = {
         ...virtualFullWidth,
-        backgroundColor: colors.gray2,
-        position: 'relative',
-        top: isSmallScreen ? 10 : 0,  // in conjunction with App.css, .app, min-height
+        backgroundColor: colors.gray2
     }
 
     //Handle redirections
@@ -60,8 +59,17 @@ function PublicFooter() {
 
                 <div>         
                     <div>
-                        <div>
-                            <div>
+                        <div style={{display: "flex"}}>
+                            <div 
+                                style={{color: 'black', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            >
+                                <img src={logoImages.logo_light} alignItems='center' margin='0px' padding='0px' />
+                            </div>         
+                            <div
+                                style={{backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            >
                                 Ready to learn?
                             </div>
                         </div>
@@ -71,16 +79,41 @@ function PublicFooter() {
                             <div>
                                 info@discito.cz
                             </div>
-                        </div>
-                        <div>
                             <div>
                                 Help
+                            </div>
+                            <div>
+                                FAQs
+                            </div>
+                            <div>
+                                Terms of use
+                            </div>
+                            <div>
+                                Privacy policy
                             </div>
                             <div>
                                 <ThemeSwitch />
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                {/* Social Media Icons */}
+                <div 
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        gap: '20px',
+                        marginTop: '20px',
+                        marginBottom: '20px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    <img src={icons.icon_facebook} alt="Facebook" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
+                    <img src={icons.icon_instagram} alt="Instagram" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
+                    <img src={icons.icon_linkedin} alt="LinkedIn" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
+                    <img src={icons.icon_pinterest} alt="Pinterest" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
+                    <img src={icons.icon_youtube} alt="YouTube" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
                 </div>
             </div>
         </div>

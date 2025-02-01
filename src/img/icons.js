@@ -4,6 +4,12 @@ import iconLogout2 from '../img/icons/icon_box-arrow-right.png';
 import iconLightMode from '../img/icons/icon_w_check-square-fill.png';
 import iconDarkMode from '../img/icons/icon_check-square-fill.png';
 
+import iconFacebook from '../img/icons/icon_w_facebook.png';
+import iconInstagram from '../img/icons/icon_w_instagram.png';
+import iconLinkedin from '../img/icons/icon_w_linkedin.png';
+import iconPinterest from '../img/icons/icon_w_pinterest.png';
+import iconYoutube from '../img/icons/icon_w_youtube.png';
+
 export const icons = {
 
      // Icon set basic navigation
@@ -12,6 +18,13 @@ export const icons = {
 
      icon_light_mode: iconLightMode,
      icon_dark_mode: iconDarkMode,
+
+     // Social media icons
+     icon_facebook: iconFacebook,
+     icon_instagram: iconInstagram,
+     icon_linkedin: iconLinkedin,
+     icon_pinterest: iconPinterest,
+     icon_youtube: iconYoutube,
 
 //     icon_help: require('./icons/symbols/white/icon_w_question-circle.png'),
 //     icon_email: require('./icons/symbols/white/icon_w_envelope.png'),
@@ -36,4 +49,3 @@ export const icons = {
 //     icon_flag_rectangular_Portugal: require('img/icons/country_flags/rectangular/097-portugal.png'),
 
 };
-

@@ -96,11 +96,15 @@ const Index = () => {
             }
 
     return (
-        <div style={{backgroundColor: 'red'}}>
+        <div style={{ 
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column'
+        }}>
         
         <PublicBanner />
 
-        <main>
+        <main style={{ flexGrow: 1 }}>
         <div style={{...virtualFullWidth, backgroundColor: 'white'}}>
         <div style={{...availableWidth, backgroundColor: 'orange', color: 'red'}}>        
         {/* <div className="flex flex-col items-center justify-center min-h-screen"> */}
@@ -147,8 +151,12 @@ const Index = () => {
                   <button style={styles.testButtonStyles}>Test button</button>
                   <button style={styles.testButtonStyles}>Test button</button>
             </div>
-
-
+            {/* <div>
+                <img src={logoImages.logo_light} alignItems='center' margin='0px' padding='0px' />
+            </div>
+            <div>
+                <img src={logoImages.logo_light} alignItems='center' margin='0px' padding='0px' />
+            </div> */}
         </div>
         </div>
         </main>
