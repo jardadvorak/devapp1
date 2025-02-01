@@ -1,43 +1,52 @@
-import labelNewDark from '../img/logos/Discito_label_new_dark.png';
-import labelNewLight from '../img/logos/Discito_label_new_light.png';
-import labelNewWhite from '../img/logos/Discito_label_new_white.png';
+import labelBlack from '../img/logos/Label_black.svg';
+import labelDark from '../img/logos/Label_dark.svg';
+import labelGrey from '../img/logos/Label_grey.svg';
+import labelLight from '../img/logos/Label_light.svg';
+import labelWhite from '../img/logos/Label_white.svg';
 
-import logoLabelDarkBW from '../img/logos/Discito_logo_label_new_dark_bw.png';
-import logoLabelDarkColor from '../img/logos/Discito_logo_label_new_dark_color.png';
-import logoLabelLightBW from '../img/logos/Discito_logo_label_new_light_bw.png';
-import logoLabelLightColor from '../img/logos/Discito_logo_label_new_light_color.png';
-import logoLabelWhite from '../img/logos/Discito_logo_label_new_white.png';
+import logoLabelGrey from '../img/logos/Logo_label_grey.svg';
+import logoLabelGreyInverted from '../img/logos/Logo_label_grey_inverted.svg';
 
-import logoLabelDarkColorSmall from '../img/logos/Discito_logo_label_new_dark_color_small.png';
+import logoLabelLightInverted from '../img/logos/Logo_label_light_inverted.svg';
+import logoLabelLightInverted2 from '../img/logos/Logo_label_light_inverted_2.svg';
 
-import logoLargeBW from '../img/logos/Discito_logo_new_large_bw.png';
-import logoLargeColor from '../img/logos/Discito_logo_new_large_color.png';
-import logoSmallBW from '../img/logos/Discito_logo_new_small_bw.png';
-import logoSmallColor from '../img/logos/Discito_logo_new_small_color.png';
-import logoNew from '../img/logos/Discito_logo_new.png';
+import logoLabelYellow from '../img/logos/Logo_label_yellow.svg';
+import logoLabelYellowInverted from '../img/logos/Logo_label_yellow_inverted.svg';
+import logoLabelYellowInverted2 from '../img/logos/Logo_label_yellow_inverted_2.svg';
+import logoLabelYellowInverted3 from '../img/logos/Logo_label_yellow_inverted_3.svg';
+
+import logoGrey from '../img/logos/Logo_grey.svg';
+import logoGreyInverted from '../img/logos/Logo_grey_inverted.svg';
+import logoLight from '../img/logos/Logo_light.svg';
+import logoLightInverted from '../img/logos/Logo_light_inverted.svg';
+import logoYellow from '../img/logos/Logo_yellow.svg';
+import logoYellowInverted from '../img/logos/Logo_yellow_inverted.svg';
 
 export const logoImages = {
 
     // Labels
-    label_dark: labelNewDark,
-    label_light: labelNewLight,
-    label_white: labelNewWhite,
+    label_black: labelBlack,
+    label_dark: labelDark,
+    label_grey: labelGrey,
+    label_light: labelLight,
+    label_white: labelWhite,
 
     // Logos labels
-    logo_label_dark_bw: logoLabelDarkBW,
-    logo_label_dark_color: logoLabelDarkColor,
-    logo_label_light_bw: logoLabelLightBW,
-    logo_label_light_color: logoLabelLightColor,
-    logo_label_white: logoLabelWhite,
-
-    logo_label_dark_color_small: logoLabelDarkColorSmall,
+    logo_label_grey: logoLabelGrey,
+    logo_label_grey_inverted: logoLabelGreyInverted,
+    logo_label_light_inverted: logoLabelLightInverted,
+    logo_label_light_inverted_2: logoLabelLightInverted2,
+    logo_label_yellow: logoLabelYellow,
+    logo_label_yellow_inverted: logoLabelYellowInverted,
+    logo_label_yellow_inverted_2: logoLabelYellowInverted2,
+    logo_label_yellow_inverted_3: logoLabelYellowInverted3,
 
     // Logos
-    logo_large_bw: logoLargeBW,
-    logo_large_color: logoLargeColor,
-    logo_small_bw: logoSmallBW,
-    logo_small_color: logoSmallColor,
-    logo_new: logoNew,
-
+    logo_grey: logoGrey,
+    logo_grey_inverted: logoGreyInverted,
+    logo_light: logoLight,
+    logo_light_inverted: logoLightInverted,
+    logo_yellow: logoYellow,
+    logo_yellow_inverted: logoYellowInverted,
  
 };

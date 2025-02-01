@@ -16,11 +16,11 @@ function TopNavigationBar({ children }) {
       const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
   return (
     <>
-      <nav style={{ color: 'green', backgroundColor: 'green', alignContent: 'center', width: '100%', minWidth: '320px', padding: '0px'}}>
-        <div style={{display: 'flex', color: 'green', alignContent: 'center', backgroundColor: 'green', alignItems: 'center', width: 'min(1440px, 100%)', margin: '0 auto'}}>
+      <nav style={{ color: 'black', backgroundColor: 'black', alignContent: 'center', width: '100%', minWidth: '320px', padding: '0px'}}>
+        <div style={{display: 'flex', color: 'black', alignContent: 'center', backgroundColor: 'black', alignItems: 'center', width: 'min(1440px, 100%)', margin: '0 auto'}}>
           
           {/* Buttons left */}
-          <div style={{display: 'flex', color: 'green', backgroundColor: 'transparent', alignItems: 'center', margin: '16px', padding: '0px'}}>
+          <div style={{display: 'flex', color: 'black', backgroundColor: 'transparent', alignItems: 'center', margin: '16px', padding: '0px'}}>
             
             {/* <div style={{color: 'green', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex'}}>
               <img src={logoImages.logo_small_color} height='36px' width='36px' alignItems='center' margin='0px' padding='0px' />
@@ -30,8 +30,8 @@ function TopNavigationBar({ children }) {
               <img src={logoImages.label_dark} height='30%' width='30%' alignItems='center' margin='0px' padding='0px' />
             </div> */}
 
-            <div style={{color: 'green', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex'}}>
-              <img src={logoImages.logo_label_dark_color_small} alignItems='center' margin='0px' padding='0px' />
+            <div style={{color: 'black', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px'}}>
+              <img src={logoImages.logo_label_yellow_inverted} alignItems='center' margin='0px' padding='0px' />
             </div>
 
           </div>
