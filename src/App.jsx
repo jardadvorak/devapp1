@@ -75,19 +75,19 @@ const App = () => {
   return (
     <div className="disable-text-selection">
       <BrowserRouter>
-      <ThemeProvider>
-      <TopBarClipboardProvider>
-          <Authenticator.Provider>
-            <ErrorBoundary>
-              <LanguageProvider>
-                <TopNavigationBar />
-                <ApplicationRoutes />
-              </LanguageProvider>
-            </ErrorBoundary>
-          </Authenticator.Provider>
-        </TopBarClipboardProvider>
+        <ThemeProvider>
+          <TopBarClipboardProvider>
+            <Authenticator.Provider>
+              <ErrorBoundary>
+                <LanguageProvider>
+                  <TopNavigationBar />
+                  <ApplicationRoutes />
+                </LanguageProvider>
+              </ErrorBoundary>
+            </Authenticator.Provider>
+          </TopBarClipboardProvider>
         </ThemeProvider>
-        </BrowserRouter>
+      </BrowserRouter>
     </div>
   );
 };

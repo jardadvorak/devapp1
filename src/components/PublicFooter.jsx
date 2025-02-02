@@ -13,8 +13,8 @@ import { useWindowSize } from '../utilities/UseWindowSize'
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
 import { screenWidthSettings } from '../config/styles/page_width';
 
-import { ThemeProvider } from '../contexts/ThemeContext';
-import ThemeSwitch from './ThemeSwitch';
+import { useTheme } from '../contexts/ThemeContext';
+import { themes } from '../config/styles/themes';
 
 //Update pictures to square ones with right size...
 // const icon_email = require('img/icons/icon_email.png');
@@ -29,6 +29,7 @@ function PublicFooter() {
 
     // Get language context
     const { currentLanguage, getText } = useLanguage();
+    const { theme } = useTheme();
     
     // Handle responsiveness
     const windowSize = useWindowSize();
@@ -64,7 +65,14 @@ function PublicFooter() {
                                 style={{color: 'black', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
-                                <img src={logoImages.logo_light} alignItems='center' margin='0px' padding='0px' />
+                                <img 
+                                    src={theme === themes.light ? logoImages.logo_light : logoImages.logo_light_inverted} 
+                                    style={{
+                                        height: '100%',
+                                        objectFit: 'contain'
+                                    }}
+                                    alt="Logo"
+                                />
                             </div>         
                             <div
                                 style={{backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
@@ -90,9 +98,6 @@ function PublicFooter() {
                             </div>
                             <div>
                                 Privacy policy
-                            </div>
-                            <div>
-                                <ThemeSwitch />
                             </div>
                         </div>
                     </div>
