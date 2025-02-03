@@ -2,28 +2,27 @@ import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { icons } from '../img/icons';
 import { themes } from '../config/styles/themes';
+import { componentStyles } from '../config/styles/styles';
+
+import {useWindowSize} from '../utilities/UseWindowSize'
+import { screenWidthSettings } from '../config/styles/page_width';
 
 const ThemeSwitch = () => {
     const { theme, toggleTheme } = useTheme();
+    
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
 
-    const buttonStyle = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '36px',
-        height: '36px',
-        padding: '6px',
-        cursor: 'pointer',
-        backgroundColor: 'transparent',
-        border: 'none',
-        borderRadius: '4px',
-        transition: 'background-color 0.2s ease',
-    };
+    //Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
 
     return (
         <button
             onClick={toggleTheme}
-            style={buttonStyle}
+            style={styles.iconButtonStyle}
             title={theme === themes.light ? "Switch to dark mode" : "Switch to light mode"}
         >
             <img 

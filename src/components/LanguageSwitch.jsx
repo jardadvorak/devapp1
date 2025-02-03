@@ -5,6 +5,10 @@ import { useTheme } from '../contexts/ThemeContext';
 import { themes } from '../config/styles/themes';
 import { icons } from '../img/icons';
 import { flagIcons } from '../img/flags';
+import { componentStyles } from '../config/styles/styles';
+
+import {useWindowSize} from '../utilities/UseWindowSize'
+import { screenWidthSettings } from '../config/styles/page_width';
 
 const LANGUAGE_NAMES = {
     [LANGUAGES.CZ]: "Čeština",
@@ -17,6 +21,12 @@ const LanguageSwitch = () => {
     const { theme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -34,6 +44,9 @@ const LanguageSwitch = () => {
         localStorage.setItem('appLanguage', language);
         setIsOpen(false);
     };
+
+    //Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem('appLanguage');
@@ -59,57 +72,24 @@ const LanguageSwitch = () => {
         <div ref={dropdownRef} style={{ position: 'relative' }}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '36px',
-                    height: '36px',
-                    padding: '6px',
-                    cursor: 'pointer',
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                    borderRadius: '4px'
-                }}
+                style={styles.iconButtonStyle}
             >
                 <img
                     src={theme === themes.light ? icons.icon_globe_light : icons.icon_globe_dark}
                     alt="Language"
-                    style={{
-                        width: '100%',
-                        height: '100%'
-                    }}
+                    style={{width: '100%', height: '100%'}}
                 />
             </button>
 
             {isOpen && (
                 <div
-                    style={{
-                        position: 'absolute',
-                        top: '100%',
-                        right: 0,
-                        marginTop: '8px',
-                        backgroundColor: 'var(--background-color)',
-                        border: '1px solid var(--border-color)',
-                        borderRadius: '4px',
-                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                        zIndex: 1000,
-                        minWidth: '160px'
-                    }}
+                    style={styles.languageSwitchBoxstyle}
                 >
                     {Object.entries(LANGUAGE_NAMES).map(([lang, name]) => (
                         <div
                             key={lang}
                             onClick={() => handleLanguageChange(lang)}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                padding: '8px 16px',
-                                cursor: 'pointer',
-                                backgroundColor: currentLanguage === lang ? 'var(--hover-color)' : 'transparent',
-                                color: 'var(--text-color)',
-                                gap: '8px'
-                            }}
+                            style={styles.languageSwitchListStyle}
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-color)'}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = currentLanguage === lang ? 'var(--hover-color)' : 'transparent'}
                         >
@@ -117,8 +97,8 @@ const LanguageSwitch = () => {
                                 src={getFlagIcon(lang)}
                                 alt={name}
                                 style={{
-                                    width: '20px',
-                                    height: '20px'
+                                    width: isMobileScreen ? 20 : isSmallScreen ? 22 : 24,
+                                    height: isMobileScreen ? 20 : isSmallScreen ? 22 : 24
                                 }}
                             />
                             <span>{name}</span>

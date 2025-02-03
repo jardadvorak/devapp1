@@ -48,41 +48,6 @@ const Login = () => {
         }
     }, [location, currentLanguage, setCurrentLanguage]);
 
-    // // Get language from navigation state or use current language
-    // useEffect(() => {
-    //     const language = location.state?.language;
-    //     if (language) {
-    //         setCurrentLanguage(language);
-    //     }
-    // }, [location, setCurrentLanguage]);
-
-    // // Effect to update I18n vocabulary when language changes
-    // useEffect(() => {
-    //     const language = UI_TEXT[currentLanguage]; // Assuming UI_TEXT contains translations per language
-    //     if (language) {
-    //         I18n.putVocabularies(language);
-    //         I18n.setLanguage(currentLanguage);
-    //     }
-    // }, [location, currentLanguage]);
-
-    // Original version...
-    // seEffect(() => {     
-    //     const vocab = UI_TEXT[currentLanguage]; // Assuming UI_TEXT contains translations per language
-    //     if (vocab) {
-    //         I18n.putVocabularies(vocab);
-    //         I18n.setLanguage(currentLanguage);
-    //     }
-    // }, [currentLanguage]);
-
-    // Redirect to dashboard if already authenticated
-    // useEffect(() => {
-    //     if (authStatus === 'authenticated') {
-    //         navigate(ROUTES.DASHBOARD, {
-    //             state: { language: currentLanguage }
-    //         });
-    //     }
-    // }, [authStatus, navigate, currentLanguage]);
-
     // Handler for back button - returns to landing page
     const handleBack = () => {
         navigate(ROUTES.INDEX, {

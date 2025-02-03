@@ -36,19 +36,14 @@ function PublicFooter() {
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
-    // Responsiveness
-    // const windowSize = useWindowSize(); // Call the hook here to get updated window size
-    // const isSmallScreen = windowSize.width <= 768;
 
     // Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
-    // Styles
-    // const styles = componentStyles(isSmallScreen); // requires isSmallScreen loaded
 
     //Handle page width
     const virtualFullWidthLocal = {
         ...virtualFullWidth,
-        backgroundColor: colors.gray2
+        backgroundColor: `var(--footer-bg)`
     }
 
     //Handle redirections
@@ -78,7 +73,7 @@ function PublicFooter() {
                                 style={{backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
-                                <span style={{ ...styles.simpleTextStyle, fontSize: isMobileScreen ? 16 : isSmallScreen ? 20 : 24, fontWeight: 700, color: colors.white, cursor: 'pointer' }}>
+                                <span style={{ ...styles.simpleTextStyle, fontSize: isMobileScreen ? 16 : isSmallScreen ? 20 : 24, fontWeight: 700, color: `var(--text-color-highlight)`, cursor: 'pointer' }}>
                                     Ready to <span style={{ color: colors.amber }}>learn</span>?
                                 </span>
                             </div>
@@ -111,11 +106,11 @@ function PublicFooter() {
                 <div 
                     style={styles.footerSMFlexStyle}
                 >
-                    <img src={icons.icon_facebook} alt="Facebook" style={styles.footerIconStyle} />
-                    <img src={icons.icon_instagram} alt="Instagram" style={styles.footerIconStyle} />
-                    <img src={icons.icon_linkedin} alt="LinkedIn" style={styles.footerIconStyle} />
-                    <img src={icons.icon_pinterest} alt="Pinterest" style={styles.footerIconStyle} />
-                    <img src={icons.icon_youtube} alt="YouTube" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_facebook_light:icons.icon_facebook_dark} alt="Facebook" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_instagram_light:icons.icon_instagram_dark} alt="Instagram" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_linkedin_light:icons.icon_linkedin_dark} alt="LinkedIn" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_pinterest_light:icons.icon_pinterest_dark} alt="Pinterest" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_youtube_light:icons.icon_youtube_dark} alt="YouTube" style={styles.footerIconStyle} />
                 </div>
             </div>
         </div>

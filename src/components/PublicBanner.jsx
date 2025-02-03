@@ -42,7 +42,7 @@ function PublicBanner() {
     //t.b.d.
     const virtualFullWidthLocal = {
         ...virtualFullWidth,
-        backgroundColor: colors.gray2
+        backgroundColor: `var(--header-bg)`
     }
 
     return (

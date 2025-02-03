@@ -1,21 +1,115 @@
 :root[data-theme="light"] {
-  --background-color: #ffffff;
+  /* white */
+  --background-color-1: rgba(255,255,255,1); 
+  /* light */
+  --background-color-2: rgba(248,249,250,1);
+
+
+  /* dark */
+  --text-color-normal: rgba(33,37,41,1);
+  /* black */
+  --text-color-highlight: rgba(0,0,0,1);
+  /* light */
+  --text-color-inverted: rgba(248,249,250,1);
+  
+  /* gray6 */
+  --navbar-bg: rgba(242,242,242,1);
+  /* light */
+  --canvas-bg: rgba(248,249,250,1);
+  /* gray6 */
+  --card-bg: rgba(242,242,242,1);
+  
+  /* light */
+  --header-bg: rgba(248,249,250,1);
+  /* light */
+  --footer-bg: rgba(248,249,250,1);
+  
+  /* gray4 */
+  --line-color: rgba(189,189,189,1);
+  /* gray5 */
+  --divider-color: rgba(224,224,224,1);
+  
+  /* primary */
+  --button-bg: rgba(0,103,255,1);
+  /* gray5 */
+  --button-bg-disabled: rgba(224,224,224,1);
+  /* light */
+  --button-bg-inverted: rgba(248,249,250,1);
+  /* light */
+  --button-text: rgba(248,249,250,1);
+  /* gray4 */
+  --button-text-disabled: rgba(189,189,189,1);
+  /* primary */
+  --button-text-inverted: rgba(0,103,255,1);
+  /* primary */
+  --button-border-color: rgba(0,103,255,1);
+  /* primary */
+  --button-border-color-disabled: rgba(224,224,224,1); 
+
+  /* --background-color: #ffffff;
   --text-color: #213547;
   --navbar-bg: #f1f1f1;
   --card-bg: #ffffff;
   --button-bg: #1a1a1a;
   --button-text: #ffffff;
-  --border-color: #646cff;
+  --border-color: #646cff; */
 }
 
 :root[data-theme="dark"] {
-  --background-color: #242424;
+  /* black */
+  --background-color-1: rgba(0,0,0,1); 
+  /* dark */
+  --background-color-2: rgba(33,37,41,1);
+
+
+  /* light */
+  --text-color-normal: rgba(248,249,250,1);
+  /* white */
+  --text-color-highlight: rgba(255,255,255,1);
+  /* dark */
+  --text-color-inverted: rgba(33,37,41,1);
+  
+  /* gray1 */
+  --navbar-bg: rgba(51,51,51,1);
+  /* dark */
+  --canvas-bg: rgba(33,37,41,1);
+  /* gray1 */
+  --card-bg: rgba(51,51,51,1);
+  
+  /* dark */
+  --header-bg: rgba(33,37,41,1);
+  /* dark */
+  --footer-bg: rgba(33,37,41,1);
+  
+  /* gray3 */
+  --line-color: rgba(130,130,130,1);
+  /* gray2 */
+  --divider-color: rgba(79,79,79,1);
+  
+  /* primary */
+  --button-bg: rgba(0,103,255,1);
+  /* gray2 */
+  --button-bg-disabled: rgba(79,79,79,1);
+  /* dark */
+  --button-bg-inverted: rgba(33,37,41,1);
+  /* dark */
+  --button-text: rgba(33,37,41,1);
+  /* gray3 */
+  --button-text-disabled: rgba(130,130,130,1);
+  /* primary */
+  --button-text-inverted: rgba(0,103,255,1);
+  /* primary */
+  --button-border-color: rgba(0,103,255,1);
+  /* gray2 */
+  --button-border-color-disabled: rgba(79,79,79,1);
+
+  /* --background-color: #242424;
   --text-color: rgba(255, 255, 255, 0.87);
   --navbar-bg: #1a1a1a;
   --card-bg: #1a1a1a;
   --button-bg: #646cff;
   --button-text: white;
-  --border-color: #646cff;
+  --border-color: #646cff; */
 }
 
 :root {

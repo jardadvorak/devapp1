@@ -47,12 +47,14 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
     return {
         typography,
 
-        navbarStyles:
+        navbarNavStyles:
         {
             ...typography.body1,
-            backgroundColor: 'green',
-            color: 'red',
-            padding: '12px 18px 12px',
+            color: 'var(--text-color-normal)',
+            backgroundColor: 'var(--navbar-bg)',
+            width: '100%',
+            minWidth: '320px',
+            padding: '0px',
             margin: '0px',
             display: 'flex',
             alignItems: 'center',
@@ -61,17 +63,82 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             innerHeight: '100px',
         },
 
+        navbarDivStyles:
+        {
+            ...typography.body1,
+            display: 'flex',
+            alignItems: 'center',
+            width: 'min(1440px, 100%)',
+            margin: '0 auto',
+            backgroundColor: 'transparent',
+            justifyContent: 'space-between',
+            innerWidth: '100%',
+            innerHeight: '100px',
+        },
+
+        navbarFlexStyles:
+        {
+            display: 'flex',
+            alignItems: 'center',
+            gap: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
+            margin: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
+            padding: 0
+        },
+
+        // LanguageSwitch
+        languageSwitchBoxstyle:
+        {
+            position: 'absolute',
+            top: '100%',
+            right: 0,
+            marginTop: 8,
+            backgroundColor: 'var(--background-color-2)',
+            border: 'none',
+            borderRadius: '0px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            minWidth: isMobileScreen ? 120 : isSmallScreen ? 140 : 160,
+        },
+
+        languageSwitchListStyle:
+        {
+            display: 'flex',
+            alignItems: 'center',
+            padding: isMobileScreen ? '4px 12px' : isSmallScreen ? '6px 14px' : '8px 16px',
+            cursor: 'pointer',
+            //backgroundColor: currentLanguage === lang ? 'var(--hover-color)' : 'transparent',
+            color: 'var(--text-color-normal)',
+            gap: isMobileScreen ? 6 : isSmallScreen ? 8 : 10
+        },
+
         // Button style basic
         testButtonStyles:
         {            
             ...typography.button,
             textAlign: 'center',
-            color: colors.light,
+            // color: colors.light,
             cursor: 'pointer',
-            backgroundColor: isMobileScreen ? colors.primary : isSmallScreen ? colors.amber : colors.green1,
+            backgroundColor: isDisabled ? colors.gray6 : colors.primary,
             borderRadius: 100, //needs to be big enough to look like a pill...
             border: `3px solid ${colors.primary}`,
-            padding: '8px 24px',
+            padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 16
+        },
+
+        // Icon button style
+        iconButtonStyle:
+       {            
+            ...typography.button,
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: isMobileScreen ? 32 : isSmallScreen ? 34 : 36,
+            height: isMobileScreen ? 32 : isSmallScreen ? 34 : 36,
+            cursor: isDisabled ? 'normal' : 'pointer',
+            backgroundColor: 'transparent',
+            border: 'none',
+            borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
         },
 
         // Div for icon sizes to manage reponsivenes
@@ -82,7 +149,6 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         },
 
         //Banner styles
-
         bannerMainFlexStyle:
         {
             display: 'flex',
@@ -92,7 +158,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             justifyContent: 'space-between',
             alignItems: 'center',
             position: 'relative',
-            backgroundColor: colors.gray2,
+            backgroundColor: 'transparent',
         },
         
         bannerLeftFlexStyle:
@@ -104,7 +170,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
             position: 'relative',
-            backgroundColor: colors.gray2,
+            backgroundColor: 'transparent',
         },
         
         bannerImageStyle:
@@ -138,7 +204,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             fontSize: isMobileScreen ? 20 :isSmallScreen ? 24 : 32,
             fontWeight: 700,
             textAlign: 'left',
-            color: colors.white,
+            color: `var(--text-color-highlight)`,
             padding: 0,
             marginTop: 0,
             marginBottom: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
@@ -158,7 +224,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             justifyContent: 'space-between',
             alignItems: isMobileScreen ? 'left' : isSmallScreen ? "left" : "center",
             position: 'relative',
-            backgroundColor: colors.gray2,
+            backgroundColor: 'transparent',
         },
         
         footerLeftFlexStyle:
@@ -172,7 +238,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             alignItems: 'flex-start',
             position: 'relative',
             // top: '50%',
-            backgroundColor: colors.gray2,
+            backgroundColor: 'transparent',
         },
         
         footerRightFlexStyle:
@@ -205,7 +271,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         
         footerTextStyle:
         {
-            color: colors.white,
+            color: `var(--text-color-normal)`,
             fontSize: isMobileScreen ? 12 :isSmallScreen ? 14 : 16,
             fontWeight: 400,
             margin: 0,

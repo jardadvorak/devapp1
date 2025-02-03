@@ -11,6 +11,7 @@ import { useWindowSize } from '../utilities/UseWindowSize';
 import { screenWidthSettings } from '../config/styles/page_width';
 import LanguageSwitch from '../components/LanguageSwitch';
 import ThemeSwitch from '../components/ThemeSwitch';
+import { NEW_STYLE_STACK_SYNTHESIS_CONTEXT } from 'aws-cdk-lib/cx-api';
 
 function TopNavigationBar({ children }) {
     const navigate = useNavigate();
@@ -47,53 +48,28 @@ function TopNavigationBar({ children }) {
     
     return (
         <>
-            <nav style={{ 
-                color: 'var(--text-color)',
-                backgroundColor: 'var(--navbar-bg)',
-                width: '100%',
-                minWidth: '320px',
-                padding: '0px'
-            }}>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: 'min(1440px, 100%)',
-                    margin: '0 auto'
-                }}>
+            <nav style={styles.navbarNavStyles}>
+                <div style={styles.navbarDivStyles}>
+                    
                     {/* Logo section */}
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        margin: '16px',
-                        padding: '0px'
-                    }}>
+                    <div style={styles.navbarFlexStyles}>
                         <div style={{
-                            height: '42px'
+                            height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40
                         }}>
                             <img 
                                 src={theme === themes.light ? logoImages.logo_label_yellow : logoImages.logo_label_yellow_inverted} 
-                                style={{
-                                    height: '100%',
-                                    objectFit: 'contain'
-                                }}
+                                style={{height: '100%', objectFit: 'contain'}}
                                 alt="Logo"
                             />
                         </div>
                     </div>
 
                     {/* Center section */}
-                    <div style={{
-                        flex: 1
-                    }} />
+                    <div style={{...styles.navbarFlexStyles, flex: 1}}>
+                    </div>
 
                     {/* Controls section */}
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px',
-                        margin: '16px',
-                        padding: '0px'
-                    }}>
+                    <div style={styles.navbarFlexStyles}>
                         <div style={styles.iconDivSizeStyle}>
                             <LanguageSwitch />
                         </div>
