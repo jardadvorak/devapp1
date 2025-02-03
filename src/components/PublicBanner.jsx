@@ -19,8 +19,6 @@ import { screenWidthSettings } from '../config/styles/page_width';
 import LanguageSwitch from './LanguageSwitch';
 import { useLanguage } from '../contexts/LanguageContext';
 
-// const logo = require('img/icons/homepage_title_image_right_aligned.png');
-
 function PublicBanner() {
 
     // Hook for programmatic navigation
@@ -34,14 +32,11 @@ function PublicBanner() {
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
-    //Responsiveness
-    // const windowSize = useWindowSize();
-    // const isSmallScreen = windowSize.width <= 768;
+
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
-    //Styles
-    // const styles = componentStyles(isSmallScreen); // requires isSmallScreen loaded
+
 
     //Handle page width
     //t.b.d.
@@ -54,11 +49,13 @@ function PublicBanner() {
         <div style={virtualFullWidthLocal}>
             <div style={availableWidth}>
 
-                <div>
-                    <div>
-                        <div>
-                            <p>Learning</p>
-                            <p>anytime, anywhere</p>
+                <div style={styles.bannerMainFlexStyle}>
+                    <div style={styles.bannerLeftFlexStyle}>
+                        <div style={styles.bannerTitleStyle}>
+                            Learning
+                        </div>
+                        <div style={styles.bannerSubtitleStyle}>
+                            {isMobileScreen ? 'anytime, anywhere' : isSmallScreen ? 'anytime, anywhere' : 'anything, anytime, anywhere'}
                         </div>
                     </div>
                 </div>

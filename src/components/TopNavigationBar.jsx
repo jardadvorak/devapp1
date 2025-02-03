@@ -1,15 +1,49 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { logoImages } from '../img/logos';
 import { icons } from '../img/icons';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { themes } from '../config/styles/themes';
+import { ROUTES, AUTH_MODES } from '../config/constants';
+import { componentStyles } from '../config/styles/styles';
+import { useWindowSize } from '../utilities/UseWindowSize';
+import { screenWidthSettings } from '../config/styles/page_width';
 import LanguageSwitch from '../components/LanguageSwitch';
 import ThemeSwitch from '../components/ThemeSwitch';
 
 function TopNavigationBar({ children }) {
-    const { getText } = useLanguage();
+    const navigate = useNavigate();
+    const { getText, currentLanguage } = useLanguage();
     const { theme } = useTheme();
+    
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    
+    // Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
+
+    // Handler for login button
+    const handleLogin = () => {
+        navigate(ROUTES.LOGIN, { 
+            state: { 
+                mode: AUTH_MODES.SIGN_IN,
+                language: currentLanguage 
+            }
+        });
+    };
+
+    // Handler for signup button
+    const handleSignup = () => {
+        navigate(ROUTES.LOGIN, { 
+            state: { 
+                mode: AUTH_MODES.SIGN_UP,
+                language: currentLanguage 
+            }
+        });
+    };
     
     return (
         <>
@@ -60,32 +94,19 @@ function TopNavigationBar({ children }) {
                         margin: '16px',
                         padding: '0px'
                     }}>
-                        <LanguageSwitch />
-                        <ThemeSwitch />
-                        <button 
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '36px',
-                                height: '36px',
-                                padding: '6px',
-                                cursor: 'pointer',
-                                backgroundColor: 'transparent',
-                                border: 'none',
-                                borderRadius: '4px'
-                            }}
-                            onClick={() => {}}
-                        >
-                            <img 
-                                src={icons.icon_logout} 
-                                style={{
-                                    width: '100%',
-                                    height: '100%'
-                                }}
-                                alt="Logout" 
-                            />
+                        <div style={styles.iconDivSizeStyle}>
+                            <LanguageSwitch />
+                        </div>
+                        <div style={styles.iconDivSizeStyle}>
+                            <ThemeSwitch />
+                        </div>
+                        <button onClick={handleLogin} style={styles.testButtonStyles}>
+                            {getText('BUTTONS', 'LOGIN')}
                         </button>
+                        <button onClick={handleSignup} style={styles.testButtonStyles}>
+                            {getText('BUTTONS', 'SIGNUP')}
+                        </button>
+
                     </div>
                 </div>
             </nav>

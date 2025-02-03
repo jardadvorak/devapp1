@@ -2,11 +2,7 @@
 // External landing page accessible to all users
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
-import Button from '../components/Button';
-import LanguageSwitch from '../components/LanguageSwitch';
 import PublicBanner from '../components/PublicBanner';
 import PublicFooter from '../components/PublicFooter';
 
@@ -20,11 +16,8 @@ import { componentStyles } from '../config/styles/styles';
 import { logoImages } from '../img/logos'
 
 const Index = () => {
-    // Hook for programmatic navigation
-    const navigate = useNavigate();
-
     // Get language context
-    const { currentLanguage, getText } = useLanguage();
+    const { getText } = useLanguage();
 
     // Handle responsiveness
     const windowSize = useWindowSize();
@@ -35,26 +28,6 @@ const Index = () => {
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
 
-    // Handler for login button - navigates to login page in sign-in mode
-    const handleLogin = () => {
-        navigate(ROUTES.LOGIN, { 
-            state: { 
-                mode: AUTH_MODES.SIGN_IN,
-                language: currentLanguage 
-            }
-        });
-    };
-
-    // Handler for signup button - navigates to login page in sign-up mode
-    const handleSignup = () => {
-        navigate(ROUTES.LOGIN, { 
-            state: { 
-                mode: AUTH_MODES.SIGN_UP,
-                language: currentLanguage 
-            }
-        });
-    };
-    
     // Set-up top bar
     //useNavigationConfig(
     //    route === 'authenticated' ? user.username : '', '', settings.leftButtons, settings.rightButtons);
@@ -109,17 +82,9 @@ const Index = () => {
         <div style={{...availableWidth, backgroundColor: 'orange', color: 'red'}}>        
         {/* <div className="flex flex-col items-center justify-center min-h-screen"> */}
         {/* Language switch in top-right corner */}
-            <div style={{backgroundColor: 'black', width: '100%'}}>
-                <LanguageSwitch />
-            </div>
 
             <h1 className="text-3xl mb-8">{getText('HEADINGS', 'WELCOME')}</h1>
             
-            <div style={{backgroundColor: 'black', width: '100%'}}>
-                <Button onClick={handleLogin}>{getText('BUTTONS', 'LOGIN')}</Button>
-                <Button onClick={handleSignup}>{getText('BUTTONS', 'SIGNUP')}</Button>
-            </div>
-
             <div>
                <p>Current screen width: {windowSize.width}px</p>
                <p>mobileScreenMaxWidth: {screenWidthSettings.mobileScreenMaxWidth}px</p>

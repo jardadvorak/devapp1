@@ -79,7 +79,139 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         {            
             height: isMobileScreen ? 28 : isSmallScreen ? 32 : 36,            
             width: isMobileScreen ? 28 : isSmallScreen ? 32 : 36,            
+        },
+
+        //Banner styles
+
+        bannerMainFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: 'row',
+            gap: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+            padding: isMobileScreen ? 0 : isSmallScreen ? 0 : 0,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            position: 'relative',
+            backgroundColor: colors.gray2,
+        },
+        
+        bannerLeftFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
+            padding: 0,
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            position: 'relative',
+            backgroundColor: colors.gray2,
+        },
+        
+        bannerImageStyle:
+        {
+            maxHeight: isMobileScreen ? 64 :isSmallScreen ? 72 : 96,
+            maxWidth: isMobileScreen ? 64 :isSmallScreen ? 72 : 96,
+            width: 'auto',
+            height: 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
+            marginBottom: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
+        },
+        
+        bannerTitleStyle:
+        {
+            fontSize: isMobileScreen ? 28 :isSmallScreen ? 36 : 48,
+            fontWeight: 700,
+            textAlign: 'left',
+            color: colors.amber,
+            padding: 0,
+            marginTop: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
+            marginBottom: 0,
+            display: 'block',
+            position: 'relative',
+            lineHeight: 1,
+        },
+        
+        bannerSubtitleStyle:
+        {
+            fontSize: isMobileScreen ? 20 :isSmallScreen ? 24 : 32,
+            fontWeight: 700,
+            textAlign: 'left',
+            color: colors.white,
+            padding: 0,
+            marginTop: 0,
+            marginBottom: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
+            display: 'block',
+            position: 'relative',
+            lineHeight: 1,
+        },
+        
+        //Footer styles
+        
+        footerMainFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: isMobileScreen ? 'column' : isSmallScreen ? "column" : "row",
+            gap: isMobileScreen ? 0 :isSmallScreen ? 0 : 0,
+            padding: isMobileScreen ? 0 :isSmallScreen ? 0 : 0,
+            justifyContent: 'space-between',
+            alignItems: isMobileScreen ? 'left' : isSmallScreen ? "left" : "center",
+            position: 'relative',
+            backgroundColor: colors.gray2,
+        },
+        
+        footerLeftFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: isMobileScreen ? 8 :isSmallScreen ? 12 : 16,
+            padding: 0,
+            textAlign: 'left',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            position: 'relative',
+            // top: '50%',
+            backgroundColor: colors.gray2,
+        },
+        
+        footerRightFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: isMobileScreen ? 'column' :isSmallScreen ? 'row' : 'row',
+            gap: isMobileScreen ? 8 :isSmallScreen ? 12 : 16,
+            padding: 0,
+            justifyContent: isMobileScreen ? 'center' :isSmallScreen ? 'center' : 'right',
+            alignItems: isMobileScreen ? 'center' :isSmallScreen ? 'center' : 'flex-start',
+        },
+
+        footerSMFlexStyle:
+        {
+            display: 'flex',
+            flexDirection: isMobileScreen ? 'row' :isSmallScreen ? 'row' : 'row',
+            gap: isMobileScreen ? 8 :isSmallScreen ? 12 : 16,
+            marginTop: isMobileScreen ? 16 :isSmallScreen ? 18 : 12,
+            padding: 0,
+            justifyContent: isMobileScreen ? 'center' :isSmallScreen ? 'center' : 'right',
+            alignItems: isMobileScreen ? 'center' :isSmallScreen ? 'center' : 'flex-start',
+        },
+
+        footerIconStyle:
+        {
+            height: isMobileScreen ? 18 :isSmallScreen ? 22 : 26,
+            width: isMobileScreen ? 18 :isSmallScreen ? 22 : 26,
+            cursor: 'pointer'
+        },
+        
+        footerTextStyle:
+        {
+            color: colors.white,
+            fontSize: isMobileScreen ? 12 :isSmallScreen ? 14 : 16,
+            fontWeight: 400,
+            margin: 0,
+            cursor: 'pointer',
         }
+        
     };
 };
 

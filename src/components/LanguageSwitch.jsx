@@ -1,120 +1,129 @@
-// src/components/LanguageSwitch.jsx
-// Component for language switching buttons
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { LANGUAGES } from '../config/constants';
 import { useLanguage } from '../contexts/LanguageContext';
-// import Button from './Button';
-
-import {useWindowSize} from '../utilities/UseWindowSize'
-
-import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
-import { screenWidthSettings } from '../config/styles/page_width';
-
-import { componentStyles } from '../config/styles/styles';
-
+import { useTheme } from '../contexts/ThemeContext';
+import { themes } from '../config/styles/themes';
+import { icons } from '../img/icons';
 import { flagIcons } from '../img/flags';
 
+const LANGUAGE_NAMES = {
+    [LANGUAGES.CZ]: "Čeština",
+    [LANGUAGES.EN]: "English",
+    [LANGUAGES.DE]: "Deutsch"
+};
+
 const LanguageSwitch = () => {
-    // Get language context
-    const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
+    const { currentLanguage, setCurrentLanguage } = useLanguage();
+    const { theme } = useTheme();
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
-    // Handle responsiveness
-    const windowSize = useWindowSize();
-    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
-    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
-    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
-    
-    //Load styles
-    const styles = componentStyles(isMobileScreen, isSmallScreen);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
 
-    // State to manage dialog visibility and selected language
-    const [showDialog, setShowDialog] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState(null);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
-    // On component mount, check for a saved language in localStorage
+    const handleLanguageChange = (language) => {
+        setCurrentLanguage(language);
+        localStorage.setItem('appLanguage', language);
+        setIsOpen(false);
+    };
+
     useEffect(() => {
         const savedLanguage = localStorage.getItem('appLanguage');
         if (savedLanguage) {
-            setCurrentLanguage(savedLanguage); // Initialize with saved language
+            setCurrentLanguage(savedLanguage);
         }
     }, [setCurrentLanguage]);
 
-    // Handle language button click
-    const handleLanguageClick = (language) => {
-        setSelectedLanguage(language); // Set selected language
-        setShowDialog(true); // Show confirmation dialog
-        // setCurrentLanguage(selectedLanguage); // Set the new language
-        // window.location.reload(); // Reload the page to apply the language change
-    };
-
-    // Confirm the language change
-    const confirmLanguageChange = () => {
-        if (selectedLanguage) {
-            setCurrentLanguage(selectedLanguage); // Set the new language
-            localStorage.setItem('appLanguage', selectedLanguage); // Save to localStorage
-            window.location.reload(); // Reload the page to apply the language change
+    const getFlagIcon = (lang) => {
+        switch (lang) {
+            case LANGUAGES.EN:
+                return flagIcons.flags_circ_EN;
+            case LANGUAGES.DE:
+                return flagIcons.flags_circ_DE;
+            case LANGUAGES.CZ:
+                return flagIcons.flags_circ_CZ;
+            default:
+                return null;
         }
-        setShowDialog(false); // Close the dialog
-    };
-
-    // Cancel the language change
-    const cancelLanguageChange = () => {
-        setSelectedLanguage(null); // Reset selected language
-        setShowDialog(false); // Close the dialog
     };
 
     return (
-        <div style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', gap: '16px', display: 'flex', cursor: 'pointer'}}>
-            {/* Language buttons */}
-            <div
-                onClick={() => handleLanguageClick(LANGUAGES.EN)}
-                style={styles.iconDivSizeStyle}
-                // className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
+        <div ref={dropdownRef} style={{ position: 'relative' }}>
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '36px',
+                    height: '36px',
+                    padding: '6px',
+                    cursor: 'pointer',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    borderRadius: '4px'
+                }}
             >
-                   
-                <img 
-                    src={flagIcons.flags_circ_EN} 
-                    height='100%' 
-                    width='100%' 
-                    style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
+                <img
+                    src={theme === themes.light ? icons.icon_globe_light : icons.icon_globe_dark}
+                    alt="Language"
+                    style={{
+                        width: '100%',
+                        height: '100%'
+                    }}
                 />
-                   {/* {getText('BUTTONS', 'LANGUAGE_EN')} */}
-            </div>
-            <div
-                onClick={() => handleLanguageClick(LANGUAGES.DE)}
-                style={styles.iconDivSizeStyle}
-                // className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
-            >
-                <img 
-                    src={flagIcons.flags_circ_DE} 
-                    height='100%' 
-                    width='100%' 
-                    // style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
-                />
-                   {/* {getText('BUTTONS', 'LANGUAGE_DE')} */}
-            </div>
-            <div
-                onClick={() => handleLanguageClick(LANGUAGES.CZ)}
-                style={styles.iconDivSizeStyle}
-                // className={`w-12 ${currentLanguage === LANGUAGES.CZ ? 'bg-blue-700' : ''}`}
-            >
-                <img src={flagIcons.flags_circ_CZ} 
-                    height='100%' 
-                    width='100%' 
-                    // style={{ color: 'green', backgroundColor: 'white', margin: '0px', padding: '0px', display: 'flex', cursor: 'pointer'}}
-                />
-                   {/* {getText('BUTTONS', 'LANGUAGE_CZ')} */}
-            </div>
+            </button>
 
-            {/* Confirmation dialog */}
-            {showDialog && (
-                <div className="dialog-overlay">
-                    <div className="dialog-box">
-                        <p>{getText('DIALOGS', 'LANGUAGE_CHANGE_CONFIRMATION')}</p>
-                        <button onClick={confirmLanguageChange}>{getText('BUTTONS', 'OK')}</button>
-                        <button onClick={cancelLanguageChange}>{getText('BUTTONS', 'CANCEL')}</button>
-                    </div>
+            {isOpen && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '100%',
+                        right: 0,
+                        marginTop: '8px',
+                        backgroundColor: 'var(--background-color)',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '4px',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                        zIndex: 1000,
+                        minWidth: '160px'
+                    }}
+                >
+                    {Object.entries(LANGUAGE_NAMES).map(([lang, name]) => (
+                        <div
+                            key={lang}
+                            onClick={() => handleLanguageChange(lang)}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                padding: '8px 16px',
+                                cursor: 'pointer',
+                                backgroundColor: currentLanguage === lang ? 'var(--hover-color)' : 'transparent',
+                                color: 'var(--text-color)',
+                                gap: '8px'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-color)'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = currentLanguage === lang ? 'var(--hover-color)' : 'transparent'}
+                        >
+                            <img
+                                src={getFlagIcon(lang)}
+                                alt={name}
+                                style={{
+                                    width: '20px',
+                                    height: '20px'
+                                }}
+                            />
+                            <span>{name}</span>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
@@ -122,34 +131,3 @@ const LanguageSwitch = () => {
 };
 
 export default LanguageSwitch;
-
-// // src/components/LanguageSwitch.jsx
-// // Component for language switching buttons
-// import React from 'react';
-// import { LANGUAGES } from '../config/constants';
-// import { useLanguage } from '../contexts/LanguageContext';
-// import Button from './Button';
-
-// const LanguageSwitch = () => {
-//     // Get language context
-//     const { currentLanguage, setCurrentLanguage, getText } = useLanguage();
-
-//     return (
-//         <div className="flex gap-2">
-//             <Button 
-//                 onClick={() => setCurrentLanguage(LANGUAGES.EN)}
-//                 className={`w-12 ${currentLanguage === LANGUAGES.EN ? 'bg-blue-700' : ''}`}
-//             >
-//                 {getText('BUTTONS', 'LANGUAGE_EN')}
-//             </Button>
-//             <Button 
-//                 onClick={() => setCurrentLanguage(LANGUAGES.DE)}
-//                 className={`w-12 ${currentLanguage === LANGUAGES.DE ? 'bg-blue-700' : ''}`}
-//             >
-//                 {getText('BUTTONS', 'LANGUAGE_DE')}
-//             </Button>
-//         </div>
-//     );
-// };
-
-// export default LanguageSwitch;

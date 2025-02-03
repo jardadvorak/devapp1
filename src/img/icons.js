@@ -3,6 +3,8 @@ import iconLogout2 from '../img/icons/icon_box-arrow-right.png';
 
 import iconSunFill from '../img/icons/icon-dm-sun-fill.svg';
 import iconMoonFill from '../img/icons/icon-lm-moon-fill.svg';
+import iconGlobeLight from '../img/icons/icon-lm-globe2.svg';
+import iconGlobeDark from '../img/icons/icon-dm-globe2.svg';
 
 import iconFacebook from '../img/icons/icon_w_facebook.png';
 import iconInstagram from '../img/icons/icon_w_instagram.png';
@@ -18,6 +20,8 @@ export const icons = {
 
      icon_sun_fill: iconSunFill,
      icon_moon_fill: iconMoonFill,
+     icon_globe_light: iconGlobeLight,
+     icon_globe_dark: iconGlobeDark,
 
      // Social media icons
      icon_facebook: iconFacebook,

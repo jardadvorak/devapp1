@@ -58,10 +58,10 @@ function PublicFooter() {
         <div style={virtualFullWidthLocal}>
             <div style={availableWidth}>
 
-                <div>         
-                    <div>
-                        <div style={{display: "flex"}}>
-                            <div 
+                <div style={styles.footerMainFlexStyle}>         
+                    <div style={styles.footerLeftFlexStyle}>
+                        <div style={{display: "flex", gap: isMobileScreen ? 8 : isSmallScreen ? 12 : 16}}>
+                            {/* <div 
                                 style={{color: 'black', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
@@ -73,52 +73,49 @@ function PublicFooter() {
                                     }}
                                     alt="Logo"
                                 />
-                            </div>         
+                            </div>          */}
                             <div
                                 style={{backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
-                                Ready to learn?
+                                <span style={{ ...styles.simpleTextStyle, fontSize: isMobileScreen ? 16 : isSmallScreen ? 20 : 24, fontWeight: 700, color: colors.white, cursor: 'pointer' }}>
+                                    Ready to <span style={{ color: colors.amber }}>learn</span>?
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div>
+                    <div style={styles.footerRightFlexStyle}>
+                        <div style={styles.footerRightFlexStyle}>
+   
+                            <div style={styles.footerTextStyle}>
                                 info@discito.cz
                             </div>
-                            <div>
+                            <div style={styles.footerTextStyle}>
                                 Help
                             </div>
-                            <div>
+                            <div style={styles.footerTextStyle}>
                                 FAQs
                             </div>
-                            <div>
+                            <div style={styles.footerTextStyle}>
                                 Terms of use
                             </div>
-                            <div>
+                            <div style={styles.footerTextStyle}>
                                 Privacy policy
                             </div>
+
                         </div>
                     </div>
                 </div>
                 
                 {/* Social Media Icons */}
                 <div 
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        gap: '20px',
-                        marginTop: '20px',
-                        marginBottom: '20px',
-                        cursor: 'pointer'
-                    }}
+                    style={styles.footerSMFlexStyle}
                 >
-                    <img src={icons.icon_facebook} alt="Facebook" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
-                    <img src={icons.icon_instagram} alt="Instagram" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
-                    <img src={icons.icon_linkedin} alt="LinkedIn" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
-                    <img src={icons.icon_pinterest} alt="Pinterest" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
-                    <img src={icons.icon_youtube} alt="YouTube" style={{ width: '24px', height: '24px', cursor: 'pointer' }} />
+                    <img src={icons.icon_facebook} alt="Facebook" style={styles.footerIconStyle} />
+                    <img src={icons.icon_instagram} alt="Instagram" style={styles.footerIconStyle} />
+                    <img src={icons.icon_linkedin} alt="LinkedIn" style={styles.footerIconStyle} />
+                    <img src={icons.icon_pinterest} alt="Pinterest" style={styles.footerIconStyle} />
+                    <img src={icons.icon_youtube} alt="YouTube" style={styles.footerIconStyle} />
                 </div>
             </div>
         </div>
