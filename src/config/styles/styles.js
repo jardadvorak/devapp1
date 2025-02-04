@@ -187,7 +187,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         
         bannerTitleStyle:
         {
-            fontSize: isMobileScreen ? 28 :isSmallScreen ? 36 : 48,
+            fontSize: isMobileScreen ? 32 :isSmallScreen ? 40 : 48,
             fontWeight: 700,
             textAlign: 'left',
             color: colors.amber,

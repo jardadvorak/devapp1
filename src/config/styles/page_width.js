@@ -14,6 +14,11 @@ export const availableWidth = {
     // backgroundColor: 'var(--background-color-1)'
 };
 
+// export const availableHeight = {
+    // minHeight: '320px',
+    // height: `calc(100vh - ${isMobileScreen ? 56 : isSmallScreen ? 64 : 72}px`,
+    // backgroundColor: 'var(--background-color-1)'
+// };
 
 export const screenWidthSettings = {
     mobileScreenMaxWidth: 500,  // responsive width
