@@ -17,17 +17,16 @@ function TopNavigationBar({ children }) {
     const navigate = useNavigate();
     const { getText, currentLanguage } = useLanguage();
     const { theme } = useTheme();
-    const [isLoginHover, setIsLoginHover] = useState(false);
-    const [isSignupHover, setIsSignupHover] = useState(false);
+    const [hoveredElement, setHoveredElement] = useState(null);
 
     // Handle responsiveness
     const windowSize = useWindowSize();
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     
-    // Load styles for each button with its own hover state
-    const loginStyles = componentStyles(isMobileScreen, isSmallScreen, isLoginHover, false);
-    const signupStyles = componentStyles(isMobileScreen, isSmallScreen, isSignupHover, false);
+    // Load styles for buttons using the common hover state
+    const loginStyles = componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'login', false);
+    const signupStyles = componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'signup', false);
     const styles = componentStyles(isMobileScreen, isSmallScreen, false, false); // for other components
 
     // Handler for login button
@@ -83,16 +82,16 @@ function TopNavigationBar({ children }) {
                         </div>
                         <button 
                             onClick={handleLogin} 
-                            onMouseEnter={() => setIsLoginHover(true)}
-                            onMouseLeave={() => setIsLoginHover(false)}
+                            onMouseEnter={() => setHoveredElement('login')}
+                            onMouseLeave={() => setHoveredElement(null)}
                             style={loginStyles.normalButtonStyles}
                         >
                             {getText('BUTTONS', 'LOGIN')}
                         </button>
                         <button 
                             onClick={handleSignup}
-                            onMouseEnter={() => setIsSignupHover(true)}
-                            onMouseLeave={() => setIsSignupHover(false)}
+                            onMouseEnter={() => setHoveredElement('signup')}
+                            onMouseLeave={() => setHoveredElement(null)}
                             style={signupStyles.normalButtonStyles}
                         >
                             {getText('BUTTONS', 'SIGNUP')}

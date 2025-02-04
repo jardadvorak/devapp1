@@ -95,7 +95,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             backgroundColor: 'var(--background-color-2)',
             border: 'none',
             borderRadius: '0px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            boxShadow: '0 4px 4px rgba(0,0,0,0.3)',
             zIndex: 1000,
             minWidth: isMobileScreen ? 120 : isSmallScreen ? 140 : 160,
         },
@@ -108,7 +108,8 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             cursor: 'pointer',
             //backgroundColor: currentLanguage === lang ? 'var(--hover-color)' : 'transparent',
             color: 'var(--text-color-normal)',
-            gap: isMobileScreen ? 6 : isSmallScreen ? 8 : 10
+            gap: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+
         },
 
         // Button style basic
@@ -142,7 +143,9 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             backgroundColor: 'transparent',
             border: 'none',
             borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            boxShadow: isHover && !isDisabled ? '0 4px 4px rgba(0,0,0,0.3)' : 'none',
+            transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',            
         },
 
         // Div for icon sizes to manage reponsivenes
