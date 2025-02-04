@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logoImages } from '../img/logos';
 import { icons } from '../img/icons';
@@ -17,14 +17,18 @@ function TopNavigationBar({ children }) {
     const navigate = useNavigate();
     const { getText, currentLanguage } = useLanguage();
     const { theme } = useTheme();
-    
+    const [isLoginHover, setIsLoginHover] = useState(false);
+    const [isSignupHover, setIsSignupHover] = useState(false);
+
     // Handle responsiveness
     const windowSize = useWindowSize();
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     
-    // Load styles
-    const styles = componentStyles(isMobileScreen, isSmallScreen);
+    // Load styles for each button with its own hover state
+    const loginStyles = componentStyles(isMobileScreen, isSmallScreen, isLoginHover, false);
+    const signupStyles = componentStyles(isMobileScreen, isSmallScreen, isSignupHover, false);
+    const styles = componentStyles(isMobileScreen, isSmallScreen, false, false); // for other components
 
     // Handler for login button
     const handleLogin = () => {
@@ -54,7 +58,8 @@ function TopNavigationBar({ children }) {
                     {/* Logo section */}
                     <div style={styles.navbarFlexStyles}>
                         <div style={{
-                            height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40
+                            height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40,
+                            cursor: 'pointer'
                         }}>
                             <img 
                                 src={theme === themes.light ? logoImages.logo_label_yellow : logoImages.logo_label_yellow_inverted} 
@@ -76,10 +81,20 @@ function TopNavigationBar({ children }) {
                         <div style={styles.iconDivSizeStyle}>
                             <ThemeSwitch />
                         </div>
-                        <button onClick={handleLogin} style={styles.testButtonStyles}>
+                        <button 
+                            onClick={handleLogin} 
+                            onMouseEnter={() => setIsLoginHover(true)}
+                            onMouseLeave={() => setIsLoginHover(false)}
+                            style={loginStyles.normalButtonStyles}
+                        >
                             {getText('BUTTONS', 'LOGIN')}
                         </button>
-                        <button onClick={handleSignup} style={styles.testButtonStyles}>
+                        <button 
+                            onClick={handleSignup}
+                            onMouseEnter={() => setIsSignupHover(true)}
+                            onMouseLeave={() => setIsSignupHover(false)}
+                            style={signupStyles.normalButtonStyles}
+                        >
                             {getText('BUTTONS', 'SIGNUP')}
                         </button>
 

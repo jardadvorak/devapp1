@@ -30,12 +30,12 @@ const Index = () => {
     const styles = componentStyles(isMobileScreen, isSmallScreen);
 
     const availableHeight = `calc(100vh - ${
-        // Top navigation 56 : 64 : 72
+        // Top navigation
         (isMobileScreen ? 56 : isSmallScreen ? 64 : 72) +
-        // Banner 68 : 88 : 116
-        (isMobileScreen ? 88 : isSmallScreen ? 114 : 144) +
-        // Footer 76 : 82 : 80:
-        (isMobileScreen ? 260 : isSmallScreen ? 160 : 134)
+        // Banner
+        (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
+        // Footer
+        (isMobileScreen ? 76 : isSmallScreen ? 82 : 80)
     }px)`;
 
     // Set-up top bar
@@ -43,14 +43,7 @@ const Index = () => {
     //    route === 'authenticated' ? user.username : '', '', settings.leftButtons, settings.rightButtons);
 
     return (
-        <div style={{minHeight: `calc(100vh - ${
-            // Top navigation
-            (isMobileScreen ? 56 : isSmallScreen ? 64 : 72) +
-            // Banner
-            (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
-            // Footer
-            (isMobileScreen ? 76 : isSmallScreen ? 82 : 80)
-        }px)`, display: 'flex', flexDirection: 'column'}}>
+        <div style={{minHeight: `calc(100vh - ${isMobileScreen ? 56 : isSmallScreen ? 64 : 72}px)`, display: 'flex', flexDirection: 'column'}}>
         
         <PublicBanner />
 

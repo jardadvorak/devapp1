@@ -33,10 +33,8 @@ function PublicBanner() {
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
 
-
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
-
 
     //Handle page width
     //t.b.d.
@@ -55,7 +53,7 @@ function PublicBanner() {
                             Learning
                         </div>
                         <div style={styles.bannerSubtitleStyle}>
-                            {isMobileScreen ? 'anytime, anywhere' : isSmallScreen ? 'anytime, anywhere' : 'anything, anytime, anywhere'}
+                            {isMobileScreen ? 'anytime, anywhere' : isSmallScreen ? 'anything, anytime, anywhere' : 'anything, anytime, anywhere'}
                         </div>
                     </div>
                 </div>

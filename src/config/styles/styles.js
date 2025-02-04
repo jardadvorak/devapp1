@@ -3,7 +3,7 @@ import { colors } from './colors';
 import './fonts.css';
 
 // const ComponentStyles = (isSmallScreen, isHovered, isDisabled) => {
-const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) => {
+const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => {
     // Typography styles
     const typography = {
         h1: {
@@ -112,17 +112,20 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         },
 
         // Button style basic
-        testButtonStyles:
+        normalButtonStyles:
         {            
             ...typography.button,
             textAlign: 'center',
             // color: colors.light,
             cursor: 'pointer',
-            backgroundColor: isDisabled ? colors.gray6 : colors.primary,
+            backgroundColor: isDisabled ? colors.gray6 : isHover ? colors.primary : colors.primary,
             borderRadius: 100, //needs to be big enough to look like a pill...
             border: `3px solid ${colors.primary}`,
             padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
-            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 16
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
+            transition: 'all 0.3s ease',
+            boxShadow: isHover && !isDisabled ? '0 4px 4px rgba(0,0,0,0.3)' : 'none',
+            transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',
         },
 
         // Icon button style
@@ -139,6 +142,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
             backgroundColor: 'transparent',
             border: 'none',
             borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
+            transition: 'all 0.3s ease'
         },
 
         // Div for icon sizes to manage reponsivenes
@@ -163,12 +167,13 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         
         bannerLeftFlexStyle:
         {
+            width : '100%',
             display: 'flex',
             flexDirection: 'column',
             gap: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
             padding: 0,
             justifyContent: 'flex-start',
-            alignItems: 'flex-start',
+            alignItems: isMobileScreen ? 'center' : 'flex-start',
             position: 'relative',
             backgroundColor: 'transparent',
         },
@@ -189,7 +194,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         {
             fontSize: isMobileScreen ? 32 :isSmallScreen ? 40 : 48,
             fontWeight: 700,
-            textAlign: 'left',
+            textAlign: isMobileScreen ? 'center' : 'left',
             color: colors.amber,
             padding: 0,
             marginTop: isMobileScreen ? 10 :isSmallScreen ? 14 : 18,
@@ -203,7 +208,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHovered, isDisabled) =
         {
             fontSize: isMobileScreen ? 20 :isSmallScreen ? 24 : 32,
             fontWeight: 700,
-            textAlign: 'left',
+            textAlign: isMobileScreen ? 'center' : 'left',
             color: `var(--text-color-highlight)`,
             padding: 0,
             marginTop: 0,
