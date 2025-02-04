@@ -69,34 +69,55 @@ function TopNavigationBar({ children }) {
                     </div>
 
                     {/* Center section */}
-                    <div style={{...styles.navbarFlexStyles, flex: 1}}>
+                    <div style={{...styles.navbarFlexStyles, flex: 1, justifyContent: 'center', gap: '3vw'}}>
+                        {!isMobileScreen && !isSmallScreen && (
+                            <>
+                                <span style={styles.typography.body1}>Mission</span>
+                                <span style={styles.typography.body1}>Content</span>
+                                <span style={styles.typography.body1}>Pricing</span>
+                            </>
+                        )}
                     </div>
 
                     {/* Controls section */}
                     <div style={styles.navbarFlexStyles}>
-                        <div style={styles.iconDivSizeStyle}>
-                            <LanguageSwitch />
-                        </div>
-                        <div style={styles.iconDivSizeStyle}>
-                            <ThemeSwitch />
-                        </div>
-                        <button 
-                            onClick={handleLogin} 
-                            onMouseEnter={() => setHoveredElement('login')}
-                            onMouseLeave={() => setHoveredElement(null)}
-                            style={loginStyles.normalButtonStyles}
-                        >
-                            {getText('BUTTONS', 'LOGIN')}
-                        </button>
-                        <button 
-                            onClick={handleSignup}
-                            onMouseEnter={() => setHoveredElement('signup')}
-                            onMouseLeave={() => setHoveredElement(null)}
-                            style={signupStyles.normalButtonStyles}
-                        >
-                            {getText('BUTTONS', 'SIGNUP')}
-                        </button>
-
+                        {!isMobileScreen && (
+                            <>
+                                <div style={styles.iconDivSizeStyle}>
+                                    <LanguageSwitch />
+                                </div>
+                                <div style={styles.iconDivSizeStyle}>
+                                    <ThemeSwitch />
+                                </div>
+                                <button 
+                                    onClick={handleLogin} 
+                                    onMouseEnter={() => setHoveredElement('login')}
+                                    onMouseLeave={() => setHoveredElement(null)}
+                                    style={loginStyles.normalButtonStyles}
+                                >
+                                    {getText('BUTTONS', 'LOGIN')}
+                                </button>
+                                <button 
+                                    onClick={handleSignup}
+                                    onMouseEnter={() => setHoveredElement('signup')}
+                                    onMouseLeave={() => setHoveredElement(null)}
+                                    style={signupStyles.normalButtonStyles}
+                                >
+                                    {getText('BUTTONS', 'SIGNUP')}
+                                </button>
+                            </>
+                        )}
+                        {(isMobileScreen || isSmallScreen) && (
+                            <div style={styles.iconDivSizeStyle}>
+                                <button style={styles.iconButtonStyle}>
+                                    <img 
+                                        src={theme === themes.light ? icons['icon-lm-menu'] : icons['icon-dm-menu']} 
+                                        alt="Menu"
+                                        style={{width: '100%', height: '100%'}}
+                                    />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </nav>

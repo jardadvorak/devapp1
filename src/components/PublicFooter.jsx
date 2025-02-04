@@ -74,7 +74,13 @@ function PublicFooter() {
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             >
                                 <span style={{ ...styles.simpleTextStyle, fontSize: isMobileScreen ? 16 : isSmallScreen ? 20 : 24, fontWeight: 700, color: `var(--text-color-highlight)`, cursor: 'pointer' }}>
-                                    Ready to <span style={{ color: colors.amber }}>learn</span>?
+                                    {(() => {
+                                        const highlightedWord = getText('FOOTER', 'HIGHLIGHTED_WORD');
+                                        const [before, after] = getText('FOOTER', 'CALL_TO_ACTION').split(highlightedWord);
+                                        return (
+                                            <>{before}<span style={{ color: colors.amber }}>{highlightedWord}</span>{after}</>
+                                        );
+                                    })()}
                                 </span>
                             </div>
                         </div>
@@ -83,19 +89,19 @@ function PublicFooter() {
                         <div style={styles.footerRightFlexStyle}>
    
                             <div style={styles.footerTextStyle}>
-                                info@discito.cz
+                                {getText('FOOTER', 'EMAIL')}
                             </div>
                             <div style={styles.footerTextStyle}>
-                                Help
+                                {getText('FOOTER', 'HELP')}
                             </div>
                             <div style={styles.footerTextStyle}>
-                                FAQs
+                                {getText('FOOTER', 'FAQS')}
                             </div>
                             <div style={styles.footerTextStyle}>
-                                Terms of use
+                                {getText('FOOTER', 'TERMS')}
                             </div>
                             <div style={styles.footerTextStyle}>
-                                Privacy policy
+                                {getText('FOOTER', 'PRIVACY')}
                             </div>
 
                         </div>
@@ -106,11 +112,11 @@ function PublicFooter() {
                 <div 
                     style={styles.footerSMFlexStyle}
                 >
-                    <img src={theme === themes.light ? icons.icon_facebook_light:icons.icon_facebook_dark} alt="Facebook" style={styles.footerIconStyle} />
-                    <img src={theme === themes.light ? icons.icon_instagram_light:icons.icon_instagram_dark} alt="Instagram" style={styles.footerIconStyle} />
-                    <img src={theme === themes.light ? icons.icon_linkedin_light:icons.icon_linkedin_dark} alt="LinkedIn" style={styles.footerIconStyle} />
-                    <img src={theme === themes.light ? icons.icon_pinterest_light:icons.icon_pinterest_dark} alt="Pinterest" style={styles.footerIconStyle} />
-                    <img src={theme === themes.light ? icons.icon_youtube_light:icons.icon_youtube_dark} alt="YouTube" style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_facebook_light:icons.icon_facebook_dark} alt={getText('FOOTER', 'ALT_FACEBOOK')} style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_instagram_light:icons.icon_instagram_dark} alt={getText('FOOTER', 'ALT_INSTAGRAM')} style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_linkedin_light:icons.icon_linkedin_dark} alt={getText('FOOTER', 'ALT_LINKEDIN')} style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_pinterest_light:icons.icon_pinterest_dark} alt={getText('FOOTER', 'ALT_PINTEREST')} style={styles.footerIconStyle} />
+                    <img src={theme === themes.light ? icons.icon_youtube_light:icons.icon_youtube_dark} alt={getText('FOOTER', 'ALT_YOUTUBE')} style={styles.footerIconStyle} />
                 </div>
             </div>
         </div>

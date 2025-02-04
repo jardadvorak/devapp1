@@ -30,6 +30,25 @@ export const AUTH_MODES = {
 export const UI_TEXT = {
     // English translations
     [LANGUAGES.EN]: {
+        BANNER: {
+            TITLE: 'Learning',
+            SUBTITLE_SHORT: 'anytime, anywhere',
+            SUBTITLE_LONG: 'anything, anytime, anywhere'
+        },
+        FOOTER: {
+            CALL_TO_ACTION: 'Ready to learn?',
+            HIGHLIGHTED_WORD: 'learn',
+            EMAIL: 'info@discito.cz',
+            HELP: 'Help',
+            FAQS: 'FAQs',
+            TERMS: 'Terms of use',
+            PRIVACY: 'Privacy policy',
+            ALT_FACEBOOK: 'Facebook',
+            ALT_INSTAGRAM: 'Instagram',
+            ALT_LINKEDIN: 'LinkedIn',
+            ALT_PINTEREST: 'Pinterest',
+            ALT_YOUTUBE: 'YouTube'
+        },
         BUTTONS: {
             LOGIN: 'Log In',
             SIGNUP: 'Sign Up',
@@ -64,6 +83,25 @@ export const UI_TEXT = {
     },
     // German translations
     [LANGUAGES.DE]: {
+        BANNER: {
+            TITLE: 'Lernen',
+            SUBTITLE_SHORT: 'jederzeit, überall',
+            SUBTITLE_LONG: 'alles, jederzeit, überall'
+        },
+        FOOTER: {
+            CALL_TO_ACTION: 'Bereit zum Lernen?',
+            HIGHLIGHTED_WORD: 'Lernen',
+            EMAIL: 'info@discito.cz',
+            HELP: 'Hilfe',
+            FAQS: 'FAQs',
+            TERMS: 'Nutzungsbedingungen',
+            PRIVACY: 'Datenschutzrichtlinie',
+            ALT_FACEBOOK: 'Facebook',
+            ALT_INSTAGRAM: 'Instagram',
+            ALT_LINKEDIN: 'LinkedIn',
+            ALT_PINTEREST: 'Pinterest',
+            ALT_YOUTUBE: 'YouTube'
+        },
         BUTTONS: {
             LOGIN: 'Anmelden',
             SIGNUP: 'Registrieren',
@@ -98,6 +136,25 @@ export const UI_TEXT = {
     },
     // Czech translations
     [LANGUAGES.CZ]: {
+        BANNER: {
+            TITLE: 'Učení',
+            SUBTITLE_SHORT: 'kdykoliv, kdekoliv',
+            SUBTITLE_LONG: 'cokoliv, kdykoliv, kdekoliv'
+        },
+        FOOTER: {
+            CALL_TO_ACTION: 'Připraveni se učit?',
+            HIGHLIGHTED_WORD: 'učit',
+            EMAIL: 'info@discito.cz',
+            HELP: 'Nápověda',
+            FAQS: 'Časté dotazy',
+            TERMS: 'Podmínky použití',
+            PRIVACY: 'Zásady ochrany osobních údajů',
+            ALT_FACEBOOK: 'Facebook',
+            ALT_INSTAGRAM: 'Instagram',
+            ALT_LINKEDIN: 'LinkedIn',
+            ALT_PINTEREST: 'Pinterest',
+            ALT_YOUTUBE: 'YouTube'
+        },
         BUTTONS: {
             LOGIN: 'Přihlásit se',
             SIGNUP: 'Registrovat se',

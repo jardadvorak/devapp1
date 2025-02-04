@@ -5,6 +5,8 @@ import iconSunFill from '../img/icons/icon-dm-sun-fill.svg';
 import iconMoonFill from '../img/icons/icon-lm-moon-fill.svg';
 import iconGlobeLight from '../img/icons/icon-lm-globe2.svg';
 import iconGlobeDark from '../img/icons/icon-dm-globe2.svg';
+import iconMenuLight from '../img/icons/icon-lm-menu.svg';
+import iconMenuDark from '../img/icons/icon-dm-menu.svg';
 
 // Temporary png...
 import iconFacebookLight from '../img/icons/icon_facebook.png';
@@ -30,6 +32,8 @@ export const icons = {
      icon_moon_fill: iconMoonFill,
      icon_globe_light: iconGlobeLight,
      icon_globe_dark: iconGlobeDark,
+     'icon-lm-menu': iconMenuLight,
+     'icon-dm-menu': iconMenuDark,
 
      // Social media icons
      // icon_facebook: iconFacebook,

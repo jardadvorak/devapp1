@@ -50,10 +50,10 @@ function PublicBanner() {
                 <div style={styles.bannerMainFlexStyle}>
                     <div style={styles.bannerLeftFlexStyle}>
                         <div style={styles.bannerTitleStyle}>
-                            Learning
+                            {getText('BANNER', 'TITLE')}
                         </div>
                         <div style={styles.bannerSubtitleStyle}>
-                            {isMobileScreen ? 'anytime, anywhere' : isSmallScreen ? 'anything, anytime, anywhere' : 'anything, anytime, anywhere'}
+                            {isMobileScreen ? getText('BANNER', 'SUBTITLE_SHORT') : getText('BANNER', 'SUBTITLE_LONG')}
                         </div>
                     </div>
                 </div>
