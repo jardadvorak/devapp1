@@ -5,6 +5,8 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import PublicBanner from '../components/PublicBanner';
 import PublicFooter from '../components/PublicFooter';
+import CardArray from '../components/CardArray';
+import Carousel from '../components/Carousel';
 
 import {useWindowSize} from '../utilities/UseWindowSize'
 
@@ -25,6 +27,16 @@ const Index = () => {
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
+
+    // Create cards data
+    const cards = [
+        { id: 1, title: 'Card 1', description: 'Description for card 1' },
+        { id: 2, title: 'Card 2', description: 'Description for card 2' },
+        { id: 3, title: 'Card 3', description: 'Description for card 3' },
+        { id: 4, title: 'Card 4', description: 'Description for card 4' },
+        { id: 5, title: 'Card 5', description: 'Description for card 5' },
+        { id: 6, title: 'Card 6', description: 'Description for card 6' },
+    ];
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -52,6 +64,12 @@ const Index = () => {
                 <div style={{...availableWidth, height: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
                     <h1 className="text-3xl mb-8">{getText('HEADINGS', 'WELCOME')}</h1>
+                    
+                    <div style={{ marginBottom: '40px' }}>
+                        <Carousel cards={cards} />
+                    </div>
+                    
+                    <CardArray cards={cards} />
 
                 </div>
             </div>

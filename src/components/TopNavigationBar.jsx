@@ -9,10 +9,6 @@ import { ROUTES, AUTH_MODES } from '../config/constants';
 import { componentStyles } from '../config/styles/styles';
 import { useWindowSize } from '../utilities/UseWindowSize';
 import { screenWidthSettings } from '../config/styles/page_width';
-import LanguageSwitch from '../components/LanguageSwitch';
-import ThemeSwitch from '../components/ThemeSwitch';
-import { NEW_STYLE_STACK_SYNTHESIS_CONTEXT } from 'aws-cdk-lib/cx-api';
-
 function TopNavigationBar({ children }) {
     const navigate = useNavigate();
     const { getText, currentLanguage } = useLanguage();
@@ -83,12 +79,6 @@ function TopNavigationBar({ children }) {
                     <div style={styles.navbarFlexStyles}>
                         {!isMobileScreen && (
                             <>
-                                <div style={styles.iconDivSizeStyle}>
-                                    <LanguageSwitch />
-                                </div>
-                                <div style={styles.iconDivSizeStyle}>
-                                    <ThemeSwitch />
-                                </div>
                                 <button 
                                     onClick={handleLogin} 
                                     onMouseEnter={() => setHoveredElement('login')}

@@ -7,6 +7,8 @@ import iconGlobeLight from '../img/icons/icon-lm-globe2.svg';
 import iconGlobeDark from '../img/icons/icon-dm-globe2.svg';
 import iconMenuLight from '../img/icons/icon-lm-menu.svg';
 import iconMenuDark from '../img/icons/icon-dm-menu.svg';
+import iconChevronDoubleLeft from '../img/icons/icon-lm-chevron-double-left.svg';
+import iconChevronDoubleRight from '../img/icons/icon-lm-chevron-double-right.svg';
 
 // Temporary png...
 import iconFacebookLight from '../img/icons/icon_facebook.png';
@@ -34,6 +36,8 @@ export const icons = {
      icon_globe_dark: iconGlobeDark,
      'icon-lm-menu': iconMenuLight,
      'icon-dm-menu': iconMenuDark,
+     chevronLeft: iconChevronDoubleLeft,
+     chevronRight: iconChevronDoubleRight,
 
      // Social media icons
      // icon_facebook: iconFacebook,

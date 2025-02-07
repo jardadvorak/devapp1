@@ -83,7 +83,10 @@ const LanguageSwitch = () => {
 
             {isOpen && (
                 <div
-                    style={styles.languageSwitchBoxstyle}
+                    style={{
+                        ...styles.languageSwitchBoxstyle,
+
+                    }}
                 >
                     {Object.entries(LANGUAGE_NAMES).map(([lang, name]) => (
                         <div

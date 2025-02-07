@@ -21,6 +21,8 @@ import { themes } from '../config/styles/themes';
 // const icon_help = require('img/icons/help_component.png');
 
 import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitch from './LanguageSwitch';
+import ThemeSwitch from './ThemeSwitch';
 
 function PublicFooter() {
 
@@ -53,22 +55,9 @@ function PublicFooter() {
         <div style={virtualFullWidthLocal}>
             <div style={availableWidth}>
 
-                <div style={styles.footerMainFlexStyle}>         
                     <div style={styles.footerLeftFlexStyle}>
                         <div style={{display: "flex", gap: isMobileScreen ? 8 : isSmallScreen ? 12 : 16}}>
-                            {/* <div 
-                                style={{color: 'black', backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
-                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            >
-                                <img 
-                                    src={theme === themes.light ? logoImages.logo_light : logoImages.logo_light_inverted} 
-                                    style={{
-                                        height: '100%',
-                                        objectFit: 'contain'
-                                    }}
-                                    alt="Logo"
-                                />
-                            </div>          */}
+
                             <div
                                 style={{backgroundColor: 'transparent', margin: '0px', padding: '0px', display: 'flex',height: '42px', cursor: 'pointer'}}
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -85,6 +74,7 @@ function PublicFooter() {
                             </div>
                         </div>
                     </div>
+                    
                     <div style={styles.footerRightFlexStyle}>
                         <div style={styles.footerRightFlexStyle}>
    
@@ -106,18 +96,33 @@ function PublicFooter() {
 
                         </div>
                     </div>
-                </div>
-                
-                {/* Social Media Icons */}
-                <div 
-                    style={styles.footerSMFlexStyle}
-                >
+
+                    {/* <div style={{...styles.dividerStyle,  marginBottom: 0}}></div> */}
+
+                    {/* Language and Theme Switch */}
+                    <div style={styles.footerSMFlexStyle}>
+                        <div style={styles.footerIconStyle}>
+                            <LanguageSwitch />
+                        </div>
+                        <div style={styles.footerIconStyle}>
+                            <ThemeSwitch />
+                        </div>
+                    </div>
+                    
+                    <div style={{height: isMobileScreen ? 12 : isSmallScreen ? 12 : 12}}></div>
+                    {/* <div style={styles.dividerStyle}></div> */}
+
+                    {/* Social Media Icons */}
+                    <div style={styles.footerSMFlexStyle}>
                     <img src={theme === themes.light ? icons.icon_facebook_light:icons.icon_facebook_dark} alt={getText('FOOTER', 'ALT_FACEBOOK')} style={styles.footerIconStyle} />
                     <img src={theme === themes.light ? icons.icon_instagram_light:icons.icon_instagram_dark} alt={getText('FOOTER', 'ALT_INSTAGRAM')} style={styles.footerIconStyle} />
                     <img src={theme === themes.light ? icons.icon_linkedin_light:icons.icon_linkedin_dark} alt={getText('FOOTER', 'ALT_LINKEDIN')} style={styles.footerIconStyle} />
                     <img src={theme === themes.light ? icons.icon_pinterest_light:icons.icon_pinterest_dark} alt={getText('FOOTER', 'ALT_PINTEREST')} style={styles.footerIconStyle} />
                     <img src={theme === themes.light ? icons.icon_youtube_light:icons.icon_youtube_dark} alt={getText('FOOTER', 'ALT_YOUTUBE')} style={styles.footerIconStyle} />
-                </div>
+                    </div>
+                {/* </div> */}
+                
+
             </div>
         </div>
     );

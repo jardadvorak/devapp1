@@ -39,7 +39,13 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         button: {
             fontFamily: 'Inter',
             fontWeight: 500,
-            fontSize: isMobileScreen ? '14px' : isSmallScreen ? '16px' : '18px',
+            fontSize: isMobileScreen ? '12px' : isSmallScreen ? '14px' : '14px',
+            lineHeight: 1.5,
+        },
+        buttonS: {
+            fontFamily: 'Inter',
+            fontWeight: 400,
+            fontSize: isMobileScreen ? '10px' : isSmallScreen ? '12px' : '12px',
             lineHeight: 1.5,
         },
     };
@@ -88,23 +94,28 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         // LanguageSwitch
         languageSwitchBoxstyle:
         {
+            display: 'flex',
+            flexDirection: isMobileScreen ? 'column' : isSmallScreen ? 'column' : 'row',
+            justifyContent: isMobileScreen ? 'flex-start' : isSmallScreen ? 'flex-start' :'space-around',
             position: 'absolute',
-            top: '100%',
+            bottom: '100%',  // Position above instead of below
             right: 0,
-            marginTop: 8,
+            top: 'auto',     // Remove top positioning
+            marginBottom: 8,  // Add some spacing above the icon
             backgroundColor: 'var(--background-color-2)',
             border: 'none',
             borderRadius: '0px',
-            boxShadow: '0 4px 4px rgba(0,0,0,0.3)',
+            boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
             zIndex: 1000,
-            minWidth: isMobileScreen ? 120 : isSmallScreen ? 140 : 160,
+            minWidth: isMobileScreen ? 100 : isSmallScreen ? 120 : 360
         },
 
         languageSwitchListStyle:
         {
+            ...typography.buttonS,
             display: 'flex',
             alignItems: 'center',
-            padding: isMobileScreen ? '4px 12px' : isSmallScreen ? '6px 14px' : '8px 16px',
+            padding: isMobileScreen ? '4px 6px' : isSmallScreen ? '6px 8px' : '8px 10px',
             cursor: 'pointer',
             //backgroundColor: currentLanguage === lang ? 'var(--hover-color)' : 'transparent',
             color: 'var(--text-color-normal)',
@@ -123,9 +134,9 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             borderRadius: 100, //needs to be big enough to look like a pill...
             border: `3px solid ${colors.primary}`,
             padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
-            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 14,
             transition: 'all 0.3s ease',
-            boxShadow: isHover && !isDisabled ? '0 4px 4px rgba(0,0,0,0.3)' : 'none',
+            boxShadow: isHover && !isDisabled ? '2px 2px 4px rgba(0,0,0,0.3)' : 'none',
             transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',
         },
 
@@ -226,7 +237,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         footerMainFlexStyle:
         {
             display: 'flex',
-            flexDirection: isMobileScreen ? 'column' : isSmallScreen ? "column" : "row",
+            flexDirection: isMobileScreen ? 'column' : isSmallScreen ? "column" : "column",
             gap: isMobileScreen ? 0 :isSmallScreen ? 0 : 0,
             padding: isMobileScreen ? 0 :isSmallScreen ? 0 : 0,
             justifyContent: 'space-between',
@@ -242,8 +253,10 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             gap: isMobileScreen ? 8 :isSmallScreen ? 12 : 16,
             padding: 0,
             textAlign: 'left',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
+            // justifyContent: 'flex-start',
+            //alignItems: 'flex-start',
+            alignItems: isMobileScreen ? 'center' : isSmallScreen ? "center" : "left",
+
             position: 'relative',
             // top: '50%',
             backgroundColor: 'transparent',
@@ -252,7 +265,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         footerRightFlexStyle:
         {
             display: 'flex',
-            flexDirection: isMobileScreen ? 'column' :isSmallScreen ? 'row' : 'row',
+            flexDirection: isMobileScreen ? 'column' :isSmallScreen ? 'column' : 'row',
             gap: isMobileScreen ? 8 :isSmallScreen ? 12 : 16,
             padding: 0,
             justifyContent: isMobileScreen ? 'center' :isSmallScreen ? 'center' : 'right',
@@ -280,12 +293,42 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         footerTextStyle:
         {
             color: `var(--text-color-normal)`,
-            fontSize: isMobileScreen ? 12 :isSmallScreen ? 14 : 16,
+            fontSize: isMobileScreen ? 10 :isSmallScreen ? 12 : 12,
             fontWeight: 400,
             margin: 0,
             cursor: 'pointer',
-        }
+        },
         
+        // Basic divider style
+        dividerStyle:
+        {
+            height: '1px',
+            backgroundColor: colors.gray6,
+            marginRight: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginLeft: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginTop: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
+            marginBottom: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
+        },
+                
+        dividerDarkStyle:
+        {
+            height: '1px',
+            backgroundColor: colors.gray4,
+            marginRight: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginLeft: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginTop: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
+            marginBottom: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
+        },
+                
+        dashboardDividerStyle:
+        {
+            height: '1px',
+            backgroundColor: colors.gray6,
+            marginRight: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
+            marginLeft: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
+            marginTop: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
+            marginBottom: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
+        }
     };
 };
 
