@@ -96,8 +96,9 @@ function Carousel({ cards }) {
                     padding: isMobileScreen ? '6px 0' : isSmallScreen ? '10px 0' : '10px 0' ,
                     scrollbarWidth: 'none', // Firefox
                     msOverflowStyle: 'none', // IE/Edge
-                    '&::-webkit-scrollbar': { // Chrome/Safari
-                        display: 'none'
+                    // '&::-webkit-scrollbar': { // Chrome/Safari
+                    '&::WebkitSrollbar': { // Chrome/Safari
+                    display: 'none'
                     }
                 }}
             >
