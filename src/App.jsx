@@ -13,7 +13,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from "./utilities/ErrorBoundary";
 import { RequireAuth } from "./utilities/RequireAuth";
-import { TopBarClipboardProvider } from "./utilities/TopBarClipboardcontext";
+// import { TopBarClipboardProvider } from "./utilities/TopBarClipboardcontext";
 import TopNavigationBar from "./components/TopNavigationBar";
 import { routes } from "./routes/routesConfig";
 
@@ -76,7 +76,7 @@ const App = () => {
     <div className="disable-text-selection">
       <BrowserRouter>
         <ThemeProvider>
-          <TopBarClipboardProvider>
+          {/* <TopBarClipboardProvider> */}
             <Authenticator.Provider>
               <ErrorBoundary>
                 <LanguageProvider>
@@ -85,7 +85,7 @@ const App = () => {
                 </LanguageProvider>
               </ErrorBoundary>
             </Authenticator.Provider>
-          </TopBarClipboardProvider>
+          {/* </TopBarClipboardProvider> */}
         </ThemeProvider>
       </BrowserRouter>
     </div>
