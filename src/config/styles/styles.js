@@ -167,7 +167,7 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             // color: colors.light,
             cursor: 'pointer',
             backgroundColor: isDisabled ? colors.gray6 : isHover ? 'var(--card-bg)' : 'var(--card-bg)',
-            borderRadius: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+            borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 6,
             border: `3px solid ${'var(--card-bg)'}`,
             padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
             fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 14,

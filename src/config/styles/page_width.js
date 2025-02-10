@@ -8,6 +8,7 @@ export const virtualFullWidth = {
 
 export const availableWidth = {
     maxWidth: '1440px',  // responsive width
+    // maxWidth: '1440px',  // responsive width
     minWidth: '320px',
     marginInline: 'auto',  // modern CSS for horizontal centering
     padding: '16px',  // prevent content touching edges

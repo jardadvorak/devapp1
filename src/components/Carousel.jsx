@@ -26,7 +26,7 @@ function Carousel({ cards }) {
             });
         }
     };
-
+    
     return (
         <div 
             style={{ position: 'relative' }}
@@ -46,13 +46,13 @@ function Carousel({ cards }) {
                         style={{
                             position: 'absolute',
                             left: 0,
-                            top: '50%',
+                            width: isMobileScreen ? 32 : isSmallScreen ? 36 : 40,
+                            height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40,
+                            top: `calc(50% - ${isMobileScreen ? 16 : isSmallScreen ? 18 : 20}px)`,
                             transform: 'translateY(-50%)',
                             zIndex: 2,
                             ...componentStyles(isMobileScreen, isSmallScreen, hoveredButton === 'left', false).iconButtonStyle,
-                            backgroundColor: 'var(--background-color-2)',
-                            width: '40px',
-                            height: '40px'
+                            backgroundColor: 'var(--background-color-2)'
                         }}
                     >
                         <img 
@@ -68,7 +68,7 @@ function Carousel({ cards }) {
                         style={{
                             position: 'absolute',
                             right: 0,
-                            top: '50%',
+                            top: `calc(50% - ${isMobileScreen ? 16 : isSmallScreen ? 18 : 20}px)`,
                             transform: 'translateY(-50%)',
                             zIndex: 2,
                             ...componentStyles(isMobileScreen, isSmallScreen, hoveredButton === 'right', false).iconButtonStyle,
@@ -92,8 +92,8 @@ function Carousel({ cards }) {
                 style={{ 
                     display: 'flex',
                     overflowX: 'auto',
-                    gap: '20px',
-                    padding: '10px 0',
+                    gap: isMobileScreen ? 10 : isSmallScreen ? 12 : 12 ,
+                    padding: isMobileScreen ? '6px 0' : isSmallScreen ? '10px 0' : '10px 0' ,
                     scrollbarWidth: 'none', // Firefox
                     msOverflowStyle: 'none', // IE/Edge
                     '&::-webkit-scrollbar': { // Chrome/Safari
@@ -105,6 +105,15 @@ function Carousel({ cards }) {
                     const isHovered = hoveredCardId === card.id;
                     const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, false);
 
+                    // Calculate number of cards per row
+                    const cardsPerRow = isMobileScreen ? 2 : isSmallScreen ? 3 : 4;
+                    // Calculate gap space total per row (gaps between cards)
+                    const gapSpace = (cardsPerRow - 1) * (isMobileScreen ? 12 : isSmallScreen ? 14 : 16);
+                    // Next card
+                    const nextCard = cards.length <= cardsPerRow ? 0 : (isMobileScreen ? 24 : isSmallScreen ? 32 : 32)
+                    // Calculate card width as percentage to fill row evenly
+                    const cardWidth = `calc((100% - ${nextCard}px - ${gapSpace}px) / ${cardsPerRow})`;
+                
                     return (
                         <div
                             key={card.id}
@@ -112,9 +121,9 @@ function Carousel({ cards }) {
                             onMouseLeave={() => setHoveredCardId(null)}
                             style={{
                                 ...cardStyles.normalCardStyles,
-                                width: '300px',
+                                width: cardWidth,
+                                padding: isMobileScreen ? '10px' : isSmallScreen ? '12px' : '12px',
                                 flexShrink: 0,
-                                padding: '20px',
                                 cursor: 'pointer'
                             }}
                         >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { componentStyles } from '../config/styles/styles';
 import { useWindowSize } from '../utilities/UseWindowSize';
-import { screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
+import { availableWidth, screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
 
 function CardArray({ cards }) {
     const [hoveredCardId, setHoveredCardId] = useState(null);
@@ -13,10 +13,17 @@ function CardArray({ cards }) {
                          windowSize.width < screenWidthSettings.smallScreenMaxWidth;
 
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: isMobileScreen ? 10 : isSmallScreen ? 12 : 12 }}>
             {cards.map((card) => {
                 const isHovered = hoveredCardId === card.id;
                 const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, false);
+
+                // Calculate number of cards per row
+                const cardsPerRow = isMobileScreen ? 2 : isSmallScreen ? 3 : 4;
+                // Calculate gap space total per row (gaps between cards)
+                const gapSpace = (cardsPerRow - 1) * (isMobileScreen ? 12 : isSmallScreen ? 14 : 16);
+                // Calculate card width as percentage to fill row evenly
+                const cardWidth = `calc((100% - ${gapSpace}px) / ${cardsPerRow})`;
 
                 return (
                     <div
@@ -25,10 +32,10 @@ function CardArray({ cards }) {
                         onMouseLeave={() => setHoveredCardId(null)}
                         style={{
                             ...cardStyles.normalCardStyles,
-                            width : (virtualFullWidth - 40) / 3,
-                            minWidth: '240px',
-                            maxWidth: '320px',
-                            padding: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
+                            width : cardWidth,
+                            // minWidth: isMobileScreen ? 240 : isSmallScreen ? 260 : 280,
+                            // maxWidth: isMobileScreen ? 320 : isSmallScreen ? 340 : 360,
+                            padding: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
                             cursor: 'pointer'
                         }}
                     >

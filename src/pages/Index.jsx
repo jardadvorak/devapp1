@@ -61,7 +61,7 @@ const Index = () => {
 
         <main style={{ flexGrow: 1 }}>
                 <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
-                <div style={{...availableWidth, height: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
+                <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
                     <h1 className="text-3xl mb-8">{getText('HEADINGS', 'WELCOME')}</h1>
                     
