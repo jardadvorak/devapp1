@@ -159,6 +159,23 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',            
         },
 
+        // Card style basic
+        normalCardStyles:
+        {            
+            ...typography.button,
+            textAlign: 'center',
+            // color: colors.light,
+            cursor: 'pointer',
+            backgroundColor: isDisabled ? colors.gray6 : isHover ? 'var(--card-bg)' : 'var(--card-bg)',
+            borderRadius: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+            border: `3px solid ${'var(--card-bg)'}`,
+            padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 14,
+            transition: 'all 0.3s ease',
+            boxShadow: isHover && !isDisabled ? '2px 2px 4px rgba(0,0,0,0.3)' : 'none',
+            transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',
+        },
+
         // Div for icon sizes to manage reponsivenes
         iconDivSizeStyle:
         {            

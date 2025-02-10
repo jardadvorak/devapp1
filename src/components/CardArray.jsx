@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { componentStyles } from '../config/styles/styles';
 import { useWindowSize } from '../utilities/UseWindowSize';
-import { screenWidthSettings } from '../config/styles/page_width';
+import { screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
 
 function CardArray({ cards }) {
     const [hoveredCardId, setHoveredCardId] = useState(null);
@@ -24,9 +24,11 @@ function CardArray({ cards }) {
                         onMouseEnter={() => setHoveredCardId(card.id)}
                         onMouseLeave={() => setHoveredCardId(null)}
                         style={{
-                            ...cardStyles.normalButtonStyles,
-                            width: '300px',
-                            padding: '20px',
+                            ...cardStyles.normalCardStyles,
+                            width : (virtualFullWidth - 40) / 3,
+                            minWidth: '240px',
+                            maxWidth: '320px',
+                            padding: isMobileScreen ? 12 : isSmallScreen ? 14 : 16,
                             cursor: 'pointer'
                         }}
                     >

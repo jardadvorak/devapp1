@@ -111,7 +111,7 @@ function Carousel({ cards }) {
                             onMouseEnter={() => setHoveredCardId(card.id)}
                             onMouseLeave={() => setHoveredCardId(null)}
                             style={{
-                                ...cardStyles.normalButtonStyles,
+                                ...cardStyles.normalCardStyles,
                                 width: '300px',
                                 flexShrink: 0,
                                 padding: '20px',
