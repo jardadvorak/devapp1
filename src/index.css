@@ -156,6 +156,7 @@ button {
 
 .scale-button:hover {
   transform: scale(1.1);
+}
 
 .card {
   padding: 2em;
