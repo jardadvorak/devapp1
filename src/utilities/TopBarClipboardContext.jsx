@@ -15,7 +15,7 @@ const TopBarClipboardContext = createContext();
 export function useTopBarClipboardContext() {
     // Return the current context value
     // If used outside of a Provider, this will return undefined
-    return useContext(TopBarCLipboardContext);
+    return useContext(TopBarClipboardContext);
 }
 
 // Provider component that will wrap parts of the app that need access to this context
