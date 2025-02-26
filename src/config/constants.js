@@ -79,6 +79,16 @@ export const UI_TEXT = {
             'Create account': 'Create account',
             'Have an account?': 'Have an account?',
             'Sign in': 'Sign in'
+        },
+        VISIONMISSION: {
+            TITLE: 'Vision & Mission',
+            VISION_TITLE: 'Our vision:',
+            VISION_STATEMENT: 'Anyone learning anything, anytime, anywhere through experience',
+            VISION_DESCRIPTION: 'What you learn and experience is something no one can take from you. We aim at anyone being able to learn anything, anytime, anywhere through experience and broaden one\'s horizons to navigate successfully through today\'s world.',
+            MISSION_TITLE: 'Our Mission:',
+            MISSION_STATEMENT: 'Allow anyone to create, share, access and consume high-quality learning content without boundaries or limitations',
+            MISSION_DESCRIPTION_1: 'Through our learning platform, we are helping anyone in creating experience from memory through practice. This happens thanks to generating large number of variations to enrich context and allow for training from repetitions.',
+            MISSION_DESCRIPTION_2: 'Our learning platform shall be open to any learner or content creator and should promote and facilitate co-creation, sharing and utilization of content as a part of life-long training and experience building.'
         }
     },
     // German translations
@@ -132,6 +142,16 @@ export const UI_TEXT = {
             'Create account': 'Konto erstellen',
             'Have an account?': 'Haben Sie ein Konto?',
             'Sign in': 'Anmelden'
+        },
+        VISIONMISSION: {
+            TITLE: 'Vision & Mission',
+            VISION_TITLE: 'Unsere Vision:',
+            VISION_STATEMENT: 'Jeder lernt alles, jederzeit und überall durch Erfahrung',
+            VISION_DESCRIPTION: 'Was Sie lernen und erfahren, ist etwas, das Ihnen niemand nehmen kann. Wir möchten, dass jeder in der Lage ist, alles, jederzeit und überall durch Erfahrung zu lernen und seinen Horizont zu erweitern, um sich in der heutigen Welt erfolgreich zurechtzufinden.',
+            MISSION_TITLE: 'Unsere Mission:',
+            MISSION_STATEMENT: 'Jedem ermöglichen, hochwertige Lerninhalte ohne Grenzen oder Einschränkungen zu erstellen, zu teilen, darauf zuzugreifen und zu nutzen',
+            MISSION_DESCRIPTION_1: 'Durch unsere Lernplattform helfen wir jedem dabei, aus dem Gedächtnis durch Übung Erfahrung zu schaffen. Dies geschieht durch die Generierung einer großen Anzahl von Variationen, um den Kontext zu bereichern und Training durch Wiederholungen zu ermöglichen.',
+            MISSION_DESCRIPTION_2: 'Unsere Lernplattform soll für jeden Lernenden oder Inhaltsersteller offen sein und die gemeinsame Erstellung, den Austausch und die Nutzung von Inhalten als Teil des lebenslangen Trainings und Erfahrungsaufbaus fördern und erleichtern.'
         }
     },
     // Czech translations
@@ -185,6 +205,16 @@ export const UI_TEXT = {
             'Create account': 'Vytvořit účet',
             'Have an account?': 'Máte účet?',
             'Sign in': 'Přihlásit se'
+        },
+        VISIONMISSION: {
+            TITLE: 'Vize & Mise',
+            VISION_TITLE: 'Naše vize:',
+            VISION_STATEMENT: 'Kdokoliv se učí cokoliv, kdykoliv a kdekoliv prostřednictvím zkušeností',
+            VISION_DESCRIPTION: 'To, co se naučíte a zažijete, je něco, co vám nikdo nemůže vzít. Naším cílem je, aby se kdokoliv mohl učit cokoliv, kdykoliv a kdekoliv prostřednictvím zkušeností a rozšiřovat své obzory pro úspěšnou orientaci v dnešním světě.',
+            MISSION_TITLE: 'Naše mise:',
+            MISSION_STATEMENT: 'Umožnit komukoliv vytvářet, sdílet, přistupovat a využívat kvalitní vzdělávací obsah bez hranic či omezení',
+            MISSION_DESCRIPTION_1: 'Prostřednictvím naší vzdělávací platformy pomáháme každému vytvářet zkušenosti z paměti pomocí praxe. To se děje díky generování velkého množství variací pro obohacení kontextu a umožnění tréninku pomocí opakování.',
+            MISSION_DESCRIPTION_2: 'Naše vzdělávací platforma by měla být otevřená všem studentům i tvůrcům obsahu a měla by podporovat a usnadňovat společnou tvorbu, sdílení a využívání obsahu jako součást celoživotního tréninku a budování zkušeností.'
         }
     }
 };

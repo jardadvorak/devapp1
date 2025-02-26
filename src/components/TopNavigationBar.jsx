@@ -52,10 +52,13 @@ function TopNavigationBar({ children }) {
                     
                     {/* Logo section */}
                     <div style={styles.navbarFlexStyles}>
-                        <div style={{
-                            height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40,
-                            cursor: 'pointer'
-                        }}>
+                        <div 
+                            style={{height: isMobileScreen ? 32 : isSmallScreen ? 36 : 40, cursor: 'pointer'}}
+                            onClick={() => {
+                                navigate('/');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                        >
                             <img 
                                 src={theme === themes.light ? logoImages.logo_label_yellow : logoImages.logo_label_yellow_inverted} 
                                 style={{height: '100%', objectFit: 'contain'}}
@@ -68,9 +71,35 @@ function TopNavigationBar({ children }) {
                     <div style={{...styles.navbarFlexStyles, flex: 1, justifyContent: 'center', gap: '3vw'}}>
                         {!isMobileScreen && !isSmallScreen && (
                             <>
-                                <span style={styles.typography.body1}>Mission</span>
-                                <span style={styles.typography.body1}>Content</span>
-                                <span style={styles.typography.body1}>Pricing</span>
+                                <span 
+                                    style={{...styles.typography.body2, fontWeight: '500', cursor: 'pointer'}}
+                                    onClick={() => {
+                                        navigate('/visionmission');
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                >
+                                    Mission
+                                </span>
+                                
+                                <span 
+                                    style={{...styles.typography.body2, fontWeight: '500', cursor: 'pointer'}}
+                                    onClick={() => {
+                                        navigate('/content');
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                >
+                                    Content
+                                </span>
+                                
+                                <span 
+                                    style={{...styles.typography.body2, fontWeight: '500', cursor: 'pointer'}}
+                                    onClick={() => {
+                                        navigate('/pricing');
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                >
+                                    Pricing
+                                </span>
                             </>
                         )}
                     </div>

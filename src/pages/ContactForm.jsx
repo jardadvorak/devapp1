@@ -1,5 +1,5 @@
-// src/pages/VisionMission.jsx
-// External VisionMission page
+// src/pages/ContatForm.jsx
+// External ContatForm page
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ import { componentStyles } from '../config/styles/styles';
 import { logoImages } from '../img/logos'
 import { images } from '../img/images'
 
-const VisionMission = () => {
+const ContatForm = () => {
     // Get language context
     const { getText } = useLanguage();
 
@@ -65,7 +65,11 @@ const VisionMission = () => {
             <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
-                    <div style={styles.mainDivStyle}>
+                    <div>
+                        Contact Form
+                    </div>
+
+                    {/* <div style={styles.mainDivStyle}>
                             <div style={styles.simpleBarStyle}>
 
                                 <div style={{ ...styles.simpleBarStyle, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: "100%" }}>
@@ -151,7 +155,7 @@ const VisionMission = () => {
                                 </div>
 
                             </div>
-                        </div>
+                        </div> */}
 
                 </div>
             </div>
@@ -163,4 +167,4 @@ const VisionMission = () => {
     );
 };
 
-export default VisionMission;
+export default ContatForm;

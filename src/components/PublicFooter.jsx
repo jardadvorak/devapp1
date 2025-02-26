@@ -78,15 +78,36 @@ function PublicFooter() {
                     <div style={styles.footerRightFlexStyle}>
                         <div style={styles.footerRightFlexStyle}>
    
-                            <div style={styles.footerTextStyle}>
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/contactform');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}    
+                            >
                                 {getText('FOOTER', 'EMAIL')}
                             </div>
-                            <div style={styles.footerTextStyle}>
+
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/help');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}   
+                            >
                                 {getText('FOOTER', 'HELP')}
                             </div>
-                            <div style={styles.footerTextStyle}>
+
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/FAQ');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}   
+                            >
                                 {getText('FOOTER', 'FAQS')}
                             </div>
+
                             <div 
                                 style={styles.footerTextStyle}
                                 onClick={() => {
@@ -96,6 +117,7 @@ function PublicFooter() {
                             >
                                 {getText('FOOTER', 'TERMS')}
                             </div>
+
                             <div 
                                 style={styles.footerTextStyle}
                                 onClick={() => {
