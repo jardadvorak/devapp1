@@ -345,7 +345,72 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             marginLeft: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
             marginTop: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
             marginBottom: isMobileScreen ? 10 : isSmallScreen ? 14 : 18,
+        },
+
+        htmlH1style:
+        {
+            // same as captionLabelStyle
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 18,
+            fontWeight: 700,
+            textAlign: 'center',
+            backgroundColor: 'var(--card-bg)',
+            padding: isMobileScreen ? 12 : isSmallScreen ? 14 : 18,
+            borderRadius: isMobileScreen ? 12 : isSmallScreen ? 6 : 9,
+            marginTop: isMobileScreen ? 12 : isSmallScreen ? 14 : 18,
+            marginBottom: isMobileScreen ? 12 : isSmallScreen ? 14 : 18,
+        },
+
+        htmlH2style:
+        {
+            // ...this.simpleBarStyle,
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 18,
+            fontWeight: 700,
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            marginTop: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            marginBottom: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+        },
+
+        htmlH3style:
+        {
+            // ...this.simpleBarStyle,
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 13 : 16,
+            fontWeight: 700,
+            fontStyle: 'italic',
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isSmallScreen ? 4 : 6,
+            marginTop: isSmallScreen ? 4 : 6,
+            marginBottom: isSmallScreen ? 4 : 6,
+        },
+
+        htmlPstyle:
+        {
+            fontSize: isMobileScreen ? 12 : isSmallScreen ? 12 : 14,
+            fontWeight: 400,
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            margin: '0',
+        },
+
+        htmlULstyle:
+        {
+            fontSize: isMobileScreen ? 11 : isSmallScreen ? 12 : 14,
+            fontWeight: 400,
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            margin: '0',
+        },
+
+        htmlLIstyle:
+        {
+            fontSize: isMobileScreen ? 11 : isSmallScreen ? 12 : 14,
+            fontWeight: 400,
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            margin: '0',
+            listStylePosition: 'inside'
         }
+
     };
 };
 

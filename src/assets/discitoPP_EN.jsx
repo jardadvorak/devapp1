@@ -1,24 +1,34 @@
 import React from 'react'
-//import './App.css'; // Assuming you might want to import some CSS for general styles
-
-// Colors, styles etc.
-import { colors } from 'components/styles/colors';
-import { paragraphStyles } from 'components/styles/paragraph_styles';
-import { componentStyles } from 'components/styles/component_styles';
-import { fontStyles } from 'components/styles/fonts/fonts';
-
-import { useWindowSize } from 'components/_common/responsiveness/useWindowSize';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
+import { useWindowSize } from '../utilities/UseWindowSize';
+import { componentStyles } from '../config/styles/styles';
+import { screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
 
 const DiscitoPP_en = () => {
 
-    //Responsiveness
-    const windowSize = useWindowSize();
-    const isSmallScreen = windowSize.width <= 768;
+    // Hook for programmatic navigation
+    const navigate = useNavigate();
 
-    //Styles
-    const styles = componentStyles(isSmallScreen);
-    const paragraphs = paragraphStyles(isSmallScreen);
-    //const fonts = fontStyles(isSmallScreen);
+    // Get language context
+    const { currentLanguage, getText } = useLanguage();
+    const { theme } = useTheme();
+        
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
+    
+    // Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
+    
+    //Handle page width
+    const virtualFullWidthLocal = {
+        ...virtualFullWidth,
+        backgroundColor: `var(--footer-bg)`
+    }
 
     return (
         <div>

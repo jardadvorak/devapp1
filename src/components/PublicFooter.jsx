@@ -87,10 +87,22 @@ function PublicFooter() {
                             <div style={styles.footerTextStyle}>
                                 {getText('FOOTER', 'FAQS')}
                             </div>
-                            <div style={styles.footerTextStyle}>
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/termsconditions');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                            >
                                 {getText('FOOTER', 'TERMS')}
                             </div>
-                            <div style={styles.footerTextStyle}>
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/privacypolicy');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                            >
                                 {getText('FOOTER', 'PRIVACY')}
                             </div>
 
