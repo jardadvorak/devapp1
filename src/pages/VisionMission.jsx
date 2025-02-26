@@ -1,11 +1,11 @@
-// src/pages/Index.jsx
-// External landing page accessible to all users
+// src/pages/VisionMission.jsx
+// External VisionMission page
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import PublicBanner from '../components/PublicBanner';
-import PublicFooter from '../components/PublicFooter';
+import PublicBannerLean from '../components/PublicBanner';
+import PublicFooterLean from '../components/PublicFooter';
 import CardArray from '../components/CardArray';
 import Carousel from '../components/Carousel';
 
@@ -19,7 +19,7 @@ import { colors } from '../config/styles/colors';
 import { componentStyles } from '../config/styles/styles';
 import { logoImages } from '../img/logos'
 
-const Index = () => {
+const VisionMission = () => {
     // Get language context
     const { getText } = useLanguage();
 
@@ -30,14 +30,14 @@ const Index = () => {
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
 
     // Create cards data
-    const cards = [
-        { id: 1, title: 'Card 1', description: 'Description for card 1' },
-        { id: 2, title: 'Card 2', description: 'Description for card 2' },
-        { id: 3, title: 'Card 3', description: 'Description for card 3' },
-        { id: 4, title: 'Card 4', description: 'Description for card 4' },
-        { id: 5, title: 'Card 5', description: 'Description for card 5' },
-        { id: 6, title: 'Card 6', description: 'Description for card 6' },
-    ];
+    // const cards = [
+    //     { id: 1, title: 'Card 1', description: 'Description for card 1' },
+    //     { id: 2, title: 'Card 2', description: 'Description for card 2' },
+    //     { id: 3, title: 'Card 3', description: 'Description for card 3' },
+    //     { id: 4, title: 'Card 4', description: 'Description for card 4' },
+    //     { id: 5, title: 'Card 5', description: 'Description for card 5' },
+    //     { id: 6, title: 'Card 6', description: 'Description for card 6' },
+    // ];
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -58,30 +58,24 @@ const Index = () => {
     return (
         <div style={{minHeight: `calc(100vh - ${isMobileScreen ? 56 : isSmallScreen ? 64 : 72}px)`, display: 'flex', flexDirection: 'column'}}>
         
-        <PublicBanner />
+        <PublicBannerLean />
 
         <main style={{ flexGrow: 1 }}>
                 <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
-                    <Link to="/visionmission">
+                    <Link to="/">
                         <h1 className="text-3xl mb-8">{getText('HEADINGS', 'WELCOME')}</h1>
                     </Link>
-                    
-                    <div style={{ marginBottom: '40px' }}>
-                        <Carousel cards={cards} />
-                    </div>
-                    
-                    <CardArray cards={cards} />
 
                 </div>
             </div>
         </main>
 
-        <PublicFooter />
+        <PublicFooterLean />
 
         </div>
     );
 };
 
-export default Index;
+export default VisionMission;

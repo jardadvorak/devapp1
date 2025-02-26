@@ -38,7 +38,7 @@ export const UI_TEXT = {
         FOOTER: {
             CALL_TO_ACTION: 'Ready to learn?',
             HIGHLIGHTED_WORD: 'learn',
-            EMAIL: 'info@discito.cz',
+            EMAIL: 'Contact us',
             HELP: 'Help',
             FAQS: 'FAQs',
             TERMS: 'Terms of use',
@@ -91,7 +91,7 @@ export const UI_TEXT = {
         FOOTER: {
             CALL_TO_ACTION: 'Bereit zum Lernen?',
             HIGHLIGHTED_WORD: 'Lernen',
-            EMAIL: 'info@discito.cz',
+            EMAIL: 'Kontaktiere uns',
             HELP: 'Hilfe',
             FAQS: 'FAQs',
             TERMS: 'Nutzungsbedingungen',
@@ -144,7 +144,7 @@ export const UI_TEXT = {
         FOOTER: {
             CALL_TO_ACTION: 'Připraveni se učit?',
             HIGHLIGHTED_WORD: 'učit',
-            EMAIL: 'info@discito.cz',
+            EMAIL: 'Kontaktujte nás',
             HELP: 'Nápověda',
             FAQS: 'Časté dotazy',
             TERMS: 'Podmínky použití',
