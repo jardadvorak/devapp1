@@ -1,8 +1,8 @@
 // src/pages/Index.jsx
 // External landing page accessible to all users
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import PublicBanner from '../components/PublicBanner';
 import PublicFooter from '../components/PublicFooter';
@@ -24,6 +24,7 @@ import { logoImages } from '../img/logos'
 import { images } from '../img/images';
 
 const Index = () => {
+    const navigate = useNavigate();
     // Get language context
     const { getText } = useLanguage();
 
@@ -42,6 +43,9 @@ const Index = () => {
         { id: 5, title: 'Card 5', description: 'Description for card 5' },
         { id: 6, title: 'Card 6', description: 'Description for card 6' },
     ];
+
+    // State for hover effects
+    const [hoveredElement, setHoveredElement] = useState(null);
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -100,10 +104,9 @@ const Index = () => {
                     </div>
 
                     <div>
-                        
                         <div 
                             style={styles.htmlPstyle}
-                            >
+                        >
                             Explore high-quality educational content and learn anything, anytime, anywhere.
                         </div>
                         <div
@@ -125,11 +128,13 @@ const Index = () => {
                         >
                         <button
                             style={{
-                              ...styles.normalButtonStyles,
+                              ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'main-login', false).normalButtonStyles,
                               marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
                               marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
                             }}
-                              onClick={() => {
+                            onMouseEnter={() => setHoveredElement('main-login')}
+                            onMouseLeave={() => setHoveredElement(null)}
+                            onClick={() => {
                                 navigate('/login');
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
@@ -143,192 +148,159 @@ const Index = () => {
                     <div style={styles.dividerStyle}></div>
 
                     <div style={styles.simpleBarStyle}>
-
                     {/* First set */}
                     <div 
                       style={{ 
                         display: 'flex', 
-                        flexDirection: isMobileScreen ? 'column' : isSmallScreen ? 'column' : 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: colors.white }}>
-
+                        flexDirection: isMobileScreen ? 'column' : 'row',
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        backgroundColor: 'var(--background-color-1)'
+                      }}
+                    >
+                      {/* Image Section */}
                       <div style={{
-                        backgroundColor: colors.white,
                         height: 'auto',
-                        flex: isSmallScreen ? '1 0 100%' : '1 0 40%', // 40% of the space on larger screens
-                        width: isSmallScreen ? '100%' : 'auto', // Ensure full width on small screens
-                        // position: 'relative',
-                        }}
-                      >
-                    
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 1
+                      }}>
                         <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
                           <img
                             src={isSmallScreen ? images.Creativity017 : images.Vase007}
-                            alt="discito_image_003"
+                            alt="Empower_your_learning_journey"
                             style={{
-                                maxWidth: '100%', // Makes sure the image is not bigger than its container
-                                height: 'auto', // Keeps the aspect ratio of the image
-                                alignItems: 'center',
-                                borderRadius: isSmallScreen ? 6 : 9,
-                                // Adjust as necessary to control the size of the image relative to the screen width
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: '0 auto',
+                              display: 'block'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 2 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            Empower Your&nbsp;Learning Journey: Anytime,&nbsp;Anywhere
+                          </div>
+                          <div style={styles.htmlPstyle}>
+                            Join a community dedicated to creating, sharing, and experiencing high-quality learning without limits.
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'start-learning', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('start-learning')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/login');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              Start learning&nbsp;now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={styles.dividerStyle}></div>
+
+                    {/* Second set */}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: isMobileScreen ? 'column' : 'row',
+                      justifyContent: 'center', 
+                      alignItems: 'center',
+                      backgroundColor: 'var(--background-color-1)'
+                    }}>
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 1 : 1
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            Revolutionizing&nbsp;Learning for&nbsp;Everyone
+                          </div>
+                          <div>
+                            <div style={styles.htmlPstyle}>Our vision and mission is to dismantle the barriers to education.</div>
+                            <div style={styles.htmlPstyle}>With our innovative platform, we want bring high-quality learning content to your fingertips.</div>
+                            <div style={styles.htmlPstyle}>Promoting practical experience and memory-making, our platform is more than just a learning tool.</div>
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'find-out-more', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('find-out-more')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/visionmission');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              Find&nbsp;out more
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Image Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <img
+                            src={isSmallScreen ? images.Creativity017 : images.Vase007}
+                            alt="Vision and mission"
+                            style={{
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: '0 auto',
+                              display: 'block',
+                              borderRadius: isSmallScreen ? 6 : 9
                             }}
                           />
                         </div>
                       </div>
                     </div>
-
-                    <div 
-                        style={{
-                            backgroundColor: colors.white,
-                            height: 'auto',
-                            flex: isSmallScreen ? '1 0 100%' : '1 0 60%', // 60% of the space on larger screens
-                            width: isSmallScreen ? '100%' : 'auto', // Ensure full width on small screens
-                            // position: 'relative',
-                        }}
-                    >
-
-                    </div>
-                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
-                    
-                        <div 
-                            style={styles.htmlH2style}
-                        >
-                            Empower Your&nbsp;Learning Journey: Anytime,&nbsp;Anywhere
-                        </div>
-
-                        <div style={styles.htmlPstyle}>
-                            <div style={{marginBottom: 10}}>
-                                Join a community dedicated to creating, sharing, and experiencing high-quality learning without limits.
-                            </div>
-                        
-                            <div>
-                                <button
-                                  style={{
-                                    ...styles.normalButtonStyles,
-                                    marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
-                                    marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
-                                  }}  
-                                  onClick={() => {
-                                    navigate('/login');
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                  }}
-                                >
-                                  Start learning&nbsp;now
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
+                {/* End of second set */}
 
                     <div style={styles.dividerStyle}></div>
 
-                    {/* <div style={styles.simpleBarStyle}></div> */}
-
-                {/* Second set */}
-                {/* <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: colors.white }}>
-
-                  <div style={{
-                    display: isSmallScreen ? 'none' : 'flex', // Hide on small screens, show otherwise
-                    backgroundColor: colors.white,
-                    height: 'auto',
-                    flex: isSmallScreen ? '1 0 100%' : '1 0 60%', // 40% of the space on larger screens
-                    width: isSmallScreen ? '100%' : 'auto', // Ensure full width on small screens
-                  }}>
-                    <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
-                      <div style={{
-                        ...styles.simpleTextStyle,
-                        fontSize: isSmallScreen ? 18 : 24,
-                        fontWeight: 700,
-                        margin: 0,
-                        padding: 0,
-                        marginBotton: 10,
-                      }}>
-                        Revolutionizing&nbsp;Learning for&nbsp;Everyone
-                      </div>
-
-                      <div style={{ ...styles.simpleBarStyle, fontWeight: '400', marginTop: 10, marginbottom: 10, padding: 0}}>
-                        <div style={{ marginBottom: 10 }}>Our vision and mission is to dismantle the barriers to education.</div>
-                        <div style={{ marginBottom: 10 }}>With our innovative platform, we want bring high-quality learning content to your fingertips.</div>
-                        <div style={{ marginBottom: 10 }}>Promoting practical experience and memory-making, our platform is more than just a learning tool.</div>
-                      </div>
-
-                      <div>
-                        <button
-                          style={styles.buttonStyleCore}
-                          onClick={
-                            () => {
-                              navigate('/vision');
-                            }
-                          }
-                        >
-                          Find&nbsp;out more
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{
-                    backgroundColor: colors.white,
-                    height: 'auto',
-                    flex: isSmallScreen ? '1 0 100%' : '1 0 40%', // 40% of the space on larger screens
-                    width: isSmallScreen ? '100%' : 'auto', // Ensure full width on small screens
-                    // position: 'relative',
-                  }}>
-                    <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
-                      <img
-                        src={isSmallScreen ? staticImages.discito_image_002_small : staticImages.discito_image_002_large}
-                        alt="discito_image_001"
-                        style={{
-                          maxWidth: '100%', // Makes sure the image is not bigger than its container
-                          height: 'auto', // Keeps the aspect ratio of the image
-                          alignItems: 'center',
-                          borderRadius: isSmallScreen ? 6 : 9,
-                          // Adjust as necessary to control the size of the image relative to the screen width
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div style={{
-                    display: isSmallScreen ? 'flex' : 'none', // Show on small screens, hide otherwise
-                    backgroundColor: colors.white,
-                    height: 'auto',
-                    flex: isSmallScreen ? '1 0 100%' : '1 0 50%', // 40% of the space on larger screens
-                    width: isSmallScreen ? '100%' : 'auto', // Ensure full width on small screens
-                    // position: 'relative',
-                  }}>
-                    <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
-                      <div style={{
-                        ...styles.simpleTextStyle,
-                        fontSize: isSmallScreen ? 18 : 24,
-                        fontWeight: 700,
-                        margin: 0,
-                        padding: 0,
-                        marginBotton: 10,
-                      }}>
-                        Revolutionizing&nbsp;Learning for&nbsp;Everyone
-                      </div>
-
-                      <div style={{ ...styles.simpleBarStyle, fontWeight: '400', marginTop: 10, marginbottom: 0, padding: 0, marginLeft: 20, marginRight: 20 }}>
-                        <div style={{ marginBottom: 10 }}>Our vision and mission is to dismantle the barriers to education.</div>
-                        <div style={{ marginBottom: 10 }}>With our innovative platform, we want bring high-quality learning content to your fingertips.</div>
-                        <div style={{ marginBottom: 10 }}>Promoting practical experience and memory-making, our platform is more than just a learning tool.</div>
-                      </div>
-
-                      <div>
-                        <button
-                          style={styles.buttonStyleCore}
-                          onClick={
-                            () => {
-                              navigate('/vision');
-                            }
-                          }
-                        >
-                          Find out more
-                        </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-
+                    {/* Do not remove these notes */}
                     {/* Add two more elements */}
                     {/* Showcase / Content */}
                     {/* Same component types as above */}

@@ -136,8 +136,8 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             padding: isMobileScreen ? '3px 12px' : isSmallScreen ? '3px 14px' : '4px 16px',
             fontSize: isMobileScreen ? 12 : isSmallScreen ? 14 : 14,
             transition: 'all 0.3s ease',
-            boxShadow: isHover && !isDisabled ? '2px 2px 4px rgba(0,0,0,0.3)' : 'none',
-            transform: isHover && !isDisabled ? 'scale(1.04)' : 'scale(1)',
+            boxShadow: isHover && !isDisabled ? '2px 2px 2px rgba(0,0,0,0.3)' : 'none',
+            transform: isHover && !isDisabled ? 'scale(1.02)' : 'scale(1)',
         },
 
         // Icon button style
@@ -321,10 +321,10 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
         {
             height: '1px',
             backgroundColor: colors.gray6,
-            marginRight: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
-            marginLeft: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
-            marginTop: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
-            marginBottom: isMobileScreen ? 8 : isSmallScreen ? 10 : 14,
+            // marginRight: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            // marginLeft: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginTop: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
+            marginBottom: isMobileScreen ? 14 : isSmallScreen ? 16 : 18,
         },
                 
         dividerDarkStyle:
