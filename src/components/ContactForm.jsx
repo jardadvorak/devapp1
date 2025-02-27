@@ -30,7 +30,7 @@ function ContactForm() {
         // Top navigation
         (isMobileScreen ? 56 : isSmallScreen ? 64 : 72) +
         // Banner
-        (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
+        // (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
         // Footer
         (isMobileScreen ? 76 : isSmallScreen ? 82 : 80)
     }px)`;
@@ -58,7 +58,7 @@ function ContactForm() {
             </div>  
 
             <div
-                style={{...styles.htmlH2style, color: colors.amber, textAlign: 'center'}}
+                style={{...styles.htmlH2style, color: colors.amber, textAlign: 'center', marginTop: 0, padding: 0}}
                 htmlFor="name"
             >
                 Get in touch!
