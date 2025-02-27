@@ -168,6 +168,27 @@ button {
   color: #888;
 }
 
+/* Contact form input styles */
+.contact-input:focus {
+  border: 1px solid var(--navbar-bg);
+  outline: none;
+}
+
+/* Override autocomplete background color */
+.contact-input:-webkit-autofill,
+.contact-input:-webkit-autofill:hover,
+.contact-input:-webkit-autofill:focus,
+.contact-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--background-color-2) inset !important;
+  -webkit-text-fill-color: var(--text-color-normal) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.contact-textarea:focus {
+  border: 1px solid var(--navbar-bg);
+  outline: none;
+}
+
 .box:nth-child(4n + 1) {
   grid-column: 1;
 }

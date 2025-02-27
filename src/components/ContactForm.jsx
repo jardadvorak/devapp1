@@ -51,14 +51,14 @@ function ContactForm() {
             </div>  
 
             <div
-                style={styles.htmlH2style}
+                style={{...styles.htmlH2style, textAlign: 'center'}}
                 htmlFor="name"
             >
                 Do you have a question? Can we help you?
             </div>  
 
             <div
-                style={{...styles.htmlH2style, color: colors.amber}}
+                style={{...styles.htmlH2style, color: colors.amber, textAlign: 'center'}}
                 htmlFor="name"
             >
                 Get in touch!
@@ -77,69 +77,165 @@ function ContactForm() {
                     marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
                     }}
             >
-                <label
-                    style={styles.htmlPstyle}
-                    htmlFor="name"
-                >
-                    Your name*
-                </label>    
+                <div style={{
+                    display: 'flex',
+                    flexDirection: isMobileScreen ? 'column' : isSmallScreen ? 'row' : 'row',
+                    alignItems: isMobileScreen ? 'center' : 'flex-start',
+                    justifyContent: 'center',
+                    width: '100%',
+                    gap: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                }}>
+                    <label
+                        style={{
+                            ...styles.htmlPstyle,
+                            width: isMobileScreen ? 100 : isSmallScreen ? 120 : 140,
+                            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'right' : 'right',
+                            paddingRight: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                        }}
+                        htmlFor="name"
+                    >
+                        Your name*
+                    </label>    
+                    <input
+                        id="name"
+                        type="text" 
+                        name="name"
+                        className="contact-input"
+                        style={{
+                            ...styles.htmlPstyle,
+                            textAlign: 'left',
+                            borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
+                            width: isMobileScreen ? 300 : isSmallScreen ? 300 : 400,
+                            padding: isMobileScreen ? '3px 6px' : isSmallScreen ? '4px 8px' : '5px 10px',
+                            border: 'none',
+                            backgroundColor: 'var(--background-color-2)'
+                        }}
+                    />
+                    <ValidationError 
+                        prefix="Name" 
+                        field="name"
+                        errors={state.errors}
+                    />
+                </div>
 
-                <label 
-                    style={styles.htmlPstyle}
-                    htmlFor="email"
-                >
-                    Email address*
-                </label>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: isMobileScreen ? 'column' : isSmallScreen ? 'row' : 'row',
+                    alignItems: isMobileScreen ? 'center' : 'flex-start',
+                    justifyContent: 'center',
+                    width: '100%',
+                    marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                    gap: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                }}>
+                    <label 
+                        style={{
+                            ...styles.htmlPstyle,
+                            width: isMobileScreen ? 100 : isSmallScreen ? 120 : 140,
+                            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'right' : 'right',
+                            paddingRight: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                        }}
+                        htmlFor="email"
+                    >
+                        Email address*
+                    </label>
+                    <input
+                        id="email"
+                        type="email" 
+                        name="email"
+                        className="contact-input"
+                        style={{
+                            ...styles.htmlPstyle,
+                            textAlign: 'left',
+                            borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
+                            width: isMobileScreen ? 300 : isSmallScreen ? 300 : 400,
+                            padding: isMobileScreen ? '3px 6px' : isSmallScreen ? '4px 8px' : '5px 10px',
+                            border: 'none',
+                            backgroundColor: 'var(--background-color-2)'
+                        }}
+                    />
+                    <ValidationError 
+                        prefix="Email" 
+                        field="email"
+                        errors={state.errors}
+                    />
+                </div>
 
-                <label 
-                    style={styles.htmlPstyle}
-                    htmlFor="message"
-                >
-                    Your message*
-                </label>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: isMobileScreen ? 'column' : isSmallScreen ? 'row' : 'row',
+                    alignItems: isMobileScreen ? 'center' : 'flex-start',
+                    justifyContent: 'center',
+                    width: '100%',
+                    marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                    gap: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                }}>
+                    <label 
+                        style={{
+                            ...styles.htmlPstyle,
+                            width: isMobileScreen ? 100 : isSmallScreen ? 120 : 140,
+                            minWidth: 120,
+                            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'right' : 'right',
+                            paddingRight: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                        }}
+                        htmlFor="message"
+                    >
+                        Your message*
+                    </label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        className="contact-textarea"
+                        style={{
+                            ...styles.htmlPstyle,
+                            textAlign: 'left',
+                            borderRadius: isMobileScreen ? 4 : isSmallScreen ? 6 : 8,
+                            width: isMobileScreen ? 300 : isSmallScreen ? 300 : 400,
+                            padding: isMobileScreen ? '3px 6px' : isSmallScreen ? '4px 8px' : '5px 10px',
+                            minHeight: '100px',
+                            resize: 'vertical',
+                            border: 'none',
+                            backgroundColor: 'var(--background-color-2)'
+                        }}
+                    />
+                    <ValidationError 
+                        prefix="Message" 
+                        field="message"
+                        errors={state.errors}
+                    />
+                </div>
 
-                <input
-                    id="email"
-                    type="email" 
-                    name="email"
-                />
-                <ValidationError 
-                    prefix="Email" 
-                    field="email"
-                    errors={state.errors}
-                />
-      
-                <textarea
-                    id="message"
-                    name="message"
-                />
-                <ValidationError 
-                    prefix="Message" 
-                    field="message"
-                    errors={state.errors}
-                />
-
-                <button 
-                    style={styles.normalButtonStyles}
-                    type="submit"
-                    disabled={state.submitting}
-                >
-                    Submit
-                </button>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                    marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                    gap: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                }}>
+                    <label 
+                        style={{
+                            ...styles.htmlFTstyle,
+                            width: '100%',
+                            textAlign: 'center',
+                            paddingRight: isMobileScreen ? 0 : isSmallScreen ? 12 : 14,
+                        }}
+                        htmlFor="message"
+                    >
+                        * By submitting this message, you agree to the processing of your data. Thank you!
+                    </label>
+                    <button 
+                        style={styles.normalButtonStyles}
+                        type="submit"
+                        disabled={state.submitting}
+                    >
+                        Submit
+                    </button>
+                </div>
             </div>
-    </form>
-    
-);
+        </form>
+    );
 }
-
-// Contact Form
-// Do you have a question? Can we help you?
-// Get in touch!
-// Name
-// Email
-// Your message
-// Submit message
-// * By submitting this message, you agree to the processing of your data.
-// Thank you!
 
 export default ContactForm;

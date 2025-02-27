@@ -48,7 +48,12 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             fontSize: isMobileScreen ? '10px' : isSmallScreen ? '12px' : '12px',
             lineHeight: 1.5,
         },
-    };
+        footer: {
+            fontFamily: 'Inter',
+            fontWeight: 400,
+            fontSize: isMobileScreen ? '8px' : isSmallScreen ? '10px' : '10px',
+            lineHeight: 1.2,
+        },    };
 
     return {
         typography,
@@ -407,6 +412,16 @@ const ComponentStyles = (isMobileScreen, isSmallScreen, isHover, isDisabled) => 
             fontWeight: 400,
             textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
             padding: isMobileScreen ? 4 : isSmallScreen ? 4 : 6,
+            margin: '0',
+            listStylePosition: 'inside'
+        },
+
+        htmlFTstyle:
+        {
+            fontSize: isMobileScreen ? 9 : isSmallScreen ? 10 : 12,
+            fontWeight: 400,
+            textAlign: isMobileScreen ? 'center' : isSmallScreen ? 'center' : 'left',
+            padding: isMobileScreen ? 3 : isSmallScreen ? 3 : 4,
             margin: '0',
             listStylePosition: 'inside'
         }
