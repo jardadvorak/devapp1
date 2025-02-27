@@ -37,7 +37,7 @@ const ContatForm = () => {
         // Top navigation
         (isMobileScreen ? 56 : isSmallScreen ? 64 : 72) +
         // Banner
-        (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
+        // (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
         // Footer
         (isMobileScreen ? 76 : isSmallScreen ? 82 : 80)
     }px)`;
