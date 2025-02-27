@@ -148,6 +148,7 @@ const Index = () => {
                     <div style={styles.dividerStyle}></div>
 
                     <div style={styles.simpleBarStyle}>
+                    
                     {/* First set */}
                     <div 
                       style={{ 
@@ -167,7 +168,7 @@ const Index = () => {
                       }}>
                         <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
                           <img
-                            src={isSmallScreen ? images.Creativity017 : images.Vase007}
+                            src={images.Creativity017}
                             alt="Empower_your_learning_journey"
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
@@ -224,13 +225,15 @@ const Index = () => {
                     <div style={styles.dividerStyle}></div>
 
                     {/* Second set */}
-                    <div style={{ 
-                      display: 'flex', 
-                      flexDirection: isMobileScreen ? 'column' : 'row',
-                      justifyContent: 'center', 
-                      alignItems: 'center',
-                      backgroundColor: 'var(--background-color-1)'
-                    }}>
+                    <div 
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: isMobileScreen ? 'column' : 'row',
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        backgroundColor: 'var(--background-color-1)'
+                      }}
+                    >
                       {/* Content Section */}
                       <div style={{
                         height: 'auto',
@@ -283,7 +286,7 @@ const Index = () => {
                       }}>
                         <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
                           <img
-                            src={isSmallScreen ? images.Creativity017 : images.Vase007}
+                            src={images.Searching004}
                             alt="Vision and mission"
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
@@ -296,9 +299,159 @@ const Index = () => {
                         </div>
                       </div>
                     </div>
-                {/* End of second set */}
+                    {/* End of second set */}
 
                     <div style={styles.dividerStyle}></div>
+
+                    {/* Third set */}
+                    <div 
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: isMobileScreen ? 'column' : 'row',
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        backgroundColor: 'var(--background-color-1)'
+                      }}
+                    >
+                      {/* Image Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 1
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <img
+                            src={images.School006}
+                            alt="Empower_your_learning_journey"
+                            style={{
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: '0 auto',
+                              display: 'block'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 2 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            Explore, Use and Create Content without Limits
+                          </div>
+                          <div>
+                            <div style={styles.htmlPstyle}>Choose from wide variety of subjects and exercise types and tailor the experience to your needs.</div>
+                            <div style={styles.htmlPstyle}>Work online or on paper, slowly or intensively, go broad or go deep - all based on your preferences.</div>
+                            <div style={styles.htmlPstyle}>Create your own content, assign tasks and track your progress and see comparison with your peers.</div>
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'start-learning', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('start-learning')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/content');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              Explore content
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* End of the third set */}
+
+                    {/* Fourth set */}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: isMobileScreen ? 'column' : 'row',
+                      justifyContent: 'center', 
+                      alignItems: 'center',
+                      backgroundColor: 'var(--background-color-1)'
+                    }}>
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 1 : 1
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            Get Most out of Your Learning with Discito! 
+                          </div>
+                          <div>
+                            <div style={styles.htmlPstyle}>Use for free forever with basic free plan - or leverage benefits of supervised learning in premium subscription plans.</div>
+                            <div style={styles.htmlPstyle}>Explore our subscription plans to choose the best option for you or your group - just start by signing up for the platform and get first-hand experience.</div>
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'find-out-more', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('find-out-more')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/pricing');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              Explore options
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Image Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <img
+                            src={images.Elearning007}
+                            alt="Vision and mission"
+                            style={{
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: '0 auto',
+                              display: 'block',
+                              borderRadius: isSmallScreen ? 6 : 9
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    {/* End of fourth set */}
 
                     {/* Do not remove these notes */}
                     {/* Add two more elements */}
