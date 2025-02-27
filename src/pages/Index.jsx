@@ -75,7 +75,7 @@ const Index = () => {
             <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
-                    <div 
+                    {/* <div 
                         style={{
                             ...styles.simpleBarStyle, 
                             width: '100%',
@@ -95,7 +95,7 @@ const Index = () => {
                             className='logo'
                             alt='Logo'
                         />
-                    </div>
+                    </div> */}
                     
                     <div 
                         style={styles.htmlH2style}
@@ -145,7 +145,7 @@ const Index = () => {
                         </button>
                     </div>
 
-                    <div style={styles.dividerStyle}></div>
+                    {/* <div style={styles.dividerStyle}></div> */}
 
                     <div style={styles.simpleBarStyle}>
                     
@@ -156,7 +156,7 @@ const Index = () => {
                         flexDirection: isMobileScreen ? 'column' : 'row',
                         justifyContent: 'center', 
                         alignItems: 'center',
-                        backgroundColor: 'var(--background-color-1)'
+                        backgroundColor: 'var(--background-color-2)'
                       }}
                     >
                       {/* Image Section */}
@@ -222,7 +222,7 @@ const Index = () => {
                       </div>
                     </div>
 
-                    <div style={styles.dividerStyle}></div>
+                    {/* <div style={styles.dividerStyle}></div> */}
 
                     {/* Second set */}
                     <div 
@@ -301,7 +301,7 @@ const Index = () => {
                     </div>
                     {/* End of second set */}
 
-                    <div style={styles.dividerStyle}></div>
+                    {/* <div style={styles.dividerStyle}></div> */}
 
                     {/* Third set */}
                     <div 
@@ -310,7 +310,7 @@ const Index = () => {
                         flexDirection: isMobileScreen ? 'column' : 'row',
                         justifyContent: 'center', 
                         alignItems: 'center',
-                        backgroundColor: 'var(--background-color-1)'
+                        backgroundColor: 'var(--background-color-2)'
                       }}
                     >
                       {/* Image Section */}

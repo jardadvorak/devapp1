@@ -81,18 +81,30 @@ function PublicFooterLean() {
                         <div 
                                 style={styles.footerTextStyle}
                                 onClick={() => {
-                                    navigate('/contactform');
+                                    navigate('/contactus');
                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}    
                             >
                                 {getText('FOOTER', 'EMAIL')}
                             </div>
 
-                            <div style={styles.footerTextStyle}>
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/help');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}   
+                            >
                                 {getText('FOOTER', 'HELP')}
                             </div>
                             
-                            <div style={styles.footerTextStyle}>
+                            <div 
+                                style={styles.footerTextStyle}
+                                onClick={() => {
+                                    navigate('/FAQ');
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}   
+                            >
                                 {getText('FOOTER', 'FAQS')}
                             </div>
                             

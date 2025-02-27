@@ -1,4 +1,4 @@
-// src/pages/ContatForm.jsx
+// src/pages/ContatUs.jsx
 // External ContatForm page
 
 import React from 'react';
@@ -8,7 +8,7 @@ import PublicBannerLean from '../components/PublicBanner';
 import PublicFooterLean from '../components/PublicFooter';
 import CardArray from '../components/CardArray';
 import Carousel from '../components/Carousel';
-
+import ContactForm from '../components/ContactForm';
 import {useWindowSize} from '../utilities/UseWindowSize'
 
 import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
@@ -65,11 +65,23 @@ const ContatForm = () => {
             <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
-                    <div>
+                    <div
+                    style={styles.htmlPstyle}
+                    >
                         Contact Form
+                        Do you have a question? Can we help you?
+                        Get in touch!
+                        Name
+                        Email
+                        Your message
+                        Submit message
+                        * By submitting this message, you agree to the processing of your data.
+                        Thank you!
                     </div>
 
-                    {/* <div style={styles.mainDivStyle}>
+                    <ContactForm/>
+
+                {/* <div style={styles.mainDivStyle}>
                             <div style={styles.simpleBarStyle}>
 
                                 <div style={{ ...styles.simpleBarStyle, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: "100%" }}>

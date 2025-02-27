@@ -81,7 +81,7 @@ function PublicFooter() {
                             <div 
                                 style={styles.footerTextStyle}
                                 onClick={() => {
-                                    navigate('/contactform');
+                                    navigate('/contactus');
                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}    
                             >

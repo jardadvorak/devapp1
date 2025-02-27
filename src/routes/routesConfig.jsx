@@ -7,7 +7,7 @@ import TermsConditions from '../pages/TCpage';
 import PrivacyPolicy from '../pages/PPpage';
 import Content from '../pages/Content';
 import Pricing from '../pages/Pricing';
-import ContactForm from '../pages/ContactForm';
+import ContactUs from '../pages/ContactUs';
 import Help from '../pages/Help';
 import FAQ from '../pages/FAQ';
 
@@ -20,7 +20,7 @@ export const routes = [
     { path: '/content', component: Content, public: true },
     { path: '/pricing', component: Pricing, public: true },
 
-    { path: '/contactform', component: ContactForm, public: true },
+    { path: '/contactus', component: ContactUs, public: true },
     { path: '/help', component: Help, public: true },
     { path: '/FAQ', component: FAQ, public: true },
     { path: '/termsconditions', component: TermsConditions, public: true },
