@@ -7,6 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import PublicBannerLean from '../components/PublicBanner';
 import PublicFooterLean from '../components/PublicFooter';
 import CardArray from '../components/CardArray';
+import CardArrayImage from '../components/CardArrayImage';
 import Carousel from '../components/Carousel';
 
 import {useWindowSize} from '../utilities/UseWindowSize'
@@ -31,14 +32,20 @@ const Content = () => {
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
 
     // Create cards data
-    // const cards = [
-    //     { id: 1, title: 'Card 1', description: 'Description for card 1' },
-    //     { id: 2, title: 'Card 2', description: 'Description for card 2' },
-    //     { id: 3, title: 'Card 3', description: 'Description for card 3' },
-    //     { id: 4, title: 'Card 4', description: 'Description for card 4' },
-    //     { id: 5, title: 'Card 5', description: 'Description for card 5' },
-    //     { id: 6, title: 'Card 6', description: 'Description for card 6' },
-    // ];
+    const cards = [
+        { id: 1, title: 'English', description: 'Description for English', image: images.Book004, enabled: 'true', visible: 'true' },
+        { id: 2, title: 'Czech', description: 'Description for Czech', image: images.Searching004, enabled: 'true', visible: 'true'  },
+        { id: 3, title: 'German', description: 'Description for German', image: images.Elearning007, enabled: 'true', visible: 'true'  },
+        { id: 4, title: 'Spanish', description: 'Description for Spanish', image: images.Reading013, enabled: 'true', visible: 'true'  },
+        { id: 5, title: 'French', description: 'Description for French', image: images.School001, enabled: 'true', visible: 'true'  },
+        { id: 6, title: 'Mathematics', description: 'Description for Mathematics', image: images.Mathematics003, enabled: 'true', visible: 'true'  },
+        { id: 7, title: 'Physics', description: 'Description for Physics', image: images.Physics001, enabled: 'true', visible: 'true'  },
+        { id: 8, title: 'Geography', description: 'Description for Geography', image: images.Geography005, enabled: 'true', visible: 'true'  },
+        { id: 9, title: 'History', description: 'Description for History', image: images.Vase007, enabled: 'true', visible: 'true'  },
+        { id: 10, title: 'Biology', description: 'Description for Biology', image: images.Science005, enabled: 'true', visible: 'true'  },
+        { id: 11, title: 'Chemistry', description: 'Description for Chemistry', image: images.School006, enabled: 'true', visible: 'true'  },
+        { id: 12, title: 'Various', description: 'Description for Various', image: images.Creativity017, enabled: 'true', visible: 'true'  },
+    ];
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -68,6 +75,8 @@ const Content = () => {
                     <div>
                         Content
                     </div>
+
+                    <CardArrayImage cards={cards} />
 
                     {/* <div style={styles.mainDivStyle}>
                             <div style={styles.simpleBarStyle}>
