@@ -37,7 +37,16 @@ function ContactForm() {
     
     const [state, handleSubmit] = useForm("manqryqr");
         if (state.succeeded) {
-            return <p>Thanks for joining!</p>;
+            return <div style={{...styles.simpleBarStyle, dipslay: 'grid', height: availableHeight, placeItems: 'center'}}>
+                <div>
+                    <div style={{...styles.htmlH3style, textAlign : 'center', color: colors.amber}}>
+                        Thank you for your message!
+                    </div>
+                    <div style={{...styles.htmlPstyle, textAlign : 'center'}}>
+                        We will come back to you as soon as possible...
+                    </div>
+                </div>
+            </div>;
     }
 
     return (
