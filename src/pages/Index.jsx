@@ -18,7 +18,6 @@ import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
 import { screenWidthSettings } from '../config/styles/page_width';
 
 import { colors } from '../config/styles/colors';
-//import { styles} from '../config/styles/styles'
 import { componentStyles } from '../config/styles/styles';
 import { logoImages } from '../img/logos'
 import { images } from '../img/images';
