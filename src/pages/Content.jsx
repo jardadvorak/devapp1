@@ -33,7 +33,7 @@ const Content = () => {
 
     // Create cards data
     const cards = [
-        { id: 1, title: 'English', description: 'Description for English Description for English Description for English', image: images.Book004, enabled: 'true', visible: 'true' },
+        { id: 1, title: 'English', description: 'Description for English', image: images.Book004, enabled: 'true', visible: 'true' },
         { id: 2, title: 'Czech', description: 'Description for Czech', image: images.Searching004, enabled: 'true', visible: 'true'  },
         { id: 3, title: 'German', description: 'Description for German', image: images.Elearning007, enabled: 'true', visible: 'true'  },
         { id: 4, title: 'Spanish', description: 'Description for Spanish', image: images.Reading013, enabled: 'true', visible: 'true'  },

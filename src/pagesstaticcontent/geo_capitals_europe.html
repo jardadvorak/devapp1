@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Kvíz - Evropská hlavní města</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .hidden { display: none; }
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .option {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 8px;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            background: #f0f8ff;
+            border-color: #007bff;
+        }
+        .option input {
+            margin-right: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .feedback {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .stats {
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .country-name {
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro" class="intro">
+        <h1>Kvíz - Evropská hlavní města</h1>
+        <h2 id="quizDateTime"></h2>
+        <p>V tomto kvízu si otestujete znalost hlavních měst evropských zemí.</p>
+        <p>Pro každou otázku vyberte správnou odpověď ze čtyř možností.</p>
+        <p><strong>V každém kole se náhodně vybere 10 zemí ze všech evropských zemí.</strong></p>
+        <button onclick="startQuiz()">Začít kvíz</button>
+    </div>
+
+    <div id="quizMode" class="hidden">
+        <h2>Vyberte typ kvízu</h2>
+        <div style="margin: 20px 0;">
+            <label class="option" style="display: block; margin: 10px 0;">
+                <input type="radio" name="quizType" value="countryToCapital" checked>
+                <strong>Země → Hlavní město</strong><br>
+                <small style="margin-left: 24px; color: #666;">Ukáže se země, vybíráte hlavní město</small>
+            </label>
+            <label class="option" style="display: block; margin: 10px 0;">
+                <input type="radio" name="quizType" value="capitalToCountry">
+                <strong>Hlavní město → Země</strong><br>
+                <small style="margin-left: 24px; color: #666;">Ukáže se hlavní město, vybíráte zemi</small>
+            </label>
+        </div>
+        <button onclick="startSelectedQuiz()">Pokračovat</button>
+        <button onclick="goBackToIntro()" style="background: #6c757d; margin-left: 10px;">Zpět</button>
+    </div>
+
+    <div id="quiz" class="hidden">
+        <div id="question" class="question"></div>
+        <div class="feedback hidden"></div>
+        <div class="stats hidden"></div>
+        <button onclick="checkAnswer()">Potvrdit odpověď</button>
+    </div>
+
+    <div id="results" class="hidden results">
+        <h2>Výsledky kvízu</h2>
+        <h3 id="resultsDateTime"></h3>
+        <div id="finalStats"></div>
+        <button onclick="restartQuiz()" style="margin-top: 15px; background: #28a745;">Hrát znovu</button>
+    </div>
+
+    <script>
+        // Všechny evropské země a jejich hlavní města
+        const europeanCountries = [
+            { country: "Albánie", capital: "Tirana" },
+            { country: "Andorra", capital: "Andorra la Vella" },
+            { country: "Arménie", capital: "Jerevan" },
+            { country: "Rakousko", capital: "Vídeň" },
+            { country: "Ázerbájdžán", capital: "Baku" },
+            { country: "Bělorusko", capital: "Minsk" },
+            { country: "Belgie", capital: "Brusel" },
+            { country: "Bosna a Hercegovina", capital: "Sarajevo" },
+            { country: "Bulharsko", capital: "Sofie" },
+            { country: "Chorvatsko", capital: "Záhreb" },
+            { country: "Kypr", capital: "Nikósie" },
+            { country: "Česká republika", capital: "Praha" },
+            { country: "Dánsko", capital: "Kodaň" },
+            { country: "Estonsko", capital: "Tallinn" },
+            { country: "Finsko", capital: "Helsinki" },
+            { country: "Francie", capital: "Paříž" },
+            { country: "Gruzie", capital: "Tbilisi" },
+            { country: "Německo", capital: "Berlín" },
+            { country: "Řecko", capital: "Athény" },
+            { country: "Maďarsko", capital: "Budapešť" },
+            { country: "Island", capital: "Reykjavík" },
+            { country: "Irsko", capital: "Dublin" },
+            { country: "Itálie", capital: "Řím" },
+            { country: "Kazachstán", capital: "Nur-Sultan" },
+            { country: "Kosovo", capital: "Priština" },
+            { country: "Lotyšsko", capital: "Riga" },
+            { country: "Lichtenštejnsko", capital: "Vaduz" },
+            { country: "Litva", capital: "Vilnius" },
+            { country: "Lucembursko", capital: "Lucemburk" },
+            { country: "Malta", capital: "Valletta" },
+            { country: "Moldavsko", capital: "Kišiněv" },
+            { country: "Monako", capital: "Monaco" },
+            { country: "Černá Hora", capital: "Podgorica" },
+            { country: "Nizozemsko", capital: "Amsterdam" },
+            { country: "Severní Makedonie", capital: "Skopje" },
+            { country: "Norsko", capital: "Oslo" },
+            { country: "Polsko", capital: "Varšava" },
+            { country: "Portugalsko", capital: "Lisabon" },
+            { country: "Rumunsko", capital: "Bukurešť" },
+            { country: "Rusko", capital: "Moskva" },
+            { country: "San Marino", capital: "San Marino" },
+            { country: "Srbsko", capital: "Bělehrad" },
+            { country: "Slovensko", capital: "Bratislava" },
+            { country: "Slovinsko", capital: "Lublaň" },
+            { country: "Španělsko", capital: "Madrid" },
+            { country: "Švédsko", capital: "Stockholm" },
+            { country: "Švýcarsko", capital: "Bern" },
+            { country: "Turecko", capital: "Ankara" },
+            { country: "Ukrajina", capital: "Kyjev" },
+            { country: "Spojené království", capital: "Londýn" },
+            { country: "Vatikán", capital: "Vatikán" }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        let startTime;
+        let quizMode = 'countryToCapital'; // 'countryToCapital' nebo 'capitalToCountry'
+
+        function shuffle(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function generateWrongAnswers(correctAnswer, allCountries, mode) {
+            let wrongAnswers;
+            if (mode === 'countryToCapital') {
+                wrongAnswers = allCountries
+                    .filter(country => country.capital !== correctAnswer)
+                    .map(country => country.capital);
+            } else {
+                wrongAnswers = allCountries
+                    .filter(country => country.country !== correctAnswer)
+                    .map(country => country.country);
+            }
+            
+            return shuffle(wrongAnswers).slice(0, 3);
+        }
+
+        function prepareQuestions() {
+            // Vybrat 10 náhodných zemí
+            const shuffledCountries = shuffle(europeanCountries);
+            const selectedCountries = shuffledCountries.slice(0, 10);
+            
+            selectedQuestions = selectedCountries.map(country => {
+                try {
+                    if (quizMode === 'countryToCapital') {
+                        const wrongAnswers = generateWrongAnswers(country.capital, europeanCountries, 'countryToCapital');
+                        const allOptions = shuffle([country.capital, ...wrongAnswers]);
+                        
+                        return {
+                            text: `Jaké je hlavní město země <span class="country-name">${country.country}</span>?`,
+                            options: allOptions,
+                            correct: country.capital,
+                            country: country.country
+                        };
+                    } else {
+                        const wrongAnswers = generateWrongAnswers(country.country, europeanCountries, 'capitalToCountry');
+                        const allOptions = shuffle([country.country, ...wrongAnswers]);
+                        
+                        return {
+                            text: `Které země je hlavním městem <span class="country-name">${country.capital}</span>?`,
+                            options: allOptions,
+                            correct: country.country,
+                            capital: country.capital
+                        };
+                    }
+                } catch (error) {
+                    console.error('Chyba při vytváření otázky pro zemi:', country, error);
+                    return null;
+                }
+            }).filter(question => question !== null); // Odfiltrovat neplatné otázky
+            
+            console.log('Připraveno otázek:', selectedQuestions.length);
+        }
+
+        function startQuiz() {
+            document.getElementById('intro').classList.add('hidden');
+            document.getElementById('quizMode').classList.remove('hidden');
+        }
+
+        function startSelectedQuiz() {
+            const selectedMode = document.querySelector('input[name="quizType"]:checked');
+            if (!selectedMode) {
+                alert('Prosím vyberte typ kvízu');
+                return;
+            }
+            
+            quizMode = selectedMode.value;
+            
+            document.getElementById('quizMode').classList.add('hidden');
+            document.getElementById('quiz').classList.remove('hidden');
+            document.getElementById('quizDateTime').textContent = new Date().toLocaleString('cs-CZ');
+            startTime = new Date();
+            currentQuestion = 0;
+            correctAnswers = 0;
+            
+            prepareQuestions();
+            
+            // Kontrola, zda se podařilo připravit otázky
+            if (selectedQuestions.length === 0) {
+                alert('Chyba při přípravě otázek. Zkuste to znovu.');
+                goBackToIntro();
+                return;
+            }
+            
+            showQuestion();
+        }
+
+        function goBackToIntro() {
+            document.getElementById('quizMode').classList.add('hidden');
+            document.getElementById('intro').classList.remove('hidden');
+        }
+
+        function showQuestion() {
+            // Kontrola, zda máme platnou otázku
+            if (currentQuestion >= selectedQuestions.length || !selectedQuestions[currentQuestion]) {
+                console.error('Neplatný index otázky:', currentQuestion);
+                showResults();
+                return;
+            }
+            
+            const questionDiv = document.getElementById('question');
+            const question = selectedQuestions[currentQuestion];
+            
+            const optionsHtml = question.options.map(option => 
+                `<label class="option"><input type="radio" name="answer" value="${option}"> ${option}</label>`
+            ).join('');
+
+            questionDiv.innerHTML = `
+                <p>Otázka ${currentQuestion + 1} z ${selectedQuestions.length}</p>
+                <p>${question.text}</p>
+                <div class="options">${optionsHtml}</div>
+            `;
+
+            document.querySelector('.feedback').classList.add('hidden');
+            document.querySelector('.stats').classList.add('hidden');
+        }
+
+        function checkAnswer() {
+            const selected = document.querySelector('input[name="answer"]:checked');
+            if (!selected) {
+                alert('Prosím vyberte odpověď');
+                return;
+            }
+
+            const question = selectedQuestions[currentQuestion];
+            
+            // Kontrola, zda otázka existuje
+            if (!question) {
+                console.error('Otázka neexistuje pro index:', currentQuestion);
+                return;
+            }
+            
+            const isCorrect = selected.value === question.correct;
+            const feedbackDiv = document.querySelector('.feedback');
+            const statsDiv = document.querySelector('.stats');
+
+            feedbackDiv.classList.remove('hidden', 'correct', 'incorrect');
+            feedbackDiv.classList.add(isCorrect ? 'correct' : 'incorrect');
+            feedbackDiv.innerHTML = isCorrect ? 
+                'Správně!' : 
+                `Nesprávně. Správná odpověď je <strong>${question.correct}</strong>.`;
+
+            if (isCorrect) correctAnswers++;
+
+            statsDiv.classList.remove('hidden');
+            statsDiv.textContent = `Skóre: ${correctAnswers} z ${currentQuestion + 1}`;
+
+            currentQuestion++;
+
+            if (currentQuestion < selectedQuestions.length) {
+                setTimeout(showQuestion, 2000);
+            } else {
+                setTimeout(showResults, 2000);
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            
+            const endTime = new Date();
+            const duration = Math.round((endTime - startTime) / 1000);
+            document.getElementById('resultsDateTime').textContent = endTime.toLocaleString('cs-CZ');
+            
+            const percentage = Math.round((correctAnswers / selectedQuestions.length) * 100);
+            
+            let performanceMessage = '';
+            if (percentage >= 90) {
+                performanceMessage = 'Výborně! Jste expert na evropskou geografii! 🏆';
+            } else if (percentage >= 70) {
+                performanceMessage = 'Velmi dobře! Máte solidní znalosti. 👏';
+            } else if (percentage >= 50) {
+                performanceMessage = 'Dobře, ale je co zlepšovat. 👍';
+            } else {
+                performanceMessage = 'Je třeba více se učit. Zkuste to znovu! 📚';
+            }
+            
+            const modeText = quizMode === 'countryToCapital' ? 'Země → Hlavní město' : 'Hlavní město → Země';
+            
+            document.getElementById('finalStats').innerHTML = `
+                <p><strong>${performanceMessage}</strong></p>
+                <p>Typ kvízu: <strong>${modeText}</strong></p>
+                <p>Získali jste ${correctAnswers} z ${selectedQuestions.length} bodů (${percentage}%).</p>
+                <p>Čas: ${duration} sekund</p>
+                <p><em>Každý kvíz obsahuje 10 náhodně vybraných evropských zemí.</em></p>
+            `;
+        }
+
+        function restartQuiz() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('intro').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

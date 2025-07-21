@@ -41,23 +41,8 @@ function CardArrayImage({ cards }) {
                     >
                         <h3>{card.title}</h3>
                         <p>{card.description}</p>
-                        <div style={{
-                            width: '100%', 
-                            height: 48, 
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            justifyContent: 'center'
-                        }}>
-                            <img 
-                                src={card.image} 
-                                alt={card.title} 
-                                style={{
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
-                                    objectFit: 'contain',
-                                    objectPosition: 'center'
-                                }}
-                            />
+                        <div style={{width: 48, height: 48}}>
+                            <img src={card.image} alt={card.title} width='48' height='48' />
                         </div>
                     </div>
                 );

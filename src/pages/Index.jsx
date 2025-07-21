@@ -25,7 +25,7 @@ import { images } from '../img/images';
 const Index = () => {
     const navigate = useNavigate();
     // Get language context
-    const { getText } = useLanguage();
+    const { setCurrentLanguage, getText, currentLanguage } = useLanguage();
 
     // Handle responsiveness
     const windowSize = useWindowSize();
@@ -74,28 +74,6 @@ const Index = () => {
             <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
 
-                    {/* <div 
-                        style={{
-                            ...styles.simpleBarStyle, 
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
-                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
-                            }}
-                        >
-                        <img
-                            src={theme === themes.light ? logoImages.logo_yellow : logoImages.logo_yellow_inverted}
-                            style={{
-                                maxWidth: isMobileScreen ? '30%' : isSmallScreen ? "25" : "20%",
-                                width: 'auto',
-                                height: 'auto',
-                            }}
-                            className='logo'
-                            alt='Logo'
-                        />
-                    </div> */}
-                    
                     <div 
                         style={styles.htmlH2style}
                     >
@@ -304,8 +282,6 @@ const Index = () => {
                     </div>
                     {/* End of second set */}
 
-                    {/* <div style={styles.dividerStyle}></div> */}
-
                     {/* Third set */}
                     <div 
                       style={{ 
@@ -460,6 +436,160 @@ const Index = () => {
                     </div>
                     {/* End of fourth set */}
 
+                    {/* Fifth set */}
+                    <div 
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: isMobileScreen ? 'column' : 'row',
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        backgroundColor: 'var(--background-color-2)'
+                      }}
+                    >
+                      {/* Image Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 1
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <img
+                            src={images.School006}
+                            alt="Empower_your_learning_journey"
+                            style={{
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              display: 'block'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 2 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            XXX Explore, Use and Create Content without Limits
+                          </div>
+                          <div>
+                            <div style={styles.htmlPstyle}>XXX Choose from wide variety of subjects and exercise types and tailor the experience to your needs.</div>
+                            <div style={styles.htmlPstyle}>XXX Work online or on paper, slowly or intensively, go broad or go deep - all based on your preferences.</div>
+                            <div style={styles.htmlPstyle}>XXX Create your own content, assign tasks and track your progress and see comparison with your peers.</div>
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'start-learning', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('start-learning')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/content');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              XXX Explore content
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* End of the fifth set */}
+
+                    {/* Sixth set */}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: isMobileScreen ? 'column' : 'row',
+                      justifyContent: 'center', 
+                      alignItems: 'center',
+                      backgroundColor: 'var(--background-color-1)'
+                    }}>
+                      {/* Content Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 60%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 2 : isSmallScreen ? 1 : 1
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <div style={styles.htmlH2style}>
+                            YYY Get Most out of Your Learning with Discito! 
+                          </div>
+                          <div>
+                            <div style={styles.htmlPstyle}>YYY Use for free forever with basic free plan - or leverage benefits of supervised learning in premium subscription plans.</div>
+                            <div style={styles.htmlPstyle}>YYY Explore our subscription plans to choose the best option for you or your group - just start by signing up for the platform and get first-hand experience.</div>
+                          </div>
+                          <div style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                          }}>
+                            <button
+                              style={{
+                                ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'find-out-more', false).normalButtonStyles,
+                                marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                                marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              }}
+                              onMouseEnter={() => setHoveredElement('find-out-more')}
+                              onMouseLeave={() => setHoveredElement(null)}
+                              onClick={() => {
+                                navigate('/pricing');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              YYY Explore options
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Image Section */}
+                      <div style={{
+                        height: 'auto',
+                        flex: isMobileScreen ? '1 0 100%' : '1 0 40%',
+                        width: isMobileScreen ? '100%' : 'auto',
+                        order: isMobileScreen ? 1 : isSmallScreen ? 1 : 2
+                      }}>
+                        <div style={{ ...styles.simpleBarStyle, marginRight: '24', marginLeft: '24' }}>
+                          <img
+                            src={images.Elearning007}
+                            alt="Vision and mission"
+                            style={{
+                              maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
+                              height: 'auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              display: 'block',
+                              borderRadius: isSmallScreen ? 6 : 9
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    {/* End of sixth set */}
+
                     {/* Do not remove these notes */}
                     {/* Add two more elements */}
                     {/* Showcase / Content */}
@@ -472,6 +602,40 @@ const Index = () => {
                     {/* Shows QR code for donations and a story around this - why people should donate and what we are doing with the money... */}
 
                     {/*  */}
+
+                    <div style={styles.dividerStyle}></div>
+
+                    <div 
+                        style={{
+                            ...styles.simpleBarStyle, 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: isMobileScreen ? 6 : isSmallScreen ? 8 : 10,
+                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                            }}
+                        >
+                        <button
+                            style={{
+                              ...componentStyles(isMobileScreen, isSmallScreen, hoveredElement === 'main-login', false).normalButtonStyles,
+                              marginTop: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                              marginBottom: isMobileScreen ? 10 : isSmallScreen ? 12 : 14,
+                            }}
+                            onMouseEnter={() => setHoveredElement('main-login')}
+                            onMouseLeave={() => setHoveredElement(null)}
+                            onClick={() => {
+                                navigate('/testcontent');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                        > 
+                        {/* Leads to Dashboard or Login */}
+                        {/* {route === 'authenticated' ? 'Dashboard' : 'Login'} */}
+                            Test content
+                        </button>
+                    </div>
+
+                    <div style={styles.dividerStyle}></div>
+
 
                     <div style={{ marginBottom: '40px' }}>
                         <Carousel cards={cards} />

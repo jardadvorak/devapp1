@@ -1,7 +1,8 @@
 // src/pages/Login.jsx
 // Authentication page with AWS Amplify authentication and language support
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 
 import { I18n } from 'aws-amplify/utils';
@@ -17,18 +18,60 @@ I18n.putVocabulariesForLanguage('cz', czAuthDict);
 import '@aws-amplify/ui-react/styles.css'; // Important: Add this import
 
 import { ROUTES, AUTH_MODES, UI_TEXT } from '../config/constants';
-import { useLanguage } from '../contexts/LanguageContext';
+//import { useLanguage } from '../contexts/LanguageContext';
+import PublicBanner from '../components/PublicBanner';
+import PublicFooter from '../components/PublicFooter';
 import Button from '../components/Button';
+
+import { useTheme } from '../contexts/ThemeContext';
+import { themes } from '../config/styles/themes';
+
+import {useWindowSize} from '../utilities/UseWindowSize'
+
+import { virtualFullWidth, availableWidth } from '../config/styles/page_width';
+import { screenWidthSettings } from '../config/styles/page_width';
+
 import LanguageSwitch from '../components/LanguageSwitch';
+
+import { colors } from '../config/styles/colors';
+import { componentStyles } from '../config/styles/styles';
+import { logoImages } from '../img/logos'
+import { images } from '../img/images';
+
 
 const Login = () => {
     // Hooks for navigation and accessing route state
     const navigate = useNavigate();
+    
     const location = useLocation();
     
     // Get language context and functions
     const { setCurrentLanguage, getText, currentLanguage } = useLanguage();
     const { authStatus } = useAuthenticator(context => [context.authStatus]);
+
+    // Handle responsiveness
+    const windowSize = useWindowSize();
+    const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
+    const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
+    const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
+    
+    // State for hover effects
+    const [hoveredElement, setHoveredElement] = useState(null);
+    
+    //Load styles
+    const styles = componentStyles(isMobileScreen, isSmallScreen);
+    
+    //Handle theme
+    const { theme } = useTheme();
+        
+    const availableHeight = `calc(100vh - ${
+        // Top navigation
+        (isMobileScreen ? 56 : isSmallScreen ? 64 : 72) +
+        // Banner
+        (isMobileScreen ? 68 : isSmallScreen ? 88 : 116) +
+        // Footer
+        (isMobileScreen ? 76 : isSmallScreen ? 82 : 80)
+    }px)`;
 
     // Effect to set language based on navigation state
     // Effect to set language based on navigation state and update I18n vocabulary
@@ -56,7 +99,14 @@ const Login = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen relative">
+        <div style={{minHeight: `calc(100vh - ${isMobileScreen ? 56 : isSmallScreen ? 64 : 72}px)`, display: 'flex', flexDirection: 'column'}}>
+        
+         {/* <PublicBanner /> */}
+        
+        <main style={{ flexGrow: 1 }}>
+            <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
+                <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
+            
             {/* Language switch in top-right corner */}
             {/* Do not use it on the login page */}
             {/* <div className="absolute top-4 right-4">
@@ -64,13 +114,13 @@ const Login = () => {
             </div> */}
             
             {/* Back button in top-left corner */}
-            <div className="absolute top-4 left-4">
+            {/* <div className="absolute top-4 left-4">
                 <Button onClick={handleBack}>
                     {getText('BUTTONS', 'BACK')}
                 </Button>
-            </div>
+            </div> */}
 
-            <h1 className="text-3xl mb-8">{getText('HEADINGS', 'LOGIN')}</h1>
+            {/* <h1 className="text-3xl mb-8">{getText('HEADINGS', 'LOGIN')}</h1> */}
             
              {/* Add differentiation based on which button was pressed... likely separate pages, separate flows... */}
              {/* Use the hideSignup for login, keep all for sugn up... */}
@@ -127,8 +177,16 @@ const Login = () => {
                     return null;
                 }}
             </Authenticator> */}
+
+                </div>
+            </div>
+        </main>
+    
+        <PublicFooter />
+        
         </div>
-    );
+
+);
 };
 
 export default Login;
