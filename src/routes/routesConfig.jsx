@@ -13,6 +13,7 @@ import ContactUs from '../pages/ContactUs';
 import Help from '../pages/Help';
 import FAQ from '../pages/FAQ';
 import TestContent from '../pages/TestContent';
+import TestContentExercise from '../pages/TestContentExercise';
 
 // Static content
 // Private routes
@@ -33,6 +34,7 @@ export const routes = [
     { path: '/privacypolicy', component: PrivacyPolicy, public: true },
 
     { path: '/testcontent', component: TestContent, public: true },
+    { path: '/exercise/:type', component: TestContentExercise, public: true },
 
     { path: '/dashboard', component: Dashboard, public: false },
 

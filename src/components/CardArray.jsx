@@ -3,7 +3,7 @@ import { componentStyles } from '../config/styles/styles';
 import { useWindowSize } from '../utilities/UseWindowSize';
 import { availableWidth, screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
 
-function CardArray({ cards }) {
+function CardArray({ cards, onCardClick }) {
     const [hoveredCardId, setHoveredCardId] = useState(null);
     
     // Handle responsiveness
@@ -30,6 +30,7 @@ function CardArray({ cards }) {
                         key={card.id}
                         onMouseEnter={() => setHoveredCardId(card.id)}
                         onMouseLeave={() => setHoveredCardId(null)}
+                        onClick={() => onCardClick && onCardClick(card)}
                         style={{
                             ...cardStyles.normalCardStyles,
                             width : cardWidth,

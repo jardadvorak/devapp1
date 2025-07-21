@@ -2,12 +2,13 @@
 // Static TestContentExercise page
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import PublicBannerLean from '../components/PublicBanner';
 import PublicFooterLean from '../components/PublicFooter';
 import CardArray from '../components/CardArray';
 import Carousel from '../components/Carousel';
+import EuropeanCapitalsQuiz from '../pagesstaticcontent/EuropeanCapitalsQuiz';
 
 import {useWindowSize} from '../utilities/UseWindowSize'
 
@@ -23,17 +24,26 @@ import { images } from '../img/images'
 const TestContentExercise = () => {
     // Get language context
     const { getText } = useLanguage();
+    
+    // Get exercise type from URL parameters
+    const { type } = useParams();
+
+    // Exercise mapping - maps exercise types to their components
+    const exerciseComponents = {
+        'european-capitals': EuropeanCapitalsQuiz,
+        // Future exercises can be added here
+        // 'math-basics': MathBasicsQuiz,
+        // 'history-quiz': HistoryQuiz,
+    };
+
+    // Get the appropriate exercise component
+    const ExerciseComponent = exerciseComponents[type];
 
     // Handle responsiveness
     const windowSize = useWindowSize();
     const isMobileScreen = windowSize.width < screenWidthSettings.mobileScreenMaxWidth;
     const isSmallScreen = windowSize.width >= screenWidthSettings.mobileScreenMaxWidth && windowSize.width < screenWidthSettings.smallScreenMaxWidth;
     const isLargeScreen = windowSize.width >= screenWidthSettings.smallScreenMaxWidth;
-
-    // Create cards data
-    const staticcontentcards = [
-         { id: 1, title: 'Zeměpis', description: 'Hlavní města Evropa' },
-    ];
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -63,7 +73,17 @@ const TestContentExercise = () => {
                     <div style={styles.mainDivStyle}>
                             <div style={styles.simpleBarStyle}>
 
-                            {/* Inser here the html page */}
+                            {ExerciseComponent ? (
+                                <ExerciseComponent />
+                            ) : (
+                                <div style={{ textAlign: 'center', padding: '2rem' }}>
+                                    <h2>Exercise not found</h2>
+                                    <p>The requested exercise "{type}" is not available.</p>
+                                    <Link to="/testcontent" style={{ color: 'var(--text-color-link)' }}>
+                                        ← Back to exercises
+                                    </Link>
+                                </div>
+                            )}
 
                             </div>
                         </div>

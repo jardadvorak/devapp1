@@ -2,7 +2,7 @@
 // Static TestContent page
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import PublicBannerLean from '../components/PublicBanner';
 import PublicFooterLean from '../components/PublicFooter';
@@ -23,6 +23,9 @@ import { images } from '../img/images'
 const TestContent = () => {
     // Get language context
     const { getText } = useLanguage();
+    
+    // Navigation hook
+    const navigate = useNavigate();
 
     // Handle responsiveness
     const windowSize = useWindowSize();
@@ -32,8 +35,15 @@ const TestContent = () => {
 
     // Create cards data
     const staticcontentcards = [
-         { id: 1, title: 'Zeměpis', description: 'Hlavní města Evropa' },
+         { id: 1, title: 'Zeměpis', description: 'Hlavní města Evropa', exerciseType: 'european-capitals' },
     ];
+
+    // Handle card click navigation
+    const handleCardClick = (card) => {
+        if (card.exerciseType) {
+            navigate(`/exercise/${card.exerciseType}`);
+        }
+    };
 
     //Load styles
     const styles = componentStyles(isMobileScreen, isSmallScreen);
@@ -63,7 +73,7 @@ const TestContent = () => {
                     <div style={styles.mainDivStyle}>
                             <div style={styles.simpleBarStyle}>
 
-                                <CardArray cards={staticcontentcards} />
+                                <CardArray cards={staticcontentcards} onCardClick={handleCardClick} />
 
                             </div>
                         </div>
