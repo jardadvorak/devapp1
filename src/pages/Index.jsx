@@ -172,7 +172,9 @@ const Index = () => {
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
                               height: 'auto',
-                              margin: '0 auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
                               display: 'block'
                             }}
                           />
@@ -290,7 +292,9 @@ const Index = () => {
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
                               height: 'auto',
-                              margin: '0 auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
                               display: 'block',
                               borderRadius: isSmallScreen ? 6 : 9
                             }}
@@ -326,7 +330,9 @@ const Index = () => {
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
                               height: 'auto',
-                              margin: '0 auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
                               display: 'block'
                             }}
                           />
@@ -442,7 +448,9 @@ const Index = () => {
                             style={{
                               maxWidth: isMobileScreen ? '30%' : isSmallScreen ? '70%' : '40%',
                               height: 'auto',
-                              margin: '0 auto',
+                              margin: 'auto',
+                              marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                              marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
                               display: 'block',
                               borderRadius: isSmallScreen ? 6 : 9
                             }}

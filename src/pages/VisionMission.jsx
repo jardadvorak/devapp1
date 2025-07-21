@@ -105,6 +105,10 @@ const VisionMission = () => {
                                             maxWidth: isMobileScreen ? '30%' : isSmallScreen ? "25" : "20%", // Makes sure the image is not bigger than its container
                                             width: 'auto',
                                             height: 'auto', // Keeps the aspect ratio of the image
+                                            margin: 'auto',
+                                            marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+              
                                         }}
                                     />
                                 </div>
@@ -146,6 +150,10 @@ const VisionMission = () => {
                                             maxWidth: isMobileScreen ? '30%' : isSmallScreen ? "25" : "20%", // Makes sure the image is not bigger than its container
                                             width: 'auto',
                                             height: 'auto', // Keeps the aspect ratio of the image
+                                            margin: 'auto',
+                                            marginTop: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+                                            marginBottom: isMobileScreen ? 16 : isSmallScreen ? 18 : 20,
+              
                                         }}
                                     />
                                 </div>
