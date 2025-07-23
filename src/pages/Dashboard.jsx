@@ -59,12 +59,32 @@ const Dashboard = () => {
     async function fetchUserProfile() {
         try {
             setLoading(true);
-            const { data: profiles } = await client.models.UserProfile.list();
-            setUserProfiles(profiles);
             setError(null);
+            
+            console.log('Fetching user profiles...');
+            const { data: profiles, errors } = await client.models.UserProfile.list();
+            
+            if (errors && errors.length > 0) {
+                console.error('GraphQL errors:', errors);
+                throw new Error(`GraphQL errors: ${errors.map(e => e.message).join(', ')}`);
+            }
+            
+            console.log('User profiles fetched successfully:', profiles?.length || 0);
+            setUserProfiles(profiles || []);
         } catch (error) {
             console.error('Error fetching user profiles:', error);
-            setError(getText('ERRORS', 'FETCH_PROFILES'));
+            
+            // More detailed error logging
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            console.error('Detailed error info:', {
+                message: errorMessage,
+                graphQLErrors: error?.errors,
+                networkError: error?.networkError,
+                authStatus,
+                user: user?.username
+            });
+            
+            setError(getText('ERRORS', 'FETCH_PROFILES') || `Failed to fetch profiles: ${errorMessage}`);
         } finally {
             setLoading(false);
         }
@@ -100,6 +120,18 @@ const Dashboard = () => {
                         <h1 className="text-3xl mb-8" color='green' >{getText('HEADINGS', 'DASHBOARD')}</h1>
                         <h2 className="text-3xl mb-8" color='green' >{getText('HEADINGS', 'DASHBOARD')}</h2>
             
+                        {error && (
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                                <strong>Error:</strong> {error}
+                                <button 
+                                    onClick={fetchUserProfile}
+                                    className="ml-4 bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600"
+                                >
+                                    Retry
+                                </button>
+                            </div>
+                        )}
+
                         {userProfiles
                     //    .filter((profile) => profile.isActive) // Only active user(s)
                        .map((profile) => (

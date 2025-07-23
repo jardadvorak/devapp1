@@ -38,15 +38,39 @@ const client = generateClient<Schema>({
 });
 
 export const handler: PostConfirmationTriggerHandler = async (event) => {
-  await client.graphql({
-    query: createUserProfile,
-    variables: {
-      input: {
-        email: event.request.userAttributes.email,
-        profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
+  try {
+    console.log('Creating user profile for:', event.request.userAttributes.email);
+    
+    const result = await client.graphql({
+      query: createUserProfile,
+      variables: {
+        input: {
+          email: event.request.userAttributes.email,
+          profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
+        },
       },
-    },
-  });
+    });
 
-  return event;
+    console.log('User profile created successfully:', result.data?.createUserProfile?.id);
+    return event;
+  } catch (error) {
+    console.error('Error creating user profile:', error);
+    
+    // Log detailed error information for debugging
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const graphQLErrors = (error as any)?.errors || [];
+    const networkError = (error as any)?.networkError || null;
+    
+    console.error('Error details:', {
+      message: errorMessage,
+      graphQLErrors,
+      networkError,
+      userEmail: event.request.userAttributes.email,
+      profileOwner: `${event.request.userAttributes.sub}::${event.userName}`,
+    });
+    
+    // Re-throw the error to prevent user registration from completing
+    // if profile creation fails
+    throw new Error(`Failed to create user profile: ${errorMessage}`);
+  }
 };
