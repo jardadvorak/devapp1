@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "validate-deployment": "node scripts/validate-deployment.js"
+    "validate-deployment": "node scripts/validate-deployment.js",
+    "fix-deployment": "node scripts/fix-deployment.js"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.5.5",

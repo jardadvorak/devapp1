@@ -55,7 +55,32 @@ npm run validate-deployment
 
 ## 🚨 Common Deployment Issues & Solutions
 
-### Issue 1: GraphQL Authorization Errors
+### Issue 1: API Key Not Found Error (CloudFormation)
+**Symptoms**:
+- `API key not found: da2-xxxxxxxxx` error in CloudFormation
+- `UPDATE_ROLLBACK_COMPLETE` stack status
+- Deployment fails with `NotFoundException`
+
+**Root Cause**: 
+CloudFormation stack has cached references to old API keys that no longer exist, typically after changing authorization modes.
+
+**Solution**:
+```bash
+npm run fix-deployment
+```
+
+This automated script will:
+1. Remove API key configuration from data resource
+2. Delete the problematic CloudFormation stack
+3. Deploy a fresh environment
+4. Validate the new deployment
+
+**Manual Alternative**:
+1. Remove `apiKeyAuthorizationMode` from `amplify/data/resource.ts`
+2. Run `npx ampx sandbox delete --yes`
+3. Run `npx ampx sandbox --once`
+
+### Issue 2: GraphQL Authorization Errors
 **Symptoms**:
 - `UnauthorizedError` in CloudWatch logs
 - Users can't access their data after login
