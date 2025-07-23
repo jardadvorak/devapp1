@@ -36,13 +36,30 @@ function CardArrayImage({ cards }) {
                             // minWidth: isMobileScreen ? 240 : isSmallScreen ? 260 : 280,
                             // maxWidth: isMobileScreen ? 320 : isSmallScreen ? 340 : 360,
                             padding: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
-                            cursor: 'pointer'
-                        }}
+                            cursor: 'pointer',
+                            justifyContent: 'center', 
+                            alignItems: 'center'                        }}
                     >
                         <h3>{card.title}</h3>
                         <p>{card.description}</p>
-                        <div style={{width: 48, height: 48}}>
-                            <img src={card.image} alt={card.title} width='48' height='48' />
+                        <div style={{
+                            width: '100%', 
+                            height: 48, 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center'
+                        }}>
+                            <img 
+                                src={card.image} 
+                                alt={card.title} 
+                                style={{
+                                   width: isMobileScreen ? 40 : isSmallScreen ? 48 : 56, 
+                                   height: isMobileScreen ? 40 : isSmallScreen ? 48 : 56, 
+                                    display: 'flex', 
+                                    justifyContent: 'center', 
+                                    alignItems: 'center'
+                                }}
+                            />
                         </div>
                     </div>
                 );
