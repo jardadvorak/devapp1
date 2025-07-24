@@ -3,7 +3,7 @@ import { componentStyles } from '../config/styles/styles';
 import { useWindowSize } from '../utilities/UseWindowSize';
 import { availableWidth, screenWidthSettings, virtualFullWidth } from '../config/styles/page_width';
 
-function CardArrayImage({ cards }) {
+function CardArrayImage({ cards, onCardClick }) {
     const [hoveredCardId, setHoveredCardId] = useState(null);
     
     // Handle responsiveness
@@ -15,8 +15,9 @@ function CardArrayImage({ cards }) {
     return (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: isMobileScreen ? 10 : isSmallScreen ? 12 : 12 }}>
             {cards.map((card) => {
-                const isHovered = hoveredCardId === card.id;
-                const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, false);
+                const isDisabled = card.Enabled === false;
+                const isHovered = hoveredCardId === card.id && !isDisabled;
+                const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, isDisabled);
 
                 // Calculate number of cards per row
                 const cardsPerRow = isMobileScreen ? 2 : isSmallScreen ? 3 : 4;
@@ -28,17 +29,20 @@ function CardArrayImage({ cards }) {
                 return (
                     <div
                         key={card.id}
-                        onMouseEnter={() => setHoveredCardId(card.id)}
-                        onMouseLeave={() => setHoveredCardId(null)}
+                        onMouseEnter={() => !isDisabled && setHoveredCardId(card.id)}
+                        onMouseLeave={() => !isDisabled && setHoveredCardId(null)}
+                        onClick={() => !isDisabled && onCardClick && onCardClick(card)}
                         style={{
                             ...cardStyles.normalCardStyles,
                             width : cardWidth,
                             // minWidth: isMobileScreen ? 240 : isSmallScreen ? 260 : 280,
                             // maxWidth: isMobileScreen ? 320 : isSmallScreen ? 340 : 360,
                             padding: isMobileScreen ? 8 : isSmallScreen ? 10 : 12,
-                            cursor: 'pointer',
+                            cursor: isDisabled ? 'not-allowed' : 'pointer',
+                            color: isDisabled ? 'var(--button-text-disabled)' : 'var(--text-color-normal)',
                             justifyContent: 'center', 
-                            alignItems: 'center'                        }}
+                            alignItems: 'center'
+                        }}
                     >
                         <h3>{card.title}</h3>
                         <p>{card.description}</p>
@@ -57,7 +61,8 @@ function CardArrayImage({ cards }) {
                                    height: isMobileScreen ? 40 : isSmallScreen ? 48 : 56, 
                                     display: 'flex', 
                                     justifyContent: 'center', 
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    filter: isDisabled ? 'grayscale(100%) contrast(0.8)' : 'none'
                                 }}
                             />
                         </div>

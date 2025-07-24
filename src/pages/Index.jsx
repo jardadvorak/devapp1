@@ -35,12 +35,12 @@ const Index = () => {
 
     // Create cards data
     const cards = [
-        { id: 1, title: 'Card 1', description: 'Description for card 1' },
-        { id: 2, title: 'Card 2', description: 'Description for card 2' },
-        { id: 3, title: 'Card 3', description: 'Description for card 3' },
-        { id: 4, title: 'Card 4', description: 'Description for card 4' },
-        { id: 5, title: 'Card 5', description: 'Description for card 5' },
-        { id: 6, title: 'Card 6', description: 'Description for card 6' },
+        { id: 1, title: 'Card 1', description: 'Description for card 1', Enabled: true },
+        { id: 2, title: 'Card 2', description: 'Description for card 2', Enabled: true },
+        { id: 3, title: 'Card 3', description: 'Description for card 3', Enabled: false },
+        { id: 4, title: 'Card 4', description: 'Description for card 4', Enabled: false },
+        { id: 5, title: 'Card 5', description: 'Description for card 5', Enabled: true },
+        { id: 6, title: 'Card 6', description: 'Description for card 6', Enabled: true},
     ];
 
     // State for hover effects
@@ -127,6 +127,7 @@ const Index = () => {
                     <div style={styles.simpleBarStyle}>
                     
                     {/* First set */}
+                    {/* Login */}
                     <div 
                       style={{ 
                         display: 'flex', 
@@ -201,9 +202,8 @@ const Index = () => {
                       </div>
                     </div>
 
-                    {/* <div style={styles.dividerStyle}></div> */}
-
                     {/* Second set */}
+                    {/* Signup */}
                     <div 
                       style={{ 
                         display: 'flex', 
@@ -283,6 +283,7 @@ const Index = () => {
                     {/* End of second set */}
 
                     {/* Third set */}
+                    {/* Vision mission */}
                     <div 
                       style={{ 
                         display: 'flex', 
@@ -361,6 +362,7 @@ const Index = () => {
                     {/* End of the third set */}
 
                     {/* Fourth set */}
+                    {/* Content overview */}
                     <div style={{ 
                       display: 'flex', 
                       flexDirection: isMobileScreen ? 'column' : 'row',
@@ -437,6 +439,10 @@ const Index = () => {
                     {/* End of fourth set */}
 
                     {/* Fifth set */}
+                    {/* Showcase / Content */}
+                    {/* Same component types as above */}
+                    {/* Lists few examples of things that are already implemented... */}
+                    {/* Will be importnat when we enable login from the street to see free content... */}
                     <div 
                       style={{ 
                         display: 'flex', 
@@ -515,6 +521,9 @@ const Index = () => {
                     {/* End of the fifth set */}
 
                     {/* Sixth set */}
+                    {/* Donations */}
+                    {/* Same component types as above */}
+                    {/* Shows QR code for donations and a story around this - why people should donate and what we are doing with the money... */}
                     <div style={{ 
                       display: 'flex', 
                       flexDirection: isMobileScreen ? 'column' : 'row',
@@ -590,19 +599,6 @@ const Index = () => {
                     </div>
                     {/* End of sixth set */}
 
-                    {/* Do not remove these notes */}
-                    {/* Add two more elements */}
-                    {/* Showcase / Content */}
-                    {/* Same component types as above */}
-                    {/* Lists few examples of things that are already implemented... */}
-                    {/* Will be importnat when we enable login from the street to see free content... */}
-
-                    {/* Donations */}
-                    {/* Same component types as above */}
-                    {/* Shows QR code for donations and a story around this - why people should donate and what we are doing with the money... */}
-
-                    {/*  */}
-
                     <div style={styles.dividerStyle}></div>
 
                     <div 
@@ -635,7 +631,6 @@ const Index = () => {
                     </div>
 
                     <div style={styles.dividerStyle}></div>
-
 
                     <div style={{ marginBottom: '40px' }}>
                         <Carousel cards={cards} />

@@ -37,9 +37,9 @@ const Content = () => {
     const cards = [
         { id: 1, title: 'English', description: 'Description for English', image: images.Book004, enabled: 'true', visible: 'true' },
         { id: 2, title: 'Czech', description: 'Description for Czech', image: images.Searching004, enabled: 'true', visible: 'true'  },
-        { id: 3, title: 'German', description: 'Description for German', image: images.Elearning007, enabled: 'true', visible: 'true'  },
+        { id: 3, title: 'German', description: 'Description for German', image: images.Elearning007, enabled: 'true', visible: 'true', Enabled: false  },
         { id: 4, title: 'Spanish', description: 'Description for Spanish', image: images.Reading013, enabled: 'true', visible: 'true'  },
-        { id: 5, title: 'French', description: 'Description for French', image: images.School001, enabled: 'true', visible: 'true'  },
+        { id: 5, title: 'French', description: 'Description for French', image: images.School001, enabled: 'true', visible: 'true', Enabled: false },
         { id: 6, title: 'Mathematics', description: 'Description for Mathematics', image: images.Mathematics003, enabled: 'true', visible: 'true'  },
         { id: 7, title: 'Physics', description: 'Description for Physics', image: images.Physics001, enabled: 'true', visible: 'true'  },
         { id: 8, title: 'Geography', description: 'Description for Geography', image: images.Geography005, enabled: 'true', visible: 'true'  },

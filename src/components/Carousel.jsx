@@ -4,7 +4,7 @@ import { useWindowSize } from '../utilities/UseWindowSize';
 import { screenWidthSettings } from '../config/styles/page_width';
 import { icons } from '../img/icons';
 
-function Carousel({ cards }) {
+function Carousel({ cards, onCardClick }) {
     const [hoveredCardId, setHoveredCardId] = useState(null);
     const [showControls, setShowControls] = useState(false);
     const [hoveredButton, setHoveredButton] = useState(null);
@@ -103,8 +103,9 @@ function Carousel({ cards }) {
                 }}
             >
                 {cards.map((card) => {
-                    const isHovered = hoveredCardId === card.id;
-                    const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, false);
+                    const isDisabled = card.Enabled === false;
+                    const isHovered = hoveredCardId === card.id && !isDisabled;
+                    const cardStyles = componentStyles(isMobileScreen, isSmallScreen, isHovered, isDisabled);
 
                     // Calculate number of cards per row
                     const cardsPerRow = isMobileScreen ? 2 : isSmallScreen ? 3 : 4;
@@ -118,14 +119,16 @@ function Carousel({ cards }) {
                     return (
                         <div
                             key={card.id}
-                            onMouseEnter={() => setHoveredCardId(card.id)}
-                            onMouseLeave={() => setHoveredCardId(null)}
+                            onMouseEnter={() => !isDisabled && setHoveredCardId(card.id)}
+                            onMouseLeave={() => !isDisabled && setHoveredCardId(null)}
+                            onClick={() => !isDisabled && onCardClick && onCardClick(card)}
                             style={{
                                 ...cardStyles.normalCardStyles,
                                 width: cardWidth,
                                 padding: isMobileScreen ? '10px' : isSmallScreen ? '12px' : '12px',
                                 flexShrink: 0,
-                                cursor: 'pointer'
+                                cursor: isDisabled ? 'not-allowed' : 'pointer',
+                                color: isDisabled ? 'var(--button-text-disabled)' : 'var(--text-color-normal)'
                             }}
                         >
                             <h3>{card.title}</h3>
