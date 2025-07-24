@@ -190,7 +190,7 @@ const Index = () => {
                               onMouseEnter={() => setHoveredElement('start-learning')}
                               onMouseLeave={() => setHoveredElement(null)}
                               onClick={() => {
-                                navigate('/login');
+                                navigate('/signup');
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                               }}
                             >

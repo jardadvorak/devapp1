@@ -78,7 +78,11 @@ export const UI_TEXT = {
             'No account?': 'No account?',
             'Create account': 'Create account',
             'Have an account?': 'Have an account?',
-            'Sign in': 'Sign in'
+            'Sign in': 'Sign in',
+            'Terms Agreement': 'I agree with the',
+            'Terms Link': 'Terms and Conditions',
+            'Privacy Connector': ' and the',
+            'Privacy Link': 'Privacy Policy'
         },
         VISIONMISSION: {
             TITLE: 'Vision & Mission',
@@ -141,7 +145,11 @@ export const UI_TEXT = {
             'No account?': 'Kein Konto?',
             'Create account': 'Konto erstellen',
             'Have an account?': 'Haben Sie ein Konto?',
-            'Sign in': 'Anmelden'
+            'Sign in': 'Anmelden',
+            'Terms Agreement': 'Ich stimme den',
+            'Terms Link': 'Nutzungsbedingungen',
+            'Privacy Connector': ' und der',
+            'Privacy Link': 'Datenschutzrichtlinie'
         },
         VISIONMISSION: {
             TITLE: 'Vision & Mission',
@@ -204,7 +212,11 @@ export const UI_TEXT = {
             'No account?': 'Nemáte účet?',
             'Create account': 'Vytvořit účet',
             'Have an account?': 'Máte účet?',
-            'Sign in': 'Přihlásit se'
+            'Sign in': 'Přihlásit se',
+            'Terms Agreement': 'Souhlasím s',
+            'Terms Link': 'Podmínkami použití',
+            'Privacy Connector': ' a',
+            'Privacy Link': 'Zásadami ochrany osobních údajů'
         },
         VISIONMISSION: {
             TITLE: 'Vize & Mise',

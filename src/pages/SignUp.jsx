@@ -1,9 +1,9 @@
-// src/pages/Login.jsx
-// Sign In page with AWS Amplify authentication and language support
+// src/pages/SignUp.jsx
+// Sign Up page with AWS Amplify authentication and language support
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, CheckboxField } from '@aws-amplify/ui-react';
 
 import { I18n } from 'aws-amplify/utils';
 import { translations } from '@aws-amplify/ui-react';
@@ -39,7 +39,7 @@ import { logoImages } from '../img/logos'
 import { images } from '../img/images';
 
 
-const Login = () => {
+const SignUp = () => {
     // Hooks for navigation and accessing route state
     const navigate = useNavigate();
     
@@ -108,7 +108,7 @@ const Login = () => {
                 <div style={{...availableWidth, minHeight: availableHeight, backgroundColor: 'transparent', color: `var(--text-color-normal)`}}>        
             
             {/* Language switch in top-right corner */}
-            {/* Do not use it on the login page */}
+            {/* Do not use it on the signup page */}
             {/* <div className="absolute top-4 right-4">
                 <LanguageSwitch />
             </div> */}
@@ -122,22 +122,93 @@ const Login = () => {
 
             {/* <h1 className="text-3xl mb-8">{getText('HEADINGS', 'LOGIN')}</h1> */}
             
-             {/* Add differentiation based on which button was pressed... likely separate pages, separate flows... */}
-             {/* Use the hideSignup for login, keep all for sugn up... */}
+             {/* Sign Up page configuration */}
+             {/* Use the hideSignIn for signup */}
 
              {/* https://ui.docs.amplify.aws/react/connected-components/authenticator/configuration */}
-             {/* Use email for login as the default option... */}
+             {/* Use email for signup as the default option... */}
              {/* No additional signup attributes - everything else will be handled inside the app... */}
              {/* No social providers at this point... */}
              {/* Variation is default, not modal... */}
-             {/* Variation is default, not modal... */}
 
              <Authenticator
-                    initialState={location.state?.mode || 'signIn'}
-                    hideSignUp={true}
+                    initialState={location.state?.mode || 'signUp'}
+                    hideSignIn={true}
                     components={{
                         Header() {
                             return null; // Remove default header
+                        },
+                        SignUp: {
+                            FormFields() {
+                                const { validationErrors } = useAuthenticator();
+
+                                return (
+                                  <>
+                                    {/* Re-use default `Authenticator.SignUp.FormFields` */}
+                                    <Authenticator.SignUp.FormFields />
+
+                                    {/* Append & require Terms and Conditions field to sign up  */}
+                                    <CheckboxField
+                                      errorMessage={validationErrors.acknowledgement}
+                                      hasError={!!validationErrors.acknowledgement}
+                                      name="acknowledgement"
+                                      value="yes"
+                                      label={
+                                        <span>
+                                          {getText('AUTH', 'Terms Agreement')}{' '}
+                                          <button
+                                            type="button"
+                                            style={{
+                                              background: 'none',
+                                              border: 'none',
+                                              color: 'var(--accent-color)',
+                                              textDecoration: 'underline',
+                                              cursor: 'pointer',
+                                              fontSize: 'inherit',
+                                              fontFamily: 'inherit',
+                                              padding: 0,
+                                            }}
+                                            onClick={() => {
+                                              navigate('/termsconditions', {
+                                                state: { 
+                                                  language: currentLanguage,
+                                                  returnTo: '/signup'
+                                                }
+                                              });
+                                            }}
+                                          >
+                                            {getText('AUTH', 'Terms Link')}
+                                          </button>
+                                          {getText('AUTH', 'Privacy Connector')}{' '}
+                                          <button
+                                            type="button"
+                                            style={{
+                                              background: 'none',
+                                              border: 'none',
+                                              color: 'var(--accent-color)',
+                                              textDecoration: 'underline',
+                                              cursor: 'pointer',
+                                              fontSize: 'inherit',
+                                              fontFamily: 'inherit',
+                                              padding: 0,
+                                            }}
+                                            onClick={() => {
+                                              navigate('/privacypolicy', {
+                                                state: { 
+                                                  language: currentLanguage,
+                                                  returnTo: '/signup'
+                                                }
+                                              });
+                                            }}
+                                          >
+                                            {getText('AUTH', 'Privacy Link')}
+                                          </button>
+                                        </span>
+                                      }
+                                    />
+                                  </>
+                                );
+                            },
                         },
                     }}
                     services={{
@@ -156,7 +227,7 @@ const Login = () => {
                     }}
                 </Authenticator>
 
-                {/* Link to Sign Up page */}
+                {/* Link to Sign In page */}
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -164,7 +235,7 @@ const Login = () => {
                     marginBottom: isMobileScreen ? 16 : isSmallScreen ? 20 : 24,
                 }}>
                     <div style={styles.htmlPstyle}>
-                        {getText('AUTH', 'No account?')}{' '}
+                        {getText('AUTH', 'Have an account?')}{' '}
                         <button
                             style={{
                                 background: 'none',
@@ -177,38 +248,15 @@ const Login = () => {
                                 padding: 0,
                             }}
                             onClick={() => {
-                                navigate(ROUTES.SIGNUP, {
+                                navigate(ROUTES.LOGIN, {
                                     state: { language: currentLanguage }
                                 });
                             }}
                         >
-                            {getText('AUTH', 'Create account')}
+                            {getText('AUTH', 'Sign in')}
                         </button>
                     </div>
                 </div>
-
-             {/* <Authenticator initialState="signUp" loginMechanism="email"
-                // Add custom translations for the authenticator
-                services={{
-                  i18n: {
-                     getTranslation: (key) => {
-                        // You can add more translations in your UI_TEXT constant
-                        // and handle them here
-                     return getText('AUTH', key) || key;
-                     }
-                  }
-                }}
-             >
-                {({ signOut }) => {
-                    // Redirect to dashboard on successful authentication
-                    // Pass the current language to maintain language state
-                    const { currentLanguage } = useLanguage();
-                    navigate(ROUTES.DASHBOARD, {
-                        state: { language: currentLanguage }
-                    });    
-                    return null;
-                }}
-            </Authenticator> */}
 
                 </div>
             </div>
@@ -221,4 +269,4 @@ const Login = () => {
 );
 };
 
-export default Login;
+export default SignUp;

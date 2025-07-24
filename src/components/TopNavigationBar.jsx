@@ -37,7 +37,7 @@ function TopNavigationBar({ children }) {
 
     // Handler for signup button
     const handleSignup = () => {
-        navigate(ROUTES.LOGIN, { 
+        navigate(ROUTES.SIGNUP, { 
             state: { 
                 mode: AUTH_MODES.SIGN_UP,
                 language: currentLanguage 

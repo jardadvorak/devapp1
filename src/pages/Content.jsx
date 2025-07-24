@@ -4,8 +4,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import PublicBannerLean from '../components/PublicBanner';
-import PublicFooterLean from '../components/PublicFooter';
+import PublicBannerLean from '../components/PublicBannerLean';
+import PublicFooterLean from '../components/PublicFooterLean';
+import PublicBanner from '../components/PublicBanner';
+import PublicFooter from '../components/PublicFooter';
 import CardArray from '../components/CardArray';
 import CardArrayImage from '../components/CardArrayImage';
 import Carousel from '../components/Carousel';
@@ -66,7 +68,8 @@ const Content = () => {
     return (
         <div style={{minHeight: `calc(100vh - ${isMobileScreen ? 56 : isSmallScreen ? 64 : 72}px)`, display: 'flex', flexDirection: 'column'}}>
         
-        <PublicBannerLean />
+        {/* <PublicBannerLean /> */}
+        <PublicBanner />
 
         <main style={{ flexGrow: 1 }}>
             <div style={{...virtualFullWidth, backgroundColor: `var(--background-color-1)`}}>
@@ -170,7 +173,9 @@ const Content = () => {
             </div>
         </main>
 
-        <PublicFooterLean />
+        {/* <PublicFooterLean /> */}
+
+        <PublicFooter />
 
         </div>
     );

@@ -4,6 +4,7 @@
 import Index from '../pages/Index';
 import VisionMission from '../pages/VisionMission';
 import Login from '../pages/Login';
+import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import TermsConditions from '../pages/TCpage';
 import PrivacyPolicy from '../pages/PPpage';
@@ -22,6 +23,7 @@ export const routes = [
     // Public routes
     { path: '/', component: Index, public: true },
     { path: '/login', component: Login, public: true },
+    { path: '/signup', component: SignUp, public: true },
 
     { path: '/visionmission', component: VisionMission, public: true },
     { path: '/content', component: Content, public: true },
